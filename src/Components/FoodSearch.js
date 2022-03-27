@@ -9,7 +9,8 @@ const FoodSearch = () => {
 	const [foodName, setFoodName] = useState('');
 	const [product, setProduct] = useState();
 
-	const onClick = () => {
+	const onClick = (e) => {
+		e.preventDefault();
 		const findFood = products.find((product) => {
 			return product.productName === foodName;
 		});
@@ -20,10 +21,9 @@ const FoodSearch = () => {
 	return (
 		<div>
 			<input value={foodName} onChange={(e) => setFoodName(e.target.value)} />
-			<button onClick={onClick}>Find</button>
+			<button onClick={(e) => onClick(e)}>Find</button>
 			<div>
-				{product && product.productName}
-				{product && product.calories}
+				{product && product.productName} {product && product.calories}
 			</div>
 		</div>
 	);
