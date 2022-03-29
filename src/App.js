@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import MealComponent from './Components/MealComponent/MealComponent';
 import './App.css';
+import FoodSearch from './Components/FoodSearch';
 
 function App() {
   const totalCalories = useSelector(state => state.calories.totalCalories);
@@ -49,6 +50,5 @@ function App() {
       </footer>
       </div>
   );
-}
 
 export default App;

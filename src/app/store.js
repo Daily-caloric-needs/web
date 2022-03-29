@@ -7,4 +7,5 @@ export const store = configureStore({
     counter: counterReducer,
     calories: calories
   },
+
 });
