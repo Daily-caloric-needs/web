@@ -1,0 +1,45 @@
+@import '../../variables.scss';
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  &__list,
+  &__empty {
+    margin: 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &__item {
+    cursor: pointer;
+    border: 1px solid $main-color;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  &__add {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: $main-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+
+    & > svg {
+      color: $font-color-white;
+      border-radius: 50%;
+    }
+  }
+}
