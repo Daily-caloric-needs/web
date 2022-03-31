@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+.notification {
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed $main-color;
+  margin: 0 20px;
+
+  &__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: $success-color;
+    border-radius: 50%;
+  }
+
+  & > svg {
+    color: $font-color-main;
+  }
+}

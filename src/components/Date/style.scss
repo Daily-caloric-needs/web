@@ -1,0 +1,17 @@
+@import '../../variables.scss';
+
+.date {
+  justify-self: flex-start;
+
+  &__day {
+    cursor: pointer;
+    font-size: 30px;
+    display: inline-flex;
+    align-items: center;
+    color: $font-color-main;
+
+    & > svg {
+      margin-left: 10px;
+    }
+  }
+}

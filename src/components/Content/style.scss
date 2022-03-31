@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.content {
+  margin-left: 100px;
+  flex: 1 1 auto;
+  padding: 10px 40px 50px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__title {
+    flex: 1 1 auto;
+    text-align: center;
+    color: $font-color-main;
+  }
+
+  &__main {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+
+  &__left {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__meals {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__right {
+    margin-top: 55px;
+  }
+}
