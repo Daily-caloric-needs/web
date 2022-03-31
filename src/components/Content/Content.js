@@ -1,12 +1,12 @@
-import { Avatar } from '../Avatar';
-import { Meal } from '../Meal';
-import { Notification } from '../Notification';
-import { Search } from '../Search';
+import { Avatar } from '../Avatar/Avatar';
+import { Meal } from '../Meal/Meal';
+import { Notification } from '../Notification/Notification';
+import { Search } from '../Search/Search';
 import { v4 as uuid4 } from 'uuid';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './style.scss';
-import { Date } from '../Date';
+import { Date } from '../Date/Date';
 import { useState } from 'react';
 
 const dataset = {

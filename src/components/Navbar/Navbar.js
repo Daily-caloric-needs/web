@@ -4,7 +4,7 @@ import {
   IoHomeOutline,
   IoSettingsOutline,
 } from 'react-icons/io5';
-import { NavItem } from '../NavItem';
+import { NavItem } from '../NavItem/NavItem';
 
 const navItems = [
   {
