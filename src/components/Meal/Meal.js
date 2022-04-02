@@ -3,9 +3,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { Modal } from '../Modal';
-import { AddDish } from '../AddDish';
+import { Modal } from '../Modal/Modal';
+import { AddDish } from '../AddDish/AddDish';
 import './style.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { addDishAction } from '../../store/actions/addDishAction';
+import { deleteDishAction } from '../../store/actions/deleteDishAction';
 
 const CssAccordionSummary = styled(AccordionSummary)({
   backgroundColor: 'coral',
@@ -19,7 +22,9 @@ const CssAccordionDetails = styled(AccordionDetails)({
 });
 
 export const Meal = ({ meal, expand }) => {
-  const [dishes, setDishes] = useState([]);
+  const dispatch = useDispatch();
+  const dishes = useSelector(state => state);
+  console.log(dishes, 'dishes from store');
   const [modal, setModal] = useState(false);
 
   const expandMeal = () => {
@@ -34,14 +39,15 @@ export const Meal = ({ meal, expand }) => {
     setModal(false);
   };
 
+  // функция добавления продукта
   const addDish = (dish) => {
     setModal(false);
-    const updatedDishes = [...dishes, dish];
-    setDishes([...updatedDishes]);
+    dispatch(addDishAction(dish));
   };
 
+  // функция удаления продукта
   const deleteDish = (id) => {
-    setDishes(dishes.filter((dish) => dish.id !== id));
+    dispatch(deleteDishAction(id));
   };
 
   return (
@@ -72,7 +78,7 @@ export const Meal = ({ meal, expand }) => {
                     onClick={() => deleteDish(dish.id)}
                   >
                     <p>
-                      {dish.name} <span>x{dish.count}</span>
+                      {dish.name} - <span>{dish.count} pcs</span>
                     </p>
                   </li>
                 ))}
