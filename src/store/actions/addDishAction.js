@@ -1,4 +1,4 @@
-export const addDishAction = (data) => ({
+export const addDishAction = (product) => ({
   type: 'ADD_DISH',
-  payload: data
+  payload: product
 });

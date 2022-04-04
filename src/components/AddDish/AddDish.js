@@ -51,7 +51,7 @@ const CssButtonAdd = styled(CssButton)({
   },
 });
 
-export const AddDish = ({ add, close, title }) => {
+export const AddDish = ({ add, mealName, close, title }) => {
   const [name, setName] = useState('');
   const [count, setCount] = useState(1);
 
@@ -68,9 +68,11 @@ export const AddDish = ({ add, close, title }) => {
 
     if (!name) return;
 
+    // создание нового объекта с названием продукта и кол-ва для сохранения в store
     const newDish = {
       name,
       id: uuid4(),
+      mealName: mealName,
       count: count,
     };
 

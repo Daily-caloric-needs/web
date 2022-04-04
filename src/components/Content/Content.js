@@ -46,7 +46,7 @@ export const Content = () => {
     {
       id: uuid4(),
       title: 'Lunch',
-      expanded: false,
+      expanded: true,
     },
     {
       id: uuid4(),
