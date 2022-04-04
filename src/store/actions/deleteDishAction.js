@@ -1,5 +1,5 @@
-export const deleteDishAction = (id) => ({
+export const deleteDishAction = (data) => ({
   type: 'DELETE_DISH',
-  payload: id
+  payload: data
 });
 

@@ -16,12 +16,22 @@
   }
 
   &__item {
-    cursor: pointer;
     border: 1px solid $main-color;
     border-radius: 10px;
-    width: 200px;
+    width: 300px;
     padding: 10px;
     margin: 10px;
+    display: flex;
+
+    span {
+      font-weight: bold;
+    }
+
+    &-btn {
+      cursor: pointer;
+      margin-left: 5px;
+      padding: 5px;
+    }
   }
 
   &__add {

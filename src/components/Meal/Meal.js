@@ -9,6 +9,7 @@ import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDishAction } from '../../store/actions/addDishAction';
 import { deleteDishAction } from '../../store/actions/deleteDishAction';
+import { changeCountDishAction } from '../../store/actions/changeCountDishAction';
 
 const CssAccordionSummary = styled(AccordionSummary)({
   backgroundColor: 'coral',
@@ -23,8 +24,7 @@ const CssAccordionDetails = styled(AccordionDetails)({
 
 export const Meal = ({ meal, expand }) => {
   const dispatch = useDispatch();
-  const dishes = useSelector(state => state);
-  console.log(dishes, 'dishes from store');
+  const dishes = useSelector(state => state[meal.title]);
   const [modal, setModal] = useState(false);
 
   const expandMeal = () => {
@@ -47,14 +47,29 @@ export const Meal = ({ meal, expand }) => {
 
   // функция удаления продукта
   const deleteDish = (id) => {
-    dispatch(deleteDishAction(id));
+    const payload = {
+      id, 
+      mealName: [meal.title]
+    };
+    dispatch(deleteDishAction(payload));
+  };
+
+  // функция изменения количества продукта
+  const changeCountDish = (id, count) => {
+    let findDish = dishes.find(dish => {
+      return dish.id === id;
+    });
+    const indexOfDish = dishes.indexOf(findDish); 
+    findDish.count = findDish.count + count;
+    dishes.splice(indexOfDish, 1, findDish);
+    dispatch(changeCountDishAction(dishes, meal.title));
   };
 
   return (
     <>
       {modal && (
         <Modal showModal={modal} closeModal={closeModal}>
-          <AddDish title="Add Dish" add={addDish} close={closeModal} />
+          <AddDish title="Add Dish" mealName={meal.title} add={addDish} close={closeModal} />
         </Modal>
       )}
 
@@ -72,16 +87,19 @@ export const Meal = ({ meal, expand }) => {
             {dishes?.length > 0 ? (
               <ul className="dishes__list">
                 {dishes?.map((dish) => (
-                  <li
-                    key={dish.id}
-                    className="dishes__item"
-                    onClick={() => deleteDish(dish.id)}
-                  >
-                    <p>
-                      {dish.name} - <span>{dish.count} pcs</span>
-                    </p>
-                  </li>
-                ))}
+                    <li
+                      key={dish.id}
+                      className="dishes__item"
+                    >
+                      <p>
+                        {dish.name} - <span>{dish.count} шт.</span>
+                      </p>
+                      <button className="dishes__item-btn" onClick={() => changeCountDish(dish.id, -1)}>-</button>
+                      <button className="dishes__item-btn" onClick={() => changeCountDish(dish.id, 1)}>+</button>
+                      <button className="dishes__item-btn" onClick={() => deleteDish(dish.id)}>Del</button>
+                    </li>
+                  )
+                )}
               </ul>
             ) : (
               <p className="dishes__empty">No dishes</p>
