@@ -12,7 +12,6 @@ const initialState = {
 };
 
 export const mealsReducer = (state = initialState, { type, payload }) => {
-  debugger;
   switch (type) {
     case ADD_DISH_TO_MEAL:
       return {

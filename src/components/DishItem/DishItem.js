@@ -1,4 +1,4 @@
-import { IconButton, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { DishCounter } from '../DishCounter/DishCounter';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import './style.scss';

@@ -35,12 +35,8 @@ export const Content = () => {
   const [meals, setMeals] = useState(MEALS);
 
   useEffect(() => {
-    requestDishes();
-  }, []);
-
-  const requestDishes = async () => {
     dispatch(getDishes());
-  };
+  }, [dispatch]);
 
   const expand = (meal) => {
     const updatedMeals = meals.map((item) => {
