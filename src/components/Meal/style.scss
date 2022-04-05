@@ -13,6 +13,7 @@
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
+    flex-direction: column;
   }
 
   &__item {
@@ -22,6 +23,7 @@
     padding: 10px;
     margin: 10px;
     display: flex;
+    justify-content: space-between;
 
     span {
       font-weight: bold;
@@ -29,8 +31,13 @@
 
     &-btn {
       cursor: pointer;
-      margin-left: 5px;
+      margin-right: 5px;
       padding: 5px;
+
+      &__dicr{
+        padding-left: 7px;
+        padding-right: 7px;
+      }
     }
   }
 

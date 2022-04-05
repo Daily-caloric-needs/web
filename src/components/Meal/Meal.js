@@ -48,7 +48,7 @@ export const Meal = ({ meal, expand }) => {
   // функция удаления продукта
   const deleteDish = (id) => {
     const payload = {
-      id, 
+      id,
       mealName: [meal.title]
     };
     dispatch(deleteDishAction(payload));
@@ -59,10 +59,14 @@ export const Meal = ({ meal, expand }) => {
     let findDish = dishes.find(dish => {
       return dish.id === id;
     });
-    const indexOfDish = dishes.indexOf(findDish); 
+    const indexOfDish = dishes.indexOf(findDish);
     findDish.count = findDish.count + count;
-    dishes.splice(indexOfDish, 1, findDish);
-    dispatch(changeCountDishAction(dishes, meal.title));
+    if (findDish.count < 1) {
+      deleteDish(id)
+    } else {
+      dishes.splice(indexOfDish, 1, findDish);
+      dispatch(changeCountDishAction(dishes, meal.title));
+    }
   };
 
   return (
@@ -87,18 +91,21 @@ export const Meal = ({ meal, expand }) => {
             {dishes?.length > 0 ? (
               <ul className="dishes__list">
                 {dishes?.map((dish) => (
-                    <li
-                      key={dish.id}
-                      className="dishes__item"
-                    >
-                      <p>
-                        {dish.name} - <span>{dish.count} шт.</span>
-                      </p>
-                      <button className="dishes__item-btn" onClick={() => changeCountDish(dish.id, -1)}>-</button>
+                  <li
+                    key={dish.id}
+                    className="dishes__item"
+                  >
+
+                    <p>
+                      <button className="dishes__item-btn" onClick={() => deleteDish(dish.id)}>&#10008;</button>
+                      {dish.name} - <span>{dish.count} шт.</span>
+                    </p>
+                    <div>
+                      <button className="dishes__item-btn dishes__item-btn__dicr" onClick={() => changeCountDish(dish.id, -1)}>-</button>
                       <button className="dishes__item-btn" onClick={() => changeCountDish(dish.id, 1)}>+</button>
-                      <button className="dishes__item-btn" onClick={() => deleteDish(dish.id)}>Del</button>
-                    </li>
-                  )
+                    </div>
+                  </li>
+                )
                 )}
               </ul>
             ) : (
