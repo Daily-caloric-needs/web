@@ -1,5 +1,5 @@
-@import '../../variables.scss';
-
-#dish {
-  color: $font-color-main;
+.product-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -1,6 +1,13 @@
 import { daysOfWeek } from '../../constants';
 import { IoChevronDownSharp } from 'react-icons/io5';
 import './style.scss';
+import { Typography } from '@mui/material';
+import styled from '@emotion/styled';
+
+const CustomTypography = styled(Typography)(({ theme }) => ({
+  cursor: 'pointer',
+  color: theme.palette.primary.main,
+}));
 
 export const Date = () => {
   const currentDayOfWeek = daysOfWeek[new window.Date().getDay()];
@@ -8,10 +15,10 @@ export const Date = () => {
 
   return (
     <div className="date">
-      <h3 className="date__day">
+      <CustomTypography variant="h4" className="date__day">
         {currentDayOfWeek}, {currentDate}
         <IoChevronDownSharp fontSize={25} />
-      </h3>
+      </CustomTypography>
     </div>
   );
 };

@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
-    flex-direction: column;
+    gap: 20px;
   }
 
   &__item {
@@ -34,7 +34,7 @@
       margin-right: 5px;
       padding: 5px;
 
-      &__dicr{
+      &__dicr {
         padding-left: 7px;
         padding-right: 7px;
       }

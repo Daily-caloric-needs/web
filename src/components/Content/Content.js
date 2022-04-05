@@ -2,35 +2,28 @@ import { Avatar } from '../Avatar/Avatar';
 import { Meal } from '../Meal/Meal';
 import { Notification } from '../Notification/Notification';
 import { Search } from '../Search/Search';
-import { v4 as uuid4 } from 'uuid';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './style.scss';
 import { Date } from '../Date/Date';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { MEALS } from '../../constants';
+import { getDishes } from '../../store/Dishes/actions';
+import { useDispatch } from 'react-redux';
 import { Water } from '../Water/Water';
 
 const dataset = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['fat', 'carbohydrates', 'proteins'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'My First Dataset',
+      data: [300, 50, 100],
       backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(54, 162, 235, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(75, 192, 192, 0.5)',
-        'rgba(153, 102, 255, 0.5)',
-        'rgba(255, 159, 64, 0.5)',
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
       ],
-      options: {
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-        },
-      },
+      hoverOffset: 4,
     },
   ],
 };
@@ -38,28 +31,12 @@ const dataset = {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Content = () => {
-  const [meals, setMeals] = useState([
-    {
-      id: uuid4(),
-      title: 'Breakfast',
-      expanded: true,
-    },
-    {
-      id: uuid4(),
-      title: 'Lunch',
-      expanded: true,
-    },
-    {
-      id: uuid4(),
-      title: 'Dinner',
-      expanded: false,
-    },
-    {
-      id: uuid4(),
-      title: 'Snack',
-      expanded: false,
-    },
-  ]);
+  const dispatch = useDispatch();
+  const [meals, setMeals] = useState(MEALS);
+
+  useEffect(() => {
+    dispatch(getDishes());
+  }, [dispatch]);
 
   const expand = (meal) => {
     const updatedMeals = meals.map((item) => {
@@ -79,9 +56,9 @@ export const Content = () => {
         <Notification />
         <Avatar />
       </div>
+      <Date />
       <div className="content__main">
         <div className="content__left">
-          <Date />
           <div className="content__meals">
             {meals?.map((meal) => (
               <Meal key={meal.id} meal={meal} expand={expand} />
