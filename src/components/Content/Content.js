@@ -8,6 +8,7 @@ import { Doughnut } from 'react-chartjs-2';
 import './style.scss';
 import { Date } from '../Date/Date';
 import { useState } from 'react';
+import { Water } from '../Water/Water';
 
 const dataset = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -86,6 +87,7 @@ export const Content = () => {
               <Meal key={meal.id} meal={meal} expand={expand} />
             ))}
           </div>
+          <Water />
         </div>
         <div className="content__right">
           <Doughnut data={dataset} />
