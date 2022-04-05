@@ -56,7 +56,11 @@ export const AddDish = ({ add, mealName, close, title }) => {
   const [count, setCount] = useState(1);
 
   const changeCount = (e) => {
-    setCount(+e.target.value);
+    if(e.target.value < 1){
+      setCount(1);
+    }else{
+      setCount(+e.target.value)
+    }
   };
 
   const changeName = (e) => {

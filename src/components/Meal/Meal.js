@@ -98,7 +98,7 @@ export const Meal = ({ meal, expand }) => {
 
                     <p>
                       <button className="dishes__item-btn" onClick={() => deleteDish(dish.id)}>&#10008;</button>
-                      {dish.name} - <span>{dish.count} шт.</span>
+                      {dish.name} - <span>{dish.count} г/шт.</span>
                     </p>
                     <div>
                       <button className="dishes__item-btn dishes__item-btn__dicr" onClick={() => changeCountDish(dish.id, -1)}>-</button>
