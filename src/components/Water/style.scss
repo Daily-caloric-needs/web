@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+
+.water {
+    margin-top: 10px;
+    &__text {
+        color: $main-color;
+    }
+};
