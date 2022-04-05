@@ -2,9 +2,9 @@
 
 .date {
   justify-self: flex-start;
+  margin-top: 20px;
 
   &__day {
-    cursor: pointer;
     font-size: 30px;
     display: inline-flex;
     align-items: center;
