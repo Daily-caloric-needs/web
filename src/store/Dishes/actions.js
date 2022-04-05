@@ -1,7 +1,3 @@
-export const ADD_DISH = 'DISHES::ADD_DISH';
-export const DELETE_DISH = 'DISHES::DELETE_DISH';
-export const ADD_DISH_COUNT = 'DISHES::ADD_DISH_COUNT';
-export const DELETE_DISH_COUNT = 'DISHES::DELETE_DISH_COUNT';
 export const REQUEST_DISHES_LOADING = 'DISHES::REQUEST_DISHES_LOADING';
 export const REQUEST_DISHES_FILURE = 'DISHES::REQUEST_DISHES_FAILURE';
 export const REQUEST_DISHES_SUCCESS = 'DISHES::REQUEST_DISHES_SUCCESS';
@@ -37,23 +33,3 @@ export const getDishes = () => async (dispatch) => {
     dispatch(getDishesFailure(err));
   }
 };
-
-export const addDishAction = (data) => ({
-  type: ADD_DISH,
-  payload: data,
-});
-
-export const deleteDishAction = (id) => ({
-  type: DELETE_DISH,
-  payload: id,
-});
-
-export const addDishCount = (id) => ({
-  type: ADD_DISH_COUNT,
-  payload: id,
-});
-
-export const deleteDishCount = (id) => ({
-  type: DELETE_DISH_COUNT,
-  payload: id,
-});

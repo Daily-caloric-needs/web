@@ -1,4 +1,1 @@
-export const selectDishesList = (state) => state.dishes;
-export const getDishesVariants = (state) => {
-  return state.dishesVariants;
-};
+export const getDishesVariants = (state) => state.dishes.dishesVariants;

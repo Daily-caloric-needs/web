@@ -10,10 +10,11 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   display: 'flex',
   cursor: 'pointer',
-  width: 40,
-  height: 40,
+  width: 30,
+  height: 30,
   margin: 10,
   alignSelf: 'flex-end',
+  justifyContent: 'center',
   '& .MuiSvgIcon-root': {
     color: theme.palette.text.white,
   },
@@ -22,15 +23,15 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-export const ProductCounter = ({ count, increment, decrement }) => {
+export const DishCounter = ({ count, increment, decrement }) => {
   return (
     <div className="counter">
       <CustomIconButton onClick={decrement}>
-        <RemoveIcon />
+        <RemoveIcon fontSize="small" />
       </CustomIconButton>
       <Typography variant="h6">{count}</Typography>
       <CustomIconButton onClick={increment}>
-        <AddIcon />
+        <AddIcon fontSize="small" />
       </CustomIconButton>
     </div>
   );

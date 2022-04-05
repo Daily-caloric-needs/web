@@ -12,14 +12,13 @@ import { Modal } from '../Modal/Modal';
 import { AddDish } from '../AddDish/AddDish';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { DishItem } from '../DishItem/DishItem';
+import { selectDishes } from '../../store/Meals/selectors';
 import {
-  addDishAction,
-  addDishCount,
-  deleteDishAction,
-  deleteDishCount,
-} from '../../store/Dishes/actions';
-import { selectDishesList } from '../../store/Dishes/selectors';
-import { ProductItem } from '../ProductItem/ProductItem';
+  addDishToMeal,
+  changeDishFromMeal,
+  deleteDishFromMeal,
+} from '../../store/Meals/actions';
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
   borderRadius: 20,
@@ -66,8 +65,7 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
 
 export const Meal = ({ meal, expand }) => {
   const dispatch = useDispatch();
-  const dishes = useSelector(selectDishesList);
-  console.log(dishes, 'dishes from store');
+  const dishes = useSelector(selectDishes(meal.title));
   const [modal, setModal] = useState(false);
 
   const expandMeal = () => {
@@ -85,20 +83,39 @@ export const Meal = ({ meal, expand }) => {
   // функция добавления продукта
   const addDish = (dish) => {
     setModal(false);
-    dispatch(addDishAction(dish));
+    dispatch(addDishToMeal(dish, meal.title));
   };
 
   // функция удаления продукта
   const deleteDish = (id) => {
-    dispatch(deleteDishAction(id));
+    dispatch(deleteDishFromMeal(id, meal.title));
   };
 
   const addCount = (id) => {
-    dispatch(addDishCount(id));
+    const updatedDishes = dishes.map((dish) => {
+      if (dish.id === id) {
+        dish.count++;
+      }
+      return dish;
+    });
+    dispatch(changeDishFromMeal(updatedDishes, meal.title));
   };
 
   const deleteCount = (id) => {
-    dispatch(deleteDishCount(id));
+    let isDelete = false;
+    let updatedDishes = dishes.map((dish) => {
+      if (dish.id === id) {
+        if (dish.count > 1) {
+          dish.count--;
+        } else {
+          isDelete = true;
+        }
+      }
+      return dish;
+    });
+    if (isDelete) updatedDishes = dishes.filter((dish) => dish.id !== id);
+
+    dispatch(changeDishFromMeal(updatedDishes, meal.title));
   };
 
   return (
@@ -123,11 +140,11 @@ export const Meal = ({ meal, expand }) => {
             {dishes?.length > 0 ? (
               <div className="dishes__list">
                 {dishes?.map((dish) => (
-                  <ProductItem
+                  <DishItem
                     key={dish.id}
                     className="dishes__item"
                     del={() => deleteDish(dish.id)}
-                    product={dish}
+                    dish={dish}
                     addCount={() => addCount(dish.id)}
                     delCount={() => deleteCount(dish.id)}
                   />

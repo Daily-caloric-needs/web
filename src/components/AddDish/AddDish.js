@@ -15,8 +15,8 @@ import { CssDialog } from '../Modal/Modal';
 import styled from '@emotion/styled';
 import { getDishesVariants } from '../../store/Dishes/selectors';
 import { useSelector } from 'react-redux';
-import { ProductCounter } from '../ProductCounter/ProductCounter';
-import './styles.scss';
+import { DishCounter } from '../DishCounter/DishCounter';
+import './style.scss';
 
 const CssTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputLabel-root': {
@@ -304,7 +304,7 @@ export const AddDish = ({ add, close, title }) => {
         </CssDialog>
         <div className="product-count">
           <Typography variant="h6">Counts:</Typography>
-          <ProductCounter
+          <DishCounter
             count={count}
             increment={addCount}
             decrement={removeCount}

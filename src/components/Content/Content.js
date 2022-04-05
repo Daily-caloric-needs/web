@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { MEALS } from '../../constants';
 import { getDishes } from '../../store/Dishes/actions';
 import { useDispatch } from 'react-redux';
+import { Water } from '../Water/Water';
 
 const dataset = {
   labels: ['fat', 'carbohydrates', 'proteins'],
@@ -67,6 +68,7 @@ export const Content = () => {
               <Meal key={meal.id} meal={meal} expand={expand} />
             ))}
           </div>
+          <Water />
         </div>
         <div className="content__right">
           <Doughnut data={dataset} />
