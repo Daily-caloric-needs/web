@@ -1,5 +1,5 @@
 import './style.scss';
-import avatar from './avatar.svg';
+import avatar from './woman.png';
 
 export const Avatar = () => {
   return (
