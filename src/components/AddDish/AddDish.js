@@ -91,7 +91,7 @@ const CssButtonAdd = styled(CssButton)(({ theme }) => ({
 
 const filter = createFilterOptions();
 
-export const AddDish = ({ add, close, title }) => {
+export const AddDish = ({ dishes, add, close, title }) => {
   const dishesVariants = useSelector(getDishesVariants);
   const [count, setCount] = useState(1);
 
@@ -194,7 +194,7 @@ export const AddDish = ({ add, close, title }) => {
 
             return filtered;
           }}
-          options={dishesVariants}
+          options={dishesVariants.filter((dish) => !dishes.includes(dish))}
           selectOnFocus
           autoHighlight
           clearOnBlur
