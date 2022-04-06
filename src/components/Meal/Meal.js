@@ -123,8 +123,8 @@ export const Meal = ({ meal, expand }) => {
       {modal && (
         <Modal showModal={modal} closeModal={closeModal}>
           <AddDish
+            dishes={dishes}
             title="Add Dish"
-            mealName={meal.title}
             add={addDish}
             close={closeModal}
           />
