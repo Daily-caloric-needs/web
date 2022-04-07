@@ -12,22 +12,22 @@ export const REQUEST_STATUS = {
 export const MEALS = [
 	{
 		id: uuid4(),
-		title: 'Breakfast',
+		title: 'Завтрак',
 		expanded: true,
 	},
 	{
 		id: uuid4(),
-		title: 'Lunch',
+		title: 'Обед',
 		expanded: false,
 	},
 	{
 		id: uuid4(),
-		title: 'Dinner',
+		title: 'Ужин',
 		expanded: false,
 	},
 	{
 		id: uuid4(),
-		title: 'Snack',
+		title: 'Перекус',
 		expanded: false,
 	},
 ];
