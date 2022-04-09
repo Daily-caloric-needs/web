@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from 'uuid';
 
-export const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+export const daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
 export const REQUEST_STATUS = {
 	CREATED: 0,

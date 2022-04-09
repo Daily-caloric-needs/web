@@ -80,24 +80,42 @@ export const Meal = ({ meal, expand }) => {
 	// функция удаления продукта
 	const deleteDish = (id) => {
 		dispatch(deleteDishFromMeal(id, meal.title));
+		// dispatch(deleteCountNutrientFromMeal(meal.title));
 	};
 
+	// функция подсчета веществ для продукта
+	const calculateNutrientsForProduct = (dish, prevCount) => {
+		dish.calories = dish.calories / prevCount * dish.count;
+		dish.fat = dish.fat / prevCount * dish.count;
+		dish.proteins = dish.proteins / prevCount * dish.count;
+		dish.carbohydrates = dish.carbohydrates / prevCount * dish.count;
+
+		return dish;
+	};
+
+	// функция прибавления количества продукта
 	const addCount = (id) => {
-		const updatedDishes = dishes.map((dish) => {
+		const updatedDish = dishes.map((dish) => {
 			if (dish.id === id) {
+				const prevCount = dish.count;
 				dish.count++;
+				calculateNutrientsForProduct(dish, prevCount);
 			}
 			return dish;
 		});
-		dispatch(changeDishFromMeal(updatedDishes, meal.title));
+
+		dispatch(changeDishFromMeal(updatedDish, meal.title));
 	};
 
+	// функция убавления количества продукта
 	const deleteCount = (id) => {
 		let isDelete = false;
 		let updatedDishes = dishes.map((dish) => {
 			if (dish.id === id) {
 				if (dish.count > 1) {
+					const prevCount = dish.count;
 					dish.count--;
+					calculateNutrientsForProduct(dish, prevCount);
 				} else {
 					isDelete = true;
 				}
@@ -107,6 +125,16 @@ export const Meal = ({ meal, expand }) => {
 		if (isDelete) updatedDishes = dishes.filter((dish) => dish.id !== id);
 
 		dispatch(changeDishFromMeal(updatedDishes, meal.title));
+	};
+
+	// функция подсчета вещества для приема пищи
+	const calculateNutrientFromMeal = (nutrient) => {
+		const initialValue = 0;
+		const countNutrientFromMeal = dishes.reduce(
+			(accumulator, currentValue) => accumulator + currentValue[nutrient],
+			initialValue
+		);
+		return countNutrientFromMeal;
 	};
 
 	return (
@@ -129,18 +157,24 @@ export const Meal = ({ meal, expand }) => {
 				<CssAccordionDetails>
 					<div className="dishes">
 						{dishes?.length > 0 ? (
-							<div className="dishes__list">
-								{dishes?.map((dish) => (
-									<DishItem
-										key={dish.id}
-										className="dishes__item"
-										del={() => deleteDish(dish.id)}
-										dish={dish}
-										addCount={() => addCount(dish.id)}
-										delCount={() => deleteCount(dish.id)}
-									/>
-								))}
-							</div>
+							<>
+								<div className="dishes__list">
+									{dishes?.map((dish) => (
+										<DishItem
+											key={dish.id}
+											className="dishes__item"
+											del={() => deleteDish(dish.id)}
+											dish={dish}
+											addCount={() => addCount(dish.id)}
+											delCount={() => deleteCount(dish.id)}
+										/>
+									))}
+								</div>
+								<div>Калорий потреблено: {calculateNutrientFromMeal('calories')}</div>
+								<div>Жиров потреблено: {calculateNutrientFromMeal('fat')}</div>
+								<div>Белков потреблено: {calculateNutrientFromMeal('proteins')}</div>
+								<div>Углеводов потреблено: {calculateNutrientFromMeal('carbohydrates')}</div>
+							</>
 						) : (
 							<p className="dishes__empty">Продукты или блюда не добавлены</p>
 						)}
