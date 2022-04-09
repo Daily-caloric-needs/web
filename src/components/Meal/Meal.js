@@ -80,7 +80,6 @@ export const Meal = ({ meal, expand }) => {
 	// функция удаления продукта
 	const deleteDish = (id) => {
 		dispatch(deleteDishFromMeal(id, meal.title));
-		// dispatch(deleteCountNutrientFromMeal(meal.title));
 	};
 
 	// функция подсчета веществ для продукта
