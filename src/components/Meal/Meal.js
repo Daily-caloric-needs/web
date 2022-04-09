@@ -152,28 +152,29 @@ export const Meal = ({ meal, expand }) => {
 					onClick={expandMeal}
 				>
 					{meal.title}
+
+					{dishes.length > 0 && (
+					<div>: ККал: {calculateNutrientFromMeal('calories')}, 
+						Б: {calculateNutrientFromMeal('proteins')},
+						Ж: {calculateNutrientFromMeal('fat')},
+						У: {calculateNutrientFromMeal('carbohydrates')}
+					</div>)}
 				</CssAccordionSummary>
 				<CssAccordionDetails>
 					<div className="dishes">
 						{dishes?.length > 0 ? (
-							<>
-								<div className="dishes__list">
-									{dishes?.map((dish) => (
-										<DishItem
-											key={dish.id}
-											className="dishes__item"
-											del={() => deleteDish(dish.id)}
-											dish={dish}
-											addCount={() => addCount(dish.id)}
-											delCount={() => deleteCount(dish.id)}
-										/>
-									))}
-								</div>
-								<div>Калорий потреблено: {calculateNutrientFromMeal('calories')}</div>
-								<div>Жиров потреблено: {calculateNutrientFromMeal('fat')}</div>
-								<div>Белков потреблено: {calculateNutrientFromMeal('proteins')}</div>
-								<div>Углеводов потреблено: {calculateNutrientFromMeal('carbohydrates')}</div>
-							</>
+							<div className="dishes__list">
+								{dishes?.map((dish) => (
+									<DishItem
+										key={dish.id}
+										className="dishes__item"
+										del={() => deleteDish(dish.id)}
+										dish={dish}
+										addCount={() => addCount(dish.id)}
+										delCount={() => deleteCount(dish.id)}
+									/>
+								))}
+							</div>
 						) : (
 							<p className="dishes__empty">Продукты или блюда не добавлены</p>
 						)}

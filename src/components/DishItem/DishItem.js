@@ -18,8 +18,8 @@ export const DishItem = ({ dish, del, addCount, delCount }) => {
 			<Typography variant="h6">{dish.name}</Typography>
 			<Typography variant="subtitle2">Ккал: {dish.calories}</Typography>
 			<div className="dish__info">
-				<Typography variant="caption">Жиры: {dish.fat}</Typography>
 				<Typography variant="caption">Белки: {dish.proteins}</Typography>
+				<Typography variant="caption">Жиры: {dish.fat}</Typography>
 				<Typography variant="caption">Углеводы: {dish.carbohydrates}</Typography>
 			</div>
 			<DishCounter count={dish.count} increment={addCount} decrement={delCount} />

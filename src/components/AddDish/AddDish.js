@@ -264,21 +264,6 @@ export const AddDish = ({ dishes, add, close, title }) => {
 								margin="dense"
 								fullWidth
 								variant="outlined"
-								id="fat"
-								value={dialogValue.fat}
-								onChange={(event) =>
-									setDialogValue({
-										...dialogValue,
-										fat: event.target.value,
-									})
-								}
-								label="Жиры на 100 гр."
-								type="number"
-							/>
-							<CssTextField
-								margin="dense"
-								fullWidth
-								variant="outlined"
 								id="proteins"
 								value={dialogValue.proteins}
 								onChange={(event) =>
@@ -288,6 +273,21 @@ export const AddDish = ({ dishes, add, close, title }) => {
 									})
 								}
 								label="Белки на 100 гр."
+								type="number"
+							/>
+							<CssTextField
+								margin="dense"
+								fullWidth
+								variant="outlined"
+								id="fat"
+								value={dialogValue.fat}
+								onChange={(event) =>
+									setDialogValue({
+										...dialogValue,
+										fat: event.target.value,
+									})
+								}
+								label="Жиры на 100 гр."
 								type="number"
 							/>
 							<CssTextField
