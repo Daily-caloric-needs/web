@@ -151,7 +151,7 @@ export const Meal = ({ meal, expand }) => {
 					id="panel1a-header"
 					onClick={expandMeal}
 				>
-					{meal.title}
+					{meal.titleRus}
 
 					{dishes.length > 0 && (
 					<div>: ККал: {calculateNutrientFromMeal('calories')}, 

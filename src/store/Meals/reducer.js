@@ -1,10 +1,10 @@
 import { ADD_DISH_TO_MEAL, CHANGE_DISH_FROM_MEAL, DELETE_DISH_FROM_MEAL } from './actions';
 
 const initialState = {
-	Завтрак: [],
-	Обед: [],
-	Ужин: [],
-	Перекус: [],
+	breakfast: [],
+	lunch: [],
+	dinner: [],
+	snack: [],
 };
 
 export const mealsReducer = (state = initialState, { type, payload }) => {
