@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, IconButton } from '@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { AddDish } from '../AddDish/AddDish';
 import './style.scss';
@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DishItem } from '../DishItem/DishItem';
 import { selectDishes } from '../../store/Meals/selectors';
 import { addDishToMeal, changeDishFromMeal, deleteDishFromMeal } from '../../store/Meals/actions';
+import { amountNutrientsFromMeal } from '../../store/AmountNutrients/actions';
+import { selectAmountNutrients } from '../../store/AmountNutrients/selectors';
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
 	borderRadius: 20,
@@ -57,7 +59,19 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
 export const Meal = ({ meal, expand }) => {
 	const dispatch = useDispatch();
 	const dishes = useSelector(selectDishes(meal.title));
+	const amountNutrients = useSelector(selectAmountNutrients(meal.title));
 	const [modal, setModal] = useState(false);
+
+	useEffect(() => {
+		const nutrients = {
+			calories: calculateNutrientFromMeal('calories'),
+			proteins: calculateNutrientFromMeal('proteins'),
+			fat: calculateNutrientFromMeal('fat'),
+			carbohydrates: calculateNutrientFromMeal('carbohydrates')
+		};
+		
+		dispatch(amountNutrientsFromMeal(nutrients, meal.title))
+	}, [dishes]);
 
 	const expandMeal = () => {
 		expand(meal);
@@ -83,10 +97,10 @@ export const Meal = ({ meal, expand }) => {
 	};
 
 	// функция подсчета веществ для продукта
-	const calculateNutrientsForProduct = (dish, prevCount) => {
+	const calculateNutrientsFromProduct = (dish, prevCount) => {
 		dish.calories = dish.calories / prevCount * dish.count;
-		dish.fat = dish.fat / prevCount * dish.count;
 		dish.proteins = dish.proteins / prevCount * dish.count;
+		dish.fat = dish.fat / prevCount * dish.count;
 		dish.carbohydrates = dish.carbohydrates / prevCount * dish.count;
 
 		return dish;
@@ -98,7 +112,7 @@ export const Meal = ({ meal, expand }) => {
 			if (dish.id === id) {
 				const prevCount = dish.count;
 				dish.count++;
-				calculateNutrientsForProduct(dish, prevCount);
+				calculateNutrientsFromProduct(dish, prevCount);
 			}
 			return dish;
 		});
@@ -114,7 +128,7 @@ export const Meal = ({ meal, expand }) => {
 				if (dish.count > 1) {
 					const prevCount = dish.count;
 					dish.count--;
-					calculateNutrientsForProduct(dish, prevCount);
+					calculateNutrientsFromProduct(dish, prevCount);
 				} else {
 					isDelete = true;
 				}
@@ -154,10 +168,10 @@ export const Meal = ({ meal, expand }) => {
 					{meal.titleRus}
 
 					{dishes.length > 0 && (
-					<div>: ККал: {calculateNutrientFromMeal('calories')}, 
-						Б: {calculateNutrientFromMeal('proteins')},
-						Ж: {calculateNutrientFromMeal('fat')},
-						У: {calculateNutrientFromMeal('carbohydrates')}
+					<div>: ККал: {amountNutrients.calories}, 
+						Б: {amountNutrients.proteins},
+						Ж: {amountNutrients.fat},
+						У: {amountNutrients.carbohydrates}
 					</div>)}
 				</CssAccordionSummary>
 				<CssAccordionDetails>
