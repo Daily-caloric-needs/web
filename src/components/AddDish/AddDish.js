@@ -145,17 +145,18 @@ export const AddDish = ({ dishes, add, close, title }) => {
     if (typeof newValue === 'string') {
       setTimeout(() => {
         toggleOpen(true);
-        setName(newValue);
+        setValue(newValue);
       });
     } else if (newValue && newValue.inputValue) {
       toggleOpen(true);
-      setName(newValue.inputValue);
+      setValue(newValue.inputValue);
     } else {
-      setName(newValue);
+      setValue(newValue);
     }
   };
 
   const addDish = (e) => {
+    debugger;
     e.preventDefault();
     if (!value) return;
 
