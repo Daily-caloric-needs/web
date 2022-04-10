@@ -156,7 +156,6 @@ export const AddDish = ({ dishes, add, close, title }) => {
   };
 
   const addDish = (e) => {
-    debugger;
     e.preventDefault();
     if (!value) return;
 
