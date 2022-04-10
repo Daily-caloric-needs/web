@@ -1,14 +1,16 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { dishesReduser } from './Dishes/reducer';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import { mealsReducer } from './Meals/reducer';
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { dishesReduser } from "./Dishes/reducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import { mealsReducer } from "./Meals/reducer";
+import waterReducer from "../components/Water/reducer";
 
 // composeWithDevTools - devTools for Redux in Chrome
 const store = createStore(
   combineReducers({
     dishes: dishesReduser,
     meals: mealsReducer,
+    water: waterReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );
