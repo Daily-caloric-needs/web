@@ -244,7 +244,9 @@ export const AddDish = ({ dishes, add, close, title }) => {
                 variant="outlined"
                 id="calories"
                 value={calories}
-                onChange={(event) => setCalories(+event.target.value)}
+                onChange={(event) =>
+                  setCalories(+event.target.value > 0 ? +event.target.value : 0)
+                }
                 label="Калории на 100 гр."
                 type="number"
               />
@@ -254,7 +256,9 @@ export const AddDish = ({ dishes, add, close, title }) => {
                 variant="outlined"
                 id="proteins"
                 value={proteins}
-                onChange={(event) => setProteins(+event.target.value)}
+                onChange={(event) =>
+                  setProteins(+event.target.value > 0 ? +event.target.value : 0)
+                }
                 label="Белки на 100 гр."
                 type="number"
               />
@@ -264,7 +268,9 @@ export const AddDish = ({ dishes, add, close, title }) => {
                 variant="outlined"
                 id="fat"
                 value={fat}
-                onChange={(event) => setFat(+event.target.value)}
+                onChange={(event) =>
+                  setFat(+event.target.value > 0 ? +event.target.value : 0)
+                }
                 label="Жиры на 100 гр."
                 type="number"
               />
@@ -274,7 +280,11 @@ export const AddDish = ({ dishes, add, close, title }) => {
                 variant="outlined"
                 id="carbohydrates"
                 value={carbohydrates}
-                onChange={(event) => setCarbohydrates(+event.target.value)}
+                onChange={(event) =>
+                  setCarbohydrates(
+                    +event.target.value > 0 ? +event.target.value : 0
+                  )
+                }
                 label="Углеводы на 100 гр."
                 type="number"
               />
