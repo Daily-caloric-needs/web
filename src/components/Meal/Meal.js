@@ -8,10 +8,10 @@ import { AddDish } from '../AddDish/AddDish';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { DishItem } from '../DishItem/DishItem';
-import { selectDishes } from '../../store/Meals/selectors';
+import { selectDishesFromMeal } from '../../store/Meals/selectors';
 import { addDishToMeal, changeDishFromMeal, deleteDishFromMeal } from '../../store/Meals/actions';
 import { amountNutrientsFromMeal } from '../../store/AmountNutrients/actions';
-import { selectAmountNutrients } from '../../store/AmountNutrients/selectors';
+import { selectAmountNutrientsFromMeal } from '../../store/AmountNutrients/selectors';
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
 	borderRadius: 20,
@@ -58,20 +58,21 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
 
 export const Meal = ({ meal, expand }) => {
 	const dispatch = useDispatch();
-	const dishes = useSelector(selectDishes(meal.title));
-	const amountNutrients = useSelector(selectAmountNutrients(meal.title));
+	const dishes = useSelector(selectDishesFromMeal(meal.title));
+	const amountNutrients = useSelector(selectAmountNutrientsFromMeal(meal.title));
 	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
-		const nutrients = {
+		// посчитанные калории и БЖУ за прием пищи
+		const nutrientsFromMeal = {
 			calories: calculateNutrientFromMeal('calories'),
 			proteins: calculateNutrientFromMeal('proteins'),
 			fat: calculateNutrientFromMeal('fat'),
 			carbohydrates: calculateNutrientFromMeal('carbohydrates')
-		};
+		};		
 		
-		dispatch(amountNutrientsFromMeal(nutrients, meal.title))
-	}, [dishes]);
+		dispatch(amountNutrientsFromMeal(nutrientsFromMeal, meal.title));
+	}, [dishes, dispatch, meal.title]);
 
 	const expandMeal = () => {
 		expand(meal);
