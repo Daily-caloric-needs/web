@@ -2,14 +2,16 @@ import { Accordion, AccordionDetails, AccordionSummary, IconButton } from '@mui/
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { AddDish } from '../AddDish/AddDish';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { DishItem } from '../DishItem/DishItem';
-import { selectDishes } from '../../store/Meals/selectors';
+import { selectDishesFromMeal } from '../../store/Meals/selectors';
 import { addDishToMeal, changeDishFromMeal, deleteDishFromMeal } from '../../store/Meals/actions';
+import { amountNutrientsFromMeal } from '../../store/AmountNutrients/actions';
+import { selectAmountNutrientsFromMeal } from '../../store/AmountNutrients/selectors';
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
 	borderRadius: 20,
@@ -56,8 +58,21 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
 
 export const Meal = ({ meal, expand }) => {
 	const dispatch = useDispatch();
-	const dishes = useSelector(selectDishes(meal.title));
+	const dishes = useSelector(selectDishesFromMeal(meal.title));
+	const amountNutrients = useSelector(selectAmountNutrientsFromMeal(meal.title));
 	const [modal, setModal] = useState(false);
+
+	useEffect(() => {
+		// посчитанные калории и БЖУ за прием пищи
+		const nutrientsFromMeal = {
+			calories: calculateNutrientFromMeal('calories'),
+			proteins: calculateNutrientFromMeal('proteins'),
+			fat: calculateNutrientFromMeal('fat'),
+			carbohydrates: calculateNutrientFromMeal('carbohydrates')
+		};		
+		
+		dispatch(amountNutrientsFromMeal(nutrientsFromMeal, meal.title));
+	}, [dishes, dispatch, meal.title]);
 
 	const expandMeal = () => {
 		expand(meal);
@@ -82,22 +97,39 @@ export const Meal = ({ meal, expand }) => {
 		dispatch(deleteDishFromMeal(id, meal.title));
 	};
 
+	// функция подсчета веществ для продукта
+	const calculateNutrientsFromProduct = (dish, prevCount) => {
+		dish.calories = dish.calories / prevCount * dish.count;
+		dish.proteins = dish.proteins / prevCount * dish.count;
+		dish.fat = dish.fat / prevCount * dish.count;
+		dish.carbohydrates = dish.carbohydrates / prevCount * dish.count;
+
+		return dish;
+	};
+
+	// функция прибавления количества продукта
 	const addCount = (id) => {
-		const updatedDishes = dishes.map((dish) => {
+		const updatedDish = dishes.map((dish) => {
 			if (dish.id === id) {
+				const prevCount = dish.count;
 				dish.count++;
+				calculateNutrientsFromProduct(dish, prevCount);
 			}
 			return dish;
 		});
-		dispatch(changeDishFromMeal(updatedDishes, meal.title));
+
+		dispatch(changeDishFromMeal(updatedDish, meal.title));
 	};
 
+	// функция убавления количества продукта
 	const deleteCount = (id) => {
 		let isDelete = false;
 		let updatedDishes = dishes.map((dish) => {
 			if (dish.id === id) {
 				if (dish.count > 1) {
+					const prevCount = dish.count;
 					dish.count--;
+					calculateNutrientsFromProduct(dish, prevCount);
 				} else {
 					isDelete = true;
 				}
@@ -107,6 +139,16 @@ export const Meal = ({ meal, expand }) => {
 		if (isDelete) updatedDishes = dishes.filter((dish) => dish.id !== id);
 
 		dispatch(changeDishFromMeal(updatedDishes, meal.title));
+	};
+
+	// функция подсчета вещества для приема пищи
+	const calculateNutrientFromMeal = (nutrient) => {
+		const initialValue = 0;
+		const countNutrientFromMeal = dishes.reduce(
+			(accumulator, currentValue) => accumulator + currentValue[nutrient],
+			initialValue
+		);
+		return countNutrientFromMeal;
 	};
 
 	return (
@@ -124,7 +166,14 @@ export const Meal = ({ meal, expand }) => {
 					id="panel1a-header"
 					onClick={expandMeal}
 				>
-					{meal.title}
+					{meal.titleRus}
+
+					{dishes.length > 0 && (
+					<div>: ККал: {amountNutrients.calories}, 
+						Б: {amountNutrients.proteins},
+						Ж: {amountNutrients.fat},
+						У: {amountNutrients.carbohydrates}
+					</div>)}
 				</CssAccordionSummary>
 				<CssAccordionDetails>
 					<div className="dishes">

@@ -94,7 +94,6 @@ const filter = createFilterOptions();
 export const AddDish = ({ dishes, add, close, title }) => {
 	const dishesVariants = useSelector(getDishesVariants);
 	const [count, setCount] = useState(1);
-
 	const [value, setValue] = useState(null);
 	const [open, toggleOpen] = useState(false);
 
@@ -171,8 +170,15 @@ export const AddDish = ({ dishes, add, close, title }) => {
 	const addDish = (e) => {
 		e.preventDefault();
 		if (!value) return;
-		value.count = count;
-		add(value);
+
+		const dish = Object.assign({}, value);
+		dish.count = count;
+		dish.calories = dish.calories * count;
+		dish.fat = dish.fat * count;
+		dish.proteins = dish.proteins * count;
+		dish.carbohydrates = dish.carbohydrates * count;
+
+		add(dish);
 	};
 
 	return (
@@ -194,7 +200,13 @@ export const AddDish = ({ dishes, add, close, title }) => {
 
 						return filtered;
 					}}
-					options={dishesVariants.filter((dish) => !dishes.includes(dish))}
+					options={dishesVariants.filter((dish) => {
+						let check = true;
+						dishes?.forEach(element => {
+							if (element.id === dish.id) check = false;
+						});
+						return check;
+					})}
 					selectOnFocus
 					autoHighlight
 					clearOnBlur
@@ -210,7 +222,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
 					}}
 					freeSolo
 					renderOption={(props, option) => <li {...props}>{option.name}</li>}
-					renderInput={(params) => <TextField {...params} label="Продукт" />}
+					renderInput={(params) => <TextField {...params} label="Продукт" autoFocus />}
 				/>
 				<CssDialog open={open} onClose={handleClose}>
 					<form onSubmit={handleSubmit}>
@@ -245,37 +257,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
 										calories: event.target.value,
 									})
 								}
-								label="Калории"
-								type="number"
-							/>
-							<CssTextField
-								margin="dense"
-								fullWidth
-								variant="outlined"
-								id="carbohydrates"
-								value={dialogValue.carbohydrates}
-								onChange={(event) =>
-									setDialogValue({
-										...dialogValue,
-										carbohydrates: event.target.value,
-									})
-								}
-								label="Углеводы"
-								type="number"
-							/>
-							<CssTextField
-								margin="dense"
-								fullWidth
-								variant="outlined"
-								id="fat"
-								value={dialogValue.fat}
-								onChange={(event) =>
-									setDialogValue({
-										...dialogValue,
-										fat: event.target.value,
-									})
-								}
-								label="Жиры"
+								label="Калории на 100 гр."
 								type="number"
 							/>
 							<CssTextField
@@ -290,7 +272,37 @@ export const AddDish = ({ dishes, add, close, title }) => {
 										proteins: event.target.value,
 									})
 								}
-								label="Белки"
+								label="Белки на 100 гр."
+								type="number"
+							/>
+							<CssTextField
+								margin="dense"
+								fullWidth
+								variant="outlined"
+								id="fat"
+								value={dialogValue.fat}
+								onChange={(event) =>
+									setDialogValue({
+										...dialogValue,
+										fat: event.target.value,
+									})
+								}
+								label="Жиры на 100 гр."
+								type="number"
+							/>
+							<CssTextField
+								margin="dense"
+								fullWidth
+								variant="outlined"
+								id="carbohydrates"
+								value={dialogValue.carbohydrates}
+								onChange={(event) =>
+									setDialogValue({
+										...dialogValue,
+										carbohydrates: event.target.value,
+									})
+								}
+								label="Углеводы на 100 гр."
 								type="number"
 							/>
 						</DialogContent>
@@ -301,7 +313,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
 					</form>
 				</CssDialog>
 				<div className="product-count">
-					<Typography variant="h6">Количество:</Typography>
+					<Typography variant="h6">Количество: </Typography>
 					<DishCounter count={count} increment={addCount} decrement={removeCount} />
 				</div>
 			</DialogContent>
