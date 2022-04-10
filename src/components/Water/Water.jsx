@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectDailyVolume, selectWaterDrunk } from "./selectors";
 import { useCallback } from "react";
 import { drinkWater } from "./actions";
+import { generateChartData } from "./utils";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -24,7 +25,7 @@ export const Water = () => {
     datasets: [
       {
         label: "Water chart",
-        data: [50, 50],
+        data: generateChartData(drunkWater, dailyVolume),
         backgroundColor: ["rgb(54, 162, 235)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(54, 162, 235, 0.2)"],
         borderWidth: 1,
