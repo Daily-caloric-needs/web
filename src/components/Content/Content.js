@@ -35,9 +35,9 @@ export const Content = () => {
 	const dispatch = useDispatch();
 	const [meals, setMeals] = useState(MEALS);
 
-	useEffect(() => {
-		dispatch(getDishes());
-	}, [dispatch]);
+  useEffect(() => {
+    dispatch(getDishes());
+  }, [dispatch]);
 
 	useEffect(() => {
 		// посчитанные калории и БЖУ за день
@@ -58,9 +58,8 @@ export const Content = () => {
 			}
 			return item;
 		});
-
-		setMeals([...updatedMeals]);
-	};
+    setMeals([...updatedMeals]);
+  };
 
 	// функция подсчета вещества для текущего дня
 	const calculateNutrientFromToday = (nutrient) => {
@@ -110,11 +109,11 @@ export const Content = () => {
 					<div>Белков/день: {amountNutrientsToday.proteins}</div>
 					<div>Жиров/день: {amountNutrientsToday.fat}</div>
 					<div>Углеводов/день: {amountNutrientsToday.carbohydrates}</div>
-					<Water />
 				</div>
 				<div className="content__right">
-					<Doughnut data={dataset} />
-				</div>
+          <Doughnut data={dataset} />
+          <Water />
+        </div>
 			</div>
 		</div>
 	);
