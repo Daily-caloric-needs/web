@@ -108,7 +108,13 @@ export const AddDish = ({ dishes, add, close, title }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (name && calories && carbohydrates && fat && proteins) {
+    if (
+      name &&
+      calories >= 0 &&
+      carbohydrates >= 0 &&
+      fat >= 0 &&
+      proteins >= 0
+    ) {
       const newDish = await dispatch(
         addDishToServer({
           name,
@@ -145,11 +151,11 @@ export const AddDish = ({ dishes, add, close, title }) => {
     if (typeof newValue === 'string') {
       setTimeout(() => {
         toggleOpen(true);
-        setValue(newValue);
+        setName(newValue);
       });
     } else if (newValue && newValue.inputValue) {
       toggleOpen(true);
-      setValue(newValue.inputValue);
+      setName(newValue.inputValue);
     } else {
       setValue(newValue);
     }
