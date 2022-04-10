@@ -29,7 +29,7 @@ export const DishCounter = ({ count, increment, decrement }) => {
       <CustomIconButton onClick={decrement}>
         <RemoveIcon fontSize="small" />
       </CustomIconButton>
-      <Typography variant="h6">{count}</Typography>
+      <Typography variant="h6">{count}00 гр</Typography>
       <CustomIconButton onClick={increment}>
         <AddIcon fontSize="small" />
       </CustomIconButton>

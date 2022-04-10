@@ -27,7 +27,7 @@ export const getDishes = () => async (dispatch) => {
 		if (!response.ok) throw new Error('Ошибка: "Dishes service not worked"');
 
 		const result = await response.json();
-		console.log(result.data.length);
+		// console.log(result.data.length);
 		dispatch(getDishesSuccess(result.data));
 	} catch (err) {
 		dispatch(getDishesFailure(err));

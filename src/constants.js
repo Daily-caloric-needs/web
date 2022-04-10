@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from 'uuid';
 
-export const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+export const daysOfWeek = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
 export const REQUEST_STATUS = {
 	CREATED: 0,
@@ -12,22 +12,26 @@ export const REQUEST_STATUS = {
 export const MEALS = [
 	{
 		id: uuid4(),
-		title: 'Завтрак',
+		title: 'breakfast',
+		titleRus: 'Завтрак',
 		expanded: true,
 	},
 	{
 		id: uuid4(),
-		title: 'Обед',
+		title: 'lunch',
+		titleRus: 'Обед',
 		expanded: false,
 	},
 	{
 		id: uuid4(),
-		title: 'Ужин',
+		title: 'dinner',
+		titleRus: 'Ужин',
 		expanded: false,
 	},
 	{
 		id: uuid4(),
-		title: 'Перекус',
+		title: 'snack',
+		titleRus: 'Перекус',
 		expanded: false,
 	},
 ];
