@@ -5,14 +5,15 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Box } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
-import { selectWaterDrunk } from "./selectors";
+import { selectDailyVolume, selectWaterDrunk } from "./selectors";
 import { useCallback } from "react";
 import { drinkWater } from "./actions";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Water = () => {
-  const progress = useSelector(selectWaterDrunk);
+  const drunkWater = useSelector(selectWaterDrunk);
+  const dailyVolume = useSelector(selectDailyVolume);
   const dispatch = useDispatch();
   const addWaterHandler = useCallback(() => {
     dispatch(drinkWater(250));
@@ -35,7 +36,9 @@ export const Water = () => {
   return (
     <Box className="water">
       <Typography align="center">
-        <h2 className="water__text h2">Выпито воды за день: {progress}</h2>
+        <h2 className="water__text h2">
+          Выпито воды за день: {drunkWater} из {dailyVolume}
+        </h2>
       </Typography>
       <Pie data={data} />
       <Button onClick={addWaterHandler}>+250ml</Button>
