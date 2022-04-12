@@ -9,6 +9,8 @@ import { selectDailyVolume, selectWaterDrunk } from './selectors';
 import { useCallback } from 'react';
 import { drinkWater } from './actions';
 import { generateChartData } from './utils';
+import { BsCupStraw, BsCup } from 'react-icons/bs';
+import { GiWaterBottle  } from "react-icons/gi";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -16,8 +18,8 @@ export const Water = () => {
   const drunkWater = useSelector(selectWaterDrunk);
   const dailyVolume = useSelector(selectDailyVolume);
   const dispatch = useDispatch();
-  const addWaterHandler = useCallback(() => {
-    dispatch(drinkWater(250));
+  const addWaterHandler = useCallback((value) => {
+    dispatch(drinkWater(value));
   }, [dispatch]);
 
   const data = {
@@ -37,12 +39,15 @@ export const Water = () => {
   return (
     <Box className="water">
       <Typography align="center">
-        <h2 className="water__text h2">
-          Выпито воды за день: {drunkWater} из {dailyVolume}
-        </h2>
+          <span className='water__text'>Выпито воды за день: <br /> {drunkWater}мл из {dailyVolume}мл</span>
       </Typography>
       <Pie data={data} />
-      <Button onClick={addWaterHandler}>+250ml</Button>
+      <div className='water__buttons'>
+      <Button onClick={()=>addWaterHandler(100)}><BsCup size="20" /><p>+100мл</p></Button>
+      <Button onClick={()=>addWaterHandler(250)}><BsCup size="30" /><p>+250мл</p></Button>
+      <Button onClick={()=>addWaterHandler(350)}><BsCupStraw size="45" /><p>+350мл</p></Button>
+      <Button onClick={()=>addWaterHandler(500)}><GiWaterBottle size="60" /><p>+500мл</p></Button>
+      </div>
     </Box>
   );
 };
