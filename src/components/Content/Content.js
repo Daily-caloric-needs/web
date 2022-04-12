@@ -15,29 +15,44 @@ import { selectAmountNutrientsFromToday } from '../../store/AmountNutrients/sele
 import { selectAllDishes } from '../../store/Meals/selectors';
 import { amountNutrientsFromToday } from '../../store/AmountNutrients/actions';
 
-const dataset = {
-	labels: ['Белки', 'Жиры', 'Углеводы'],
-	datasets: [
-		{
-			label: 'Моя первая статистика',
-			data: [300, 50, 100],
-			backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
-			hoverOffset: 4,
-		},
-	],
-};
-
-ChartJS.register(ArcElement, Tooltip, Legend);
-
 export const Content = () => {
 	const allDishes = useSelector(selectAllDishes());
 	const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
 	const dispatch = useDispatch();
 	const [meals, setMeals] = useState(MEALS);
 
-  useEffect(() => {
-    dispatch(getDishes());
-  }, [dispatch]);
+	const sumDay = amountNutrientsToday?.proteins + amountNutrientsToday?.carbohydrates + amountNutrientsToday?.fat
+	
+	const dataset = {
+		labels: [
+			`Белки: ${Math.round((amountNutrientsToday.proteins * 100) / sumDay)}%`,
+			`Жиры: ${Math.round((amountNutrientsToday.fat * 100) / sumDay)}%`,
+			`Углеводы: ${Math.round((amountNutrientsToday.carbohydrates * 100) / sumDay)}%`
+		],
+		datasets: [
+			{
+				label: 'Моя первая статистика',
+				data: [
+					amountNutrientsToday.proteins,
+					amountNutrientsToday.fat,
+					amountNutrientsToday.carbohydrates,
+				],
+				backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)', 'rgb(54, 162, 235)'],
+				hoverOffset: 4,
+			},
+		],
+		options: {
+			parsing: {
+				key: 'value'
+			}
+		}
+	};
+
+	ChartJS.register(ArcElement, Tooltip, Legend);
+
+	useEffect(() => {
+		dispatch(getDishes());
+	}, [dispatch]);
 
 	useEffect(() => {
 		// посчитанные калории и БЖУ за день
@@ -46,8 +61,8 @@ export const Content = () => {
 			proteins: calculateNutrientFromToday('proteins'),
 			fat: calculateNutrientFromToday('fat'),
 			carbohydrates: calculateNutrientFromToday('carbohydrates')
-		};		
-		
+		};
+
 		dispatch(amountNutrientsFromToday(nutrientsFromToday));
 	}, [allDishes, dispatch]);
 
@@ -58,8 +73,8 @@ export const Content = () => {
 			}
 			return item;
 		});
-    setMeals([...updatedMeals]);
-  };
+		setMeals([...updatedMeals]);
+	};
 
 	// функция подсчета вещества для текущего дня
 	const calculateNutrientFromToday = (nutrient) => {
@@ -88,6 +103,7 @@ export const Content = () => {
 			initialValue
 		);
 		return countNutrientFromToday;
+
 	};
 
 	return (
@@ -105,15 +121,18 @@ export const Content = () => {
 							<Meal key={meal.id} meal={meal} expand={expand} />
 						))}
 					</div>
-					<div>Калорий/день: {amountNutrientsToday.calories}</div>
-					<div>Белков/день: {amountNutrientsToday.proteins}</div>
-					<div>Жиров/день: {amountNutrientsToday.fat}</div>
-					<div>Углеводов/день: {amountNutrientsToday.carbohydrates}</div>
+					<div className='content__nutrientsDays'>
+						<h2>Потреблено:</h2>
+						<div>Калорий за день: {amountNutrientsToday.calories}</div>
+						<div>Белков за день: {amountNutrientsToday.proteins} г</div>
+						<div>Жиров за день: {amountNutrientsToday.fat} г</div>
+						<div>Углеводов за день: {amountNutrientsToday.carbohydrates} г</div>
+					</div>
 				</div>
 				<div className="content__right">
-          <Doughnut data={dataset} />
-          <Water />
-        </div>
+					<Doughnut data={dataset} />
+					<Water />
+				</div>
 			</div>
 		</div>
 	);

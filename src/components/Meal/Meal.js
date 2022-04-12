@@ -170,9 +170,9 @@ export const Meal = ({ meal, expand }) => {
 
 					{dishes.length > 0 && (
 					<div>: ККал: {amountNutrients.calories}, 
-						Б: {amountNutrients.proteins},
+						{/* Б: {amountNutrients.proteins},
 						Ж: {amountNutrients.fat},
-						У: {amountNutrients.carbohydrates}
+						У: {amountNutrients.carbohydrates} */}
 					</div>)}
 				</CssAccordionSummary>
 				<CssAccordionDetails>
