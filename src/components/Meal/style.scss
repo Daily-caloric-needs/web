@@ -43,6 +43,21 @@
     }
   }
 
+  &__nutrients{
+    font-size: 18px;
+
+    :nth-child(2){
+      color: rgb(255, 99, 132)
+    }
+    :nth-child(3){
+      color:rgb(255, 205, 86)
+    }
+    :nth-child(4){
+      color: rgb(54, 162, 235)
+    }
+
+  }
+
   &__add {
     cursor: pointer;
     width: 40px;

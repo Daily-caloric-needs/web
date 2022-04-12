@@ -169,15 +169,12 @@ export const Meal = ({ meal, expand }) => {
 					{meal.titleRus}
 
 					{dishes.length > 0 && (
-					<div>: ККал: {amountNutrients.calories}, 
-						{/* Б: {amountNutrients.proteins},
-						Ж: {amountNutrients.fat},
-						У: {amountNutrients.carbohydrates} */}
-					</div>)}
+						<p> &nbsp; ККал: {amountNutrients.calories} </p>)}
 				</CssAccordionSummary>
 				<CssAccordionDetails>
 					<div className="dishes">
 						{dishes?.length > 0 ? (
+							<>
 							<div className="dishes__list">
 								{dishes?.map((dish) => (
 									<DishItem
@@ -190,6 +187,13 @@ export const Meal = ({ meal, expand }) => {
 									/>
 								))}
 							</div>
+							<div className='dishes__nutrients'>
+									<p>Калории: {amountNutrients.calories}</p>
+									<p>Белки: {amountNutrients.proteins}</p>
+									<p>Жиры: {amountNutrients.fat}</p>
+									<p>Углеводы: {amountNutrients.carbohydrates}</p>
+							</div>
+							</>
 						) : (
 							<p className="dishes__empty">Продукты или блюда не добавлены</p>
 						)}

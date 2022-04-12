@@ -121,6 +121,7 @@ export const Content = () => {
 							<Meal key={meal.id} meal={meal} expand={expand} />
 						))}
 					</div>
+					{amountNutrientsToday.calories > 0 && (
 					<div className='content__nutrientsDays'>
 						<h2>Потреблено:</h2>
 						<div>Калорий за день: {amountNutrientsToday.calories}</div>
@@ -128,9 +129,10 @@ export const Content = () => {
 						<div>Жиров за день: {amountNutrientsToday.fat} г</div>
 						<div>Углеводов за день: {amountNutrientsToday.carbohydrates} г</div>
 					</div>
+					)}
 				</div>
 				<div className="content__right">
-					<Doughnut data={dataset} />
+					{amountNutrientsToday.calories > 0 && <Doughnut data={dataset} />}
 					<Water />
 				</div>
 			</div>
