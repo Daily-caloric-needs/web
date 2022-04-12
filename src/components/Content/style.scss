@@ -36,4 +36,20 @@
     flex-direction: column;
     gap: 15px;
   }
+
+  &__nutrientsDays{
+    font-size: 20px;
+
+    :nth-child(3) {
+      color: rgb(255, 99, 132)
+    }
+    
+    :nth-child(4) {
+      color: rgb(255, 205, 86)
+    }
+    
+    :nth-child(5) {
+      color: rgb(54, 162, 235)
+    }
+  }
 }
