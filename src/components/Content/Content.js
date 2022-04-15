@@ -11,23 +11,37 @@ import { MEALS } from '../../constants';
 import { getDishes } from '../../store/Dishes/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Water } from '../Water/Water';
-import { selectAmountNutrientsFromToday } from '../../store/AmountNutrients/selectors';
+import { selectAmountNutrientsFromToday, selectAmountNutrientsNormalFromToday } from '../../store/AmountNutrients/selectors';
 import { selectAllDishes } from '../../store/Meals/selectors';
 import { amountNutrientsFromToday } from '../../store/AmountNutrients/actions';
+import { Typography } from '@mui/material';
+
 
 export const Content = () => {
 	const allDishes = useSelector(selectAllDishes());
 	const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
+	const amountNutrientsNormalForToday = useSelector(selectAmountNutrientsNormalFromToday());
+
 	const dispatch = useDispatch();
 	const [meals, setMeals] = useState(MEALS);
 
-	const sumDay = amountNutrientsToday?.proteins + amountNutrientsToday?.carbohydrates + amountNutrientsToday?.fat
-	
+	const sumDay = amountNutrientsToday?.proteins + amountNutrientsToday?.carbohydrates + amountNutrientsToday?.fat;
+
+	let sumDayPercentProteins = 0
+	let sumDayPercentFat = 0
+	let sumDayPercentCarboydrates = 0
+
+	if(amountNutrientsToday.carbohydrates > 0){
+		sumDayPercentProteins = `Белки: ${Math.round((amountNutrientsToday.proteins * 100) / sumDay)}%`
+		sumDayPercentFat = `Жиры: ${Math.round((amountNutrientsToday.fat * 100) / sumDay)}%`
+		sumDayPercentCarboydrates = `Углеводы: ${Math.round((amountNutrientsToday.carbohydrates * 100) / sumDay)}%`
+	}
+
 	const dataset = {
 		labels: [
-			`Белки: ${Math.round((amountNutrientsToday.proteins * 100) / sumDay)}%`,
-			`Жиры: ${Math.round((amountNutrientsToday.fat * 100) / sumDay)}%`,
-			`Углеводы: ${Math.round((amountNutrientsToday.carbohydrates * 100) / sumDay)}%`
+			sumDayPercentProteins,
+			sumDayPercentFat,
+			sumDayPercentCarboydrates
 		],
 		datasets: [
 			{
@@ -121,18 +135,19 @@ export const Content = () => {
 							<Meal key={meal.id} meal={meal} expand={expand} />
 						))}
 					</div>
-					{amountNutrientsToday.calories > 0 && (
-					<div className='content__nutrientsDays'>
+					<div className='content__nutrients-days'>
 						<h2>Потреблено:</h2>
 						<div>Калорий за день: {amountNutrientsToday.calories}</div>
 						<div>Белков за день: {amountNutrientsToday.proteins} г</div>
 						<div>Жиров за день: {amountNutrientsToday.fat} г</div>
 						<div>Углеводов за день: {amountNutrientsToday.carbohydrates} г</div>
 					</div>
-					)}
 				</div>
 				<div className="content__right">
-					{amountNutrientsToday.calories > 0 && <Doughnut data={dataset} />}
+					<Typography align="center">
+						<span className='content__calories-text'>Потреблено {amountNutrientsToday.calories} калорий из {amountNutrientsNormalForToday} </span>
+					</Typography>
+					<Doughnut data={dataset} />
 					<Water />
 				</div>
 			</div>

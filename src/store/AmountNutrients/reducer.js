@@ -5,7 +5,8 @@ const initialState = {
 	lunch: {},
 	dinner: {},
 	snack: {},
-  totalForToday: {}
+   totalForToday: {},
+	normalForToday: 2300
 };
 
 export const amountNutrientsReducer = (state = initialState, { type, payload }) => {
