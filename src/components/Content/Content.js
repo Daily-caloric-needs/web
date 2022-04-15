@@ -14,6 +14,7 @@ import { Water } from '../Water/Water';
 import { selectAmountNutrientsFromToday } from '../../store/AmountNutrients/selectors';
 import { selectAllDishes } from '../../store/Meals/selectors';
 import { amountNutrientsFromToday } from '../../store/AmountNutrients/actions';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 export const Content = () => {
 	const allDishes = useSelector(selectAllDishes());
@@ -109,6 +110,7 @@ export const Content = () => {
 	return (
 		<div className="content">
 			<div className="content__header">
+				<Sidebar />
 				<Search />
 				<Notification />
 				<Avatar />
