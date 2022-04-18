@@ -21,6 +21,38 @@ const images = [
     label: "food2",
     imgPath: "/images/food2.jpg",
   },
+  {
+    label: "food3",
+    imgPath: "/images/food3.jpg",
+  },
+  {
+    label: "food4",
+    imgPath: "/images/food4.jpg",
+  },
+  {
+    label: "food5",
+    imgPath: "/images/food5.jpg",
+  },
+  {
+    label: "food6",
+    imgPath: "/images/food6.jpg",
+  },
+  {
+    label: "food7",
+    imgPath: "/images/food7.jpg",
+  },
+  {
+    label: "food8",
+    imgPath: "/images/food8.jpg",
+  },
+  {
+    label: "food9",
+    imgPath: "/images/food9.jpg",
+  },
+  {
+    label: "food10",
+    imgPath: "/images/food10.jpg",
+  },
 ];
 
 export function Slider() {
