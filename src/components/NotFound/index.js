@@ -4,11 +4,11 @@ import { Search } from '../Search/Search';
 
 import { Sidebar } from '../Sidebar/Sidebar';
 
-export const Home = () => {
+export const NotFound = () => {
 
    return (
       <div className="content">
-         <h1>Главная</h1>
+         <h1>Страница не найдена</h1>
          <div className="content__header">
             <Sidebar />
             <Search />

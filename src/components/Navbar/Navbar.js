@@ -1,12 +1,11 @@
 import './style.scss';
 import { IoPieChartOutline, IoHomeOutline, IoSettingsOutline } from 'react-icons/io5';
 import { NavItem } from '../NavItem/NavItem';
-import { useNavigate } from 'react-router-dom'
 
 export const navItems = [
 	{
 		name: 'Главная',
-		active: true,
+		active: false,
 		icon: <IoHomeOutline size={30} />
 	},
 	{
@@ -22,16 +21,13 @@ export const navItems = [
 ];
 
 export const Navbar = () => {
-
-	const navigate = useNavigate();
-	
 	return (
 		<ul className="navbar">
 			{navItems.map((navItem, idx) => {
-				return <NavItem key={idx} navItem={navItem} onClick={()=> {
-					navigate(`/${navItem.name}`)
-				}}/>;
+				return (
+					<NavItem key={idx} navItem={navItem}/>
+					)
 			})}
 		</ul>
-	);
-};
+	)
+}

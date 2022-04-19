@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import './style.scss';
 
 export const NavItem = ({ navItem }) => {
+  const navigate = useNavigate();
+
+
   return (
     <li
       className={
@@ -8,7 +12,18 @@ export const NavItem = ({ navItem }) => {
       }
     >
       {navItem.icon}
-      <p className="navbar__name">{navItem.name}</p>
+      <p onClick={()=> {
+        switch (navItem.name) {
+          case "Главная":
+            navigate("/home");
+            break;
+          case "Статистика":
+            navigate("/statistics");
+            break;
+          default:
+            navigate("/")
+        }
+      }} className="navbar__name">{navItem.name}</p>
     </li>
   );
 };
