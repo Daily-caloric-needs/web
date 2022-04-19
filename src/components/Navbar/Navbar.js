@@ -2,11 +2,11 @@ import './style.scss';
 import { IoPieChartOutline, IoHomeOutline, IoSettingsOutline } from 'react-icons/io5';
 import { NavItem } from '../NavItem/NavItem';
 
-const navItems = [
+export const navItems = [
 	{
 		name: 'Главная',
-		active: true,
-		icon: <IoHomeOutline size={30} />,
+		active: false,
+		icon: <IoHomeOutline size={30} />
 	},
 	{
 		name: 'Статистика',
@@ -24,8 +24,10 @@ export const Navbar = () => {
 	return (
 		<ul className="navbar">
 			{navItems.map((navItem, idx) => {
-				return <NavItem key={idx} navItem={navItem} />;
+				return (
+					<NavItem key={idx} navItem={navItem}/>
+					)
 			})}
 		</ul>
-	);
-};
+	)
+}

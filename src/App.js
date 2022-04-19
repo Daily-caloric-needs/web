@@ -1,15 +1,14 @@
 import { ThemeProvider } from '@mui/material';
 import './App.scss';
-import { Content } from './components/Content/Content';
-import { Sidebar } from './components/Sidebar/Sidebar';
 import { theme } from './themes';
+import { Routers } from './components/Routes';
+
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="app">
-        <Sidebar />
-        <Content />
+        <Routers />
       </div>
     </ThemeProvider>
   );
