@@ -15,7 +15,7 @@ export const NavItem = ({ navItem }) => {
       <p onClick={()=> {
         switch (navItem.name) {
           case "Главная":
-            navigate("/home");
+            navigate("/");
             break;
           case "Статистика":
             navigate("/statistics");
