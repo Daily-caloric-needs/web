@@ -1,4 +1,5 @@
 import { Avatar } from '../Avatar/Avatar';
+import { CaloriesCalculator } from '../CaloriesCalculator';
 import { Notification } from '../Notification/Notification';
 import { Search } from '../Search/Search';
 import { Sidebar } from '../Sidebar/Sidebar';
@@ -17,6 +18,9 @@ export const Home = () => {
          <div className="content__main">
             <div className="content__left">
             </div>
+         </div>
+         <div className="calculatore">
+            <CaloriesCalculator />
          </div>
       </div>
    );
