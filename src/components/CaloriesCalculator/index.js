@@ -8,7 +8,7 @@ import {
    Grid,
    TextField,
    Button,
-   Typography
+   Typography,
 } from '@mui/material';
 
 export const CaloriesCalculator = () => {
@@ -26,7 +26,11 @@ export const CaloriesCalculator = () => {
 
    const handleInputChange = (e) => {
       if (e.target.value < 1) {
-         setFormValues(1);
+         setFormValues({
+            hight: 1,
+            weight: 1,
+            age: 1,
+         });
       } else {
          const { name, value } = e.target;
          setFormValues({
@@ -37,11 +41,13 @@ export const CaloriesCalculator = () => {
    };
 
    const clearSubmit = () => {
-      setFormValues(
-         defaultValues.age = 0,
-         defaultValues.calorieNorm = 0,
-         defaultValues.hight = 0,
-         defaultValues.weight = 0)
+      setFormValues({
+         hight : 0,
+         weight: 0,
+         age: 0,
+         gender: "",
+         work: "",
+      })
    }
 
    const handeleRadioChange = (e) => {
@@ -63,21 +69,21 @@ export const CaloriesCalculator = () => {
          formValues.calorieNorm = ((9.56 * formValues.weight) + (1.85 * formValues.hight) - (4.68 * formValues.age) + 655)
          console.log(formValues.calorieNorm)
       }
-      calcolaFisicForm(formValues.calorieNorm)
+      calcolaFisicForm(parseInt(formValues.calorieNorm))
    }
 
-   const calcolaFisicForm = () => {
+   const calcolaFisicForm = (norm) => {
       debugger
       if (formValues.work === "weakly") {
-         formValues.calorieNorm = (formValues.calorieNorm * 1.2)
+         formValues.calorieNorm = parseInt(norm * 1.2)
       } else if (formValues.work === "base") {
-         formValues.calorieNorm = (formValues.calorieNorm * 1.375)
+         formValues.calorieNorm = parseInt(norm * 1.375)
       } else if (formValues.work === "medium") {
-         formValues.calorieNorm = (formValues.calorieNorm * 1.55)
+         formValues.calorieNorm = parseInt(norm * 1.55)
       } else if (formValues.work === "strong") {
-         formValues.calorieNorm = (formValues.calorieNorm * 1.725)
+         formValues.calorieNorm = parseInt(norm * 1.725)
       } else if (formValues.work === "veryStrong") {
-         formValues.calorieNorm = ((formValues.calorieNorm * 1.9))
+         formValues.calorieNorm = parseInt(norm * 1.9)
       }
       console.log(formValues.calorieNorm);
       clearSubmit();
@@ -85,8 +91,11 @@ export const CaloriesCalculator = () => {
 
    return (<>
       <form onSubmit={calcolaNorm}>
-         <Grid container>
-            <Grid item>
+         <Grid container 
+         alignItems="center" 
+         justify="center" 
+         direction="column">
+            <Grid container justifyContent="center">
                <TextField
                   id="hight-input"
                   name="hight"
@@ -94,19 +103,17 @@ export const CaloriesCalculator = () => {
                   type="number"
                   value={formValues.hight}
                   onChange={handleInputChange}
+                  variant="filled"
                />
-            </Grid>
-            <Grid item>
                <TextField
                   id="weight-input"
                   name="weight"
-                  label="Вест"
+                  label="Вес"
                   type="number"
                   value={formValues.weight}
                   onChange={handleInputChange}
+                  variant="filled"
                />
-            </Grid>
-            <Grid item>
                <TextField
                   id="age-input"
                   name="age"
@@ -114,6 +121,7 @@ export const CaloriesCalculator = () => {
                   type="number"
                   value={formValues.age}
                   onChange={handleInputChange}
+                  variant="filled"
                />
             </Grid>
             <Grid item>
@@ -128,13 +136,13 @@ export const CaloriesCalculator = () => {
                      <FormControlLabel
                         key="male"
                         value="male"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Мужской"
                      />
                      <FormControlLabel
                         key="female"
                         value="female"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Женский"
                      />
                   </RadioGroup>
@@ -142,7 +150,7 @@ export const CaloriesCalculator = () => {
             </Grid>
             <Grid item>
                <FormControl>
-                  <FormLabel>Пол</FormLabel>
+                  <FormLabel>Физическая активность</FormLabel>
                   <RadioGroup
                      name="work"
                      value={formValues.work}
@@ -152,37 +160,37 @@ export const CaloriesCalculator = () => {
                      <FormControlLabel
                         key="weakly"
                         value="weakly"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Пассивный образ жизни"
                      />
                      <FormControlLabel
                         key="base"
                         value="base"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Тренируюсь 1-3 раза в неделю"
                      />
                      <FormControlLabel
                         key="medium"
                         value="medium"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Тренируюсь 3-5 раз в неделю"
                      />
                      <FormControlLabel
                         key="strong"
                         value="strong"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Тренируюсь каждый день"
                      />
                      <FormControlLabel
                         key="veryStrong"
                         value="veryStrong"
-                        control={<Radio size="small" />}
+                        control={<Radio size="medium" />}
                         label="Тренируюсь каждый день больше одного раза в день"
                      />
                   </RadioGroup>
-                  <Button disabled={formValues === defaultValues} variant='contained' type='submit'>Расчитать норму</Button>
                </FormControl>
             </Grid>
+                  <Button disabled={formValues === defaultValues} variant='contained' type='submit' size='medium'>Расчитать норму</Button>
          </Grid>
       </form>
       <Typography>Твоя суточная норма калорий: {formValues.calorieNorm} </Typography>
