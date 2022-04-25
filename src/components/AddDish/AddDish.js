@@ -95,7 +95,7 @@ const filter = createFilterOptions();
 export const AddDish = ({ dishes, add, close, title }) => {
   const dispatch = useDispatch();
   const dishesVariants = useSelector(getDishesVariants);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(100);
 
   const [value, setValue] = useState(null);
   const [open, toggleOpen] = useState(false);
@@ -140,11 +140,11 @@ export const AddDish = ({ dishes, add, close, title }) => {
   };
 
   const addCount = () => {
-    setCount(count + 1);
+    setCount(count + 100);
   };
 
   const removeCount = () => {
-    if (count > 1) setCount(count - 1);
+    if (count > 100) setCount(count - 100);
   };
 
   const changeName = (event, newValue) => {
@@ -167,12 +167,18 @@ export const AddDish = ({ dishes, add, close, title }) => {
 
     const dish = Object.assign({}, value);
     dish.count = count;
-    dish.calories = dish.calories * count;
-    dish.fat = dish.fat * count;
-    dish.proteins = dish.proteins * count;
-    dish.carbohydrates = dish.carbohydrates * count;
+    dish.calories = Math.round(dish.calories/100 * count);
+    dish.fat = Math.round(dish.fat/100 * count);
+    dish.proteins = Math.round(dish.proteins/100 * count);
+    dish.carbohydrates = Math.round(dish.carbohydrates/100 * count);
 
     add(dish);
+  };
+
+  const validationCount = (count) => {
+    if (count < 1) count = 1;
+    count = +count;
+    setCount(count);
   };
 
   return (
@@ -299,6 +305,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
           <Typography variant="h6">Количество: </Typography>
           <DishCounter
             count={count}
+            validationCount={validationCount}
             increment={addCount}
             decrement={removeCount}
           />

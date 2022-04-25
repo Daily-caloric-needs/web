@@ -22,7 +22,7 @@ export const mealsReducer = (state = initialState, { type, payload }) => {
 		case CHANGE_DISH_FROM_MEAL:
 			return {
 				...state,
-				[payload.mealName]: [...payload.updatedDish],
+				[payload.mealName]: [...payload.updatedDishes],
 			};
 		default:
 			return state;

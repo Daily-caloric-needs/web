@@ -12,7 +12,7 @@ export const deleteDishFromMeal = (id, mealName) => ({
   payload: { id, mealName },
 });
 
-export const changeDishFromMeal = (updatedDish, mealName) => ({
+export const changeDishFromMeal = (updatedDishes, mealName) => ({
   type: CHANGE_DISH_FROM_MEAL, 
-  payload: { updatedDish, mealName },
+  payload: { updatedDishes, mealName },
 });
