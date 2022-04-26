@@ -1,8 +1,5 @@
-import { IconButton } from '@mui/material';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { Typography } from '@mui/material';
+import { IconButton, TextField, InputAdornment } from '@mui/material';
 import styled from '@emotion/styled';
-import AddIcon from '@mui/icons-material/Add';
 import './style.scss';
 
 const CustomIconButton = styled(IconButton)(({ theme }) => ({
@@ -10,7 +7,7 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   display: 'flex',
   cursor: 'pointer',
-  width: 30,
+  width: 40,
   height: 30,
   margin: 10,
   alignSelf: 'flex-end',
@@ -23,15 +20,26 @@ const CustomIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-export const DishCounter = ({ count, increment, decrement }) => {
+export const DishCounter = ({ count, validationCount, increment, decrement }) => {
+  const validCount = String(count).replace(/^0+./, "");
   return (
     <div className="counter">
       <CustomIconButton onClick={decrement}>
-        <RemoveIcon fontSize="small" />
+        <span className='counter__decrement'>-100</span>
       </CustomIconButton>
-      <Typography variant="h6">{count}00 гр</Typography>
+      <TextField 
+        id="outlined-start-adornment"
+        sx={{ width: '95px' }}
+        InputProps={{
+          endAdornment: <InputAdornment position="end"><span className='counter__gram'>гр.</span></InputAdornment>,
+        }}
+        type="number"
+        size="small"
+        value={validCount}
+        onChange={(e) => validationCount(e.target.value)}
+      />
       <CustomIconButton onClick={increment}>
-        <AddIcon fontSize="small" />
+        <span className='counter__increment'>+100</span>
       </CustomIconButton>
     </div>
   );

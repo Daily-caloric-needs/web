@@ -2,4 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &__gram {
+    color: #000;
+  }
+
+  &__decrement, &__increment {
+    font-size: 50%;
+  }
 }

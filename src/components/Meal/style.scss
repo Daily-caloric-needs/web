@@ -1,5 +1,12 @@
 @import '../../variables.scss';
 
+.meal__header {
+  width: 100%;
+  margin: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .dishes {
   display: flex;
   flex-direction: column;

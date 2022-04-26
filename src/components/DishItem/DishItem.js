@@ -12,17 +12,21 @@ const RemoveButton = styled(RemoveCircleIcon)(({ theme }) => ({
 	color: theme.palette.error.main,
 }));
 
-export const DishItem = ({ dish, del, addCount, delCount }) => {
+export const DishItem = ({ dish, del, addCount, delCount, changeCount }) => {
 	return (
 		<div className="dish">
-			<Typography variant="h6">{dish.name}</Typography>
-			<Typography variant="subtitle2">Ккал: {dish.calories}</Typography>
-			<div className="dish__info">
-				<Typography variant="caption">Белки: {dish.proteins}</Typography>
-				<Typography variant="caption">Жиры: {dish.fat}</Typography>
-				<Typography variant="caption">Углеводы: {dish.carbohydrates}</Typography>
+			<div className="dish__name">
+				<Typography variant="h6">{dish.name}</Typography>
 			</div>
-			<DishCounter count={dish.count} increment={addCount} decrement={delCount} />
+			<div className="dish__energyvalue">
+				<Typography variant="subtitle2">Ккал: {dish.calories}</Typography>
+				<div className="dish__info">
+					<Typography variant="caption">Белки: {dish.proteins}</Typography>
+					<Typography variant="caption">Жиры: {dish.fat}</Typography>
+					<Typography variant="caption">Углеводы: {dish.carbohydrates}</Typography>
+				</div>
+			</div>
+			<DishCounter count={dish.count} validationCount={(count) => changeCount(count, dish.id)} increment={addCount} decrement={delCount} />
 			<RemoveButton onClick={del}>
 				<RemoveCircleIcon />
 			</RemoveButton>
