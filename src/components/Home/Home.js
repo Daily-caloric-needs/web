@@ -7,6 +7,7 @@ import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
 import { Sidebar } from "../Sidebar/Sidebar";
 import main_photo from "../../img/2.jpg";
+import { Slider } from "../Slider/Slider";
 
 export const Home = () => {
   return (
@@ -40,6 +41,7 @@ export const Home = () => {
         </ul>
         <button className="button__reg">Регистрируйтесь</button>
       </div>
+      <Slider />
       <div className="info">
         <ul>
           <p>За 9 минут в день вы сможете:</p>

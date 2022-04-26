@@ -9,49 +9,59 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import food1 from "../../img/food1.jpg";
+import food2 from "../../img/food2.jpg";
+import food3 from "../../img/food3.jpg";
+import food4 from "../../img/food4.jpg";
+import food5 from "../../img/food5.jpg";
+import food6 from "../../img/food6.jpg";
+import food7 from "../../img/food7.jpg";
+import food8 from "../../img/food8.jpg";
+import food9 from "../../img/food9.jpg";
+import food10 from "../../img/food10.jpg";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
     label: "food1",
-    imgPath: "/images/food1.jpg",
+    imgPath: food1,
   },
   {
     label: "food2",
-    imgPath: "/images/food2.jpg",
+    imgPath: food2,
   },
   {
     label: "food3",
-    imgPath: "/images/food3.jpg",
+    imgPath: food3,
   },
   {
     label: "food4",
-    imgPath: "/images/food4.jpg",
+    imgPath: food4,
   },
   {
     label: "food5",
-    imgPath: "/images/food5.jpg",
+    imgPath: food5,
   },
   {
     label: "food6",
-    imgPath: "/images/food6.jpg",
+    imgPath: food6,
   },
   {
     label: "food7",
-    imgPath: "/images/food7.jpg",
+    imgPath: food7,
   },
   {
     label: "food8",
-    imgPath: "/images/food8.jpg",
+    imgPath: food8,
   },
   {
     label: "food9",
-    imgPath: "/images/food9.jpg",
+    imgPath: food9,
   },
   {
     label: "food10",
-    imgPath: "/images/food10.jpg",
+    imgPath: food10,
   },
 ];
 
