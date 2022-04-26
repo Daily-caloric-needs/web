@@ -10,6 +10,7 @@ import recipe1 from "../../img/recipe_1.png";
 import recipe2 from "../../img/recipe_2.png";
 import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
+import { Sidebar } from "../Sidebar/Sidebar";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -18,27 +19,6 @@ export const Home = () => {
     <div className="content__home">
       <div className="header">
         <div className="header__left">
-          <div className="header__nav">
-            <Logo />
-            <button
-              onClick={() => navigate("/statistics")}
-              className="header__button"
-            >
-              Дневник питания
-            </button>
-            <button
-              onClick={() => navigate("/report")}
-              className="header__button"
-            >
-              Отчёты
-            </button>
-            <button
-              onClick={() => navigate("/recipes")}
-              className="header__button"
-            >
-              Рецепты
-            </button>
-          </div>
           <div className="header__text">
             <p>
               Добро пожаловать! <br />
@@ -49,6 +29,7 @@ export const Home = () => {
           </div>
         </div>
         <div className="header__user">
+          <Sidebar />
           <Notification />
           <Avatar />
         </div>

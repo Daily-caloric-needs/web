@@ -140,7 +140,6 @@ export const Content = () => {
     <div className="content">
       <div className="content__header">
         <Sidebar />
-        <Search />
         <Notification />
         <Avatar />
       </div>
