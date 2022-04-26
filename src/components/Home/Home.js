@@ -9,6 +9,7 @@ import calories from '../../img/calories.png';
 import recipe1 from '../../img/recipe_1.png';
 import recipe2 from '../../img/recipe_2.png';
 import recipe3 from '../../img/recipe_3.png';
+// import white from "@material-ui/core/colors/white";
 import './style.scss';
 
 export const Home = () => {
@@ -33,7 +34,7 @@ export const Home = () => {
                </div>
             </div>
             <div className='header__user'>
-               <Notification/>
+               <Notification style= {{ backgroundColor: "white" }}/>
                <Avatar />
             </div>
          </div>

@@ -22,7 +22,7 @@
       padding: 10px;
       font-weight: 600;
       font-size: 18px;
-      background-color: $main-color;
+      background-color: $main-color-secondary;
       border-radius: 10px;
       border: none;
       cursor: pointer;
@@ -40,9 +40,12 @@
       display: flex;
       gap: 40px;
       justify-content: flex-end;
-      background-color: $main-color-secondary;
+      background-color: $main-color;
       height: 45vh;
       width: 30vw;
+       img {
+        color: white;
+      }
   }
 
   &__img{
@@ -59,7 +62,7 @@
 .button__reg{
     margin-top: 20px;
     padding: 10px;
-    background-color: $main-color-secondary;
+    background-color: $main-color;
     border-radius: 10px;
     border: none;
     font-size: 18px;
@@ -69,7 +72,7 @@
 }
 
 .info{
-    background-color: $main-color;
+    background-color: $main-color-secondary;
     text-align: center;
     padding: 10px 0 10px 0;
 
@@ -107,7 +110,7 @@
     display: flex;
     justify-content: center;
     gap: 50px;
-    background-color: $main-color-secondary;
+    background-color: $main-color;
 
     &__info{
         display: flex;

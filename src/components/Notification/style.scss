@@ -9,8 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed $main-color;
+  border: 1px dashed $main-color-secondary;
   margin: 0 20px;
+  background-color: white;
 
   &__badge {
     position: absolute;
