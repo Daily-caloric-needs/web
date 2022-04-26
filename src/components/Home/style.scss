@@ -1,0 +1,142 @@
+@import '../../variables.scss';
+
+.content__home{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &__nav{
+    padding: 20px 0 0 30px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+  }
+
+  &__button{
+      padding: 10px;
+      font-weight: 600;
+      font-size: 18px;
+      background-color: $main-color;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+  }
+
+  &__text{
+      padding: 30px 0 0 70px;
+      text-align: center;
+      max-width: 600px;
+      font-size: 24px;
+  }
+
+  &__user{
+      padding: 20px 30px 0 0;
+      display: flex;
+      gap: 40px;
+      justify-content: flex-end;
+      background-color: $main-color-secondary;
+      height: 45vh;
+      width: 30vw;
+  }
+
+  &__img{
+    width: 469px;
+    height: 283px;
+    background-image: url(../../img/main_header.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50px;
+    right: 275px;
+  }
+}
+
+.button__reg{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: $main-color-secondary;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.info{
+    background-color: $main-color;
+    text-align: center;
+    padding: 10px 0 10px 0;
+
+    &__container{
+        display: flex;
+        
+        justify-content: space-around;
+    }
+
+    &__left,
+    &__right{
+        text-align: start;
+        font-size: 16px;
+
+        p{
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        li{
+            margin-bottom: 5px;
+        }
+    }
+    
+}
+
+.cards{
+    padding: 10px 0 10px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.calories{
+    padding: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    background-color: $main-color-secondary;
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+
+        p{
+            text-align: center;
+            max-width: 600px;
+            font-size: 18px;
+        }
+    }
+}
+
+.recipes{
+    text-align: center;
+    padding: 10px 0 10px 0;
+
+    p{
+        font-size: 18px;
+    }
+    h3{
+        margin: 10px 0;
+    }
+
+    &__items{
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+    }
+}
