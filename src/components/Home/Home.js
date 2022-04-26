@@ -1,11 +1,12 @@
 import { Avatar } from "../Avatar/Avatar";
 import { Notification } from "../Notification/Notification";
 import calories from "../../img/calories.png";
-import recipe1 from "../../img/recipe_1.jpg";
+import recipe1 from "../../img/recipe1.jpg";
 import recipe2 from "../../img/recipe_2.png";
 import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
 import { Sidebar } from "../Sidebar/Sidebar";
+import main_photo from "../../img/2.jpg";
 
 export const Home = () => {
   return (
@@ -29,37 +30,33 @@ export const Home = () => {
       </div>
 
       <div className="info">
-        <div className="info__container">
-          <div className="info__left">
-            <ul>
-              <p>Если вас беспокоят вопросы:</p>
-              <li>Почему я не худею?</li>
-              <li>Когда на прессе будут кубики?</li>
-              <li>Чего бы полезненького съесть?</li>
-              <li>Как пить больше воды?</li>
-              <li>Что сегодня приготовить?</li>
-            </ul>
-          </div>
-          <div className="info__right">
-            <ul>
-              <p>Почему вы захотите остаться?</p>
-              <p>За 9 минут в день вы сможете:</p>
-              <li>
-                настроить норму потребления калорий в соответствии со своими
-                целями
-              </li>
-              <li>понять, почему не получается сбросить или набрать вес</li>
-              <li>
-                питаться полезно и разнообразно, как рекомендуют диетологи и
-                нутрициологи
-              </li>
-              <li>пить больше воды, что важно для всех систем организма</li>
-              <li>найти интересный рецепт, если не знаете, что приготовить</li>
-              <li>позаботиться о своем здоровье и внешнем виде</li>
-            </ul>
-          </div>
-        </div>
-        <button className="button__reg">Регистрируйся!</button>
+        <ul>
+          <p>Если вас беспокоят вопросы:</p>
+          <li>Почему я не худею?</li>
+          <li>Когда на прессе будут кубики?</li>
+          <li>Чего бы полезненького съесть?</li>
+          <li>Как пить больше воды?</li>
+          <li>Что сегодня приготовить?</li>
+        </ul>
+        <button className="button__reg">Регистрируйтесь</button>
+      </div>
+      <div className="info">
+        <ul>
+          <p>За 9 минут в день вы сможете:</p>
+          <li>
+            настроить норму потребления калорий в соответствии со своими целями
+          </li>
+          <li>понять, почему не получается сбросить или набрать вес</li>
+          <li>
+            питаться полезно и разнообразно, как рекомендуют диетологи и
+            нутрициологи
+          </li>
+          <li>пить больше воды, что важно для всех систем организма</li>
+          <li>найти интересный рецепт, если не знаете, что приготовить</li>
+          <li>позаботиться о своем здоровье и внешнем виде</li>
+        </ul>
+
+        <button className="button__reg">Хочу здоровое тело</button>
       </div>
 
       <div className="cards"></div>

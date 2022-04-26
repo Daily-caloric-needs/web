@@ -43,7 +43,11 @@
       display: flex;
       justify-content: flex-end;
       height: 45vh;
-      width: 30vw;
+      width: 50%;
+      background-image: url("../../img/2.jpg");
+      background-position: center;
+      background-size: cover;
+      border-radius: 10px;
   }
 }
 
@@ -60,31 +64,19 @@
 }
 
 .info{
+    margin-top: 40px;
     background-color: $main-color;
     border-radius: 20px;
     box-shadow: 5px 0px 15px $main-color-light;
-    text-align: center;
-    padding: 10px 0 10px 0;
+    text-align: start;
+padding:  2rem 5rem;
 
-    &__container{
-        display: flex;
-        
-        justify-content: space-around;
-    }
+    
 
-    &__left,
-    &__right{
-        text-align: start;
-        font-size: 16px;
+  
 
-        p{
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        li{
-            margin-bottom: 5px;
-        }
-    }
+
+    
     
 }
 
@@ -96,17 +88,21 @@
 }
 
 .calories{
+    margin-top: 40px;
     padding: 10px 0 10px 0;
     display: flex;
     justify-content: center;
     gap: 50px;
     background-color: $main-color-secondary;
+    border-radius: 20px;
+    box-shadow: 5px 0px 15px $main-color-light;
 
     &__info{
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 30px;
+       
 
         p{
             text-align: center;
