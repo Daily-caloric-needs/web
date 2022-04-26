@@ -41,7 +41,7 @@ export const Home = () => {
         </ul>
         <button className="button__reg">Регистрируйтесь</button>
       </div>
-      <Slider />
+      <Slider className="slider" />
       <div className="info">
         <ul>
           <p>За 9 минут в день вы сможете:</p>

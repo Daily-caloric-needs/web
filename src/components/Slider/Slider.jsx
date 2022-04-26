@@ -65,7 +65,7 @@ const images = [
   },
 ];
 
-export function Slider() {
+export function Slider({ className }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
@@ -83,7 +83,7 @@ export function Slider() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 400, flexGrow: 1 }} className={className}>
       <Paper
         square
         elevation={0}
