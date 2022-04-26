@@ -29,7 +29,7 @@ export const DishCounter = ({ count, validationCount, increment, decrement }) =>
       </CustomIconButton>
       <TextField 
         id="outlined-start-adornment"
-        sx={{ width: '120px' }}
+        sx={{ width: '95px' }}
         InputProps={{
           endAdornment: <InputAdornment position="end"><span className='counter__gram'>гр.</span></InputAdornment>,
         }}

@@ -10,6 +10,16 @@
   box-shadow: 0px 0px 10px $main-color-light;
   width: 100%;
 
+  &__name {
+    justify-content: center;
+    text-align: center;
+    width: 350px;
+  }
+  
+  &__energyvalue {
+    width: 250px;
+  }
+
   &__info {
     display: flex;
     gap: 5px;

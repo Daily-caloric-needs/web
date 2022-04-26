@@ -192,10 +192,10 @@ export const Meal = ({ meal, expand }) => {
 					id="panel1a-header"
 					onClick={expandMeal}
 				>
-					{meal.titleRus}
-
-					{dishes.length > 0 && (
-						<p> &nbsp; ККал: {amountNutrients.calories} </p>)}
+					<div className='meal__header'>
+						{meal.titleRus}
+						{dishes.length > 0 && (<p> ККал: {amountNutrients.calories} </p>)}
+					</div>
 				</CssAccordionSummary>
 				<CssAccordionDetails>
 					<div className="dishes">
@@ -215,7 +215,7 @@ export const Meal = ({ meal, expand }) => {
 								))}
 							</div>
 							<div className='dishes__nutrients'>
-									<p>Калории: {amountNutrients.calories}</p>
+									<p>Эн.ценность: {amountNutrients.calories} ККал</p>
 									<p>Белки: {amountNutrients.proteins} г.</p>
 									<p>Жиры: {amountNutrients.fat} г.</p>
 									<p>Углеводы: {amountNutrients.carbohydrates} г.</p>

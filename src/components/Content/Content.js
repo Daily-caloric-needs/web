@@ -139,9 +139,9 @@ export const Content = () => {
 					<div className='content__nutrients-days'>
 						<h2>Потреблено:</h2>
 						<div>Калорий за день: {amountNutrientsToday.calories}</div>
-						<div>Белков за день: {amountNutrientsToday.proteins} г</div>
-						<div>Жиров за день: {amountNutrientsToday.fat} г</div>
-						<div>Углеводов за день: {amountNutrientsToday.carbohydrates} г</div>
+						<div>Белков за день: {amountNutrientsToday.proteins} г.</div>
+						<div>Жиров за день: {amountNutrientsToday.fat} г.</div>
+						<div>Углеводов за день: {amountNutrientsToday.carbohydrates} г.</div>
 					</div>
 				</div>
 				<div className="content__right">
