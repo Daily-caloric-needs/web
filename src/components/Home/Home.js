@@ -1,7 +1,7 @@
 import { Avatar } from "../Avatar/Avatar";
 import { Notification } from "../Notification/Notification";
 import calories from "../../img/calories.png";
-import { recipe1 } from "../../img/mental";
+import recipe1 from "../../img/recipe_1.jpg";
 import recipe2 from "../../img/recipe_2.png";
 import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
