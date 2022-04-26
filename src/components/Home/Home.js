@@ -1,20 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { Avatar } from "../Avatar/Avatar";
 import { Notification } from "../Notification/Notification";
-import { Logo } from "../Logo/Logo";
-import card1 from "../../img/card_1.png";
-import card2 from "../../img/card_2.png";
-import card3 from "../../img/card_3.png";
 import calories from "../../img/calories.png";
-import recipe1 from "../../img/recipe_1.png";
+import { recipe1 } from "../../img/mental";
 import recipe2 from "../../img/recipe_2.png";
 import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
 import { Sidebar } from "../Sidebar/Sidebar";
 
 export const Home = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="content__home">
       <div className="header">
@@ -23,7 +16,7 @@ export const Home = () => {
             <p>
               Добро пожаловать! <br />
               Дневник питания - это проект для управления образом жизни. С нами
-              вы начнёте питаться полезнее, осознаннее, здоровее!
+              вы начнёте питаться полезнее, осознаннее и здоровее
             </p>
             <button className="button__reg">Зарегистрироваться</button>
           </div>
@@ -34,7 +27,6 @@ export const Home = () => {
           <Avatar />
         </div>
       </div>
-      <div className="header__img"></div>
 
       <div className="info">
         <div className="info__container">
@@ -70,11 +62,7 @@ export const Home = () => {
         <button className="button__reg">Регистрируйся!</button>
       </div>
 
-      <div className="cards">
-        <img src={card1} alt="скрин 1" />
-        <img src={card2} alt="скрин 2" />
-        <img src={card3} alt="скрин 3" />
-      </div>
+      <div className="cards"></div>
 
       <div className="calories">
         <div className="calories__img">
