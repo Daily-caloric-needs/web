@@ -6,7 +6,7 @@ export const Avatar = () => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate("/avatar")} className="avatar">
+    <div onClick={() => navigate("/registration")} className="avatar">
       <img src={avatar} alt="avatar" />
     </div>
   );

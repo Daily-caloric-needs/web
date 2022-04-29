@@ -84,7 +84,7 @@ export function Slider({ className }) {
 
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }} className={className}>
-      <Paper
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -95,8 +95,8 @@ export function Slider({ className }) {
           bgcolor: "background.default",
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
+        {/* <Typography>{images[activeStep].label}</Typography>
+      </Paper> */}
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}

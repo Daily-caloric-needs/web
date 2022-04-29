@@ -2,15 +2,21 @@
 
 .content__home{
     max-width: 1440px;
-    width: 60%;
     margin: 0 auto;
     padding: 0;
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
+    padding: 10px 40px 50px;
+}
+
+.content__nav-button{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .header{
-    margin-top: 60px;
+    margin-top: 20px;
   display: flex;
   justify-content: space-between;
   position: relative;

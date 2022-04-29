@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Avatar } from "../Avatar/Avatar";
 import { Notification } from "../Notification/Notification";
 import calories from "../../img/calories.png";
@@ -10,8 +11,14 @@ import main_photo from "../../img/2.jpg";
 import { Slider } from "../Slider/Slider";
 
 export const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="content__home">
+      <div className="content__nav-button">
+        <Notification />
+        <Avatar />
+      </div>
       <div className="header">
         <div className="header__left">
           <div className="header__text">
@@ -20,13 +27,11 @@ export const Home = () => {
               Дневник питания - это проект для управления образом жизни. С нами
               вы начнёте питаться полезнее, осознаннее и здоровее
             </p>
-            <button className="button__reg">Зарегистрироваться</button>
+            <button onClick={() => navigate("/registration")} className="button__reg">Зарегистрироваться</button>
           </div>
         </div>
         <div className="header__user">
           <Sidebar />
-          <Notification />
-          <Avatar />
         </div>
       </div>
 
@@ -39,7 +44,7 @@ export const Home = () => {
           <li>Как пить больше воды?</li>
           <li>Что сегодня приготовить?</li>
         </ul>
-        <button className="button__reg">Регистрируйтесь</button>
+        <button onClick={() => navigate("/registration")} className="button__reg">Регистрируйтесь</button>
       </div>
       <Slider className="slider" />
       <div className="info">
