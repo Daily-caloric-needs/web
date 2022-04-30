@@ -35,20 +35,19 @@ export const Registration = () => {
    const [error, setIsError] = useState();
 
    const onSubmit = async (formData) => {
-      console.log(formData);
-
-      try {
-         const { data } = await axios.post('http://213.226.114.162/api/register', { ...formData });
-         if (data.message) {
-            setIsSuccess(true);
-            reset();
-         } else {
-            setIsError('Что-то пошло не так');
-         }
-      } catch (e) {
-         setIsError(e.message);
-      }
-   };
+		try {
+			const { data } = await axios.post('http://213.226.114.162/api/register', { ...formData });
+			console.log(data);
+			if (data) {
+				setIsSuccess(true);
+				reset();
+			} else {
+				setIsError('Что-то пошло не так');
+			}
+		} catch (e) {
+			setIsError(e.message);
+		}
+	};
 
    return (<div className="content">
       <div className="content__header">
@@ -62,34 +61,63 @@ export const Registration = () => {
          <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container direction="column">
                <TextField
-                  label="Email"
-                  autoFocus
-                  id="email"
-                  {...register('email', {
-                     required: 'required',
-                     pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: 'Введённое значение не соответствует формату: example@mail.lo',
-                     },
-                  })}
-                  type="email"
-               />
-               {errors.email && <span role="alert">{errors.email.message}</span>}
+				label="Имя"
+				autoFocus
+				id="name"
+				{...register('name', {
+					required: 'required',
+					minLength: {
+						value: 4,
+						message: 'Минимальная длина пароля 4 символа',
+					},
+				})}
+				type="text"
+			/>
+			{errors.name && <span role="alert">{errors.name.message}</span>}
 
-               <TextField
-                  label="Пароль"
-                  autoFocus
-                  id="password"
-                  {...register('password', {
-                     required: 'required',
-                     minLength: {
-                        value: 5,
-                        message: 'Минимальная длина пароля 5 символов',
-                     },
-                  })}
-                  type="password"
-               />
-               {errors.password && <span role="alert">{errors.password.message}</span>}
+			<TextField
+				label="Email"
+				autoFocus
+				id="email"
+				{...register('email', {
+					required: 'required',
+					pattern: {
+						value: /\S+@\S+\.\S+/,
+						message: 'Введённое значение не соответствует формату: example@mail.lo',
+					},
+				})}
+				type="email"
+			/>
+			{errors.email && <span role="alert">{errors.email.message}</span>}
+
+			<TextField
+				label="Пароль"
+				autoFocus
+				id="password"
+				{...register('password', {
+					required: 'required',
+					minLength: {
+						value: 5,
+						message: 'Минимальная длина пароля 5 символов',
+					},
+				})}
+				type="password"
+			/>
+
+			<TextField
+				label="Подтверждение пароля"
+				autoFocus
+				id="password_confirmation"
+				{...register('password_confirmation', {
+					required: 'required',
+					minLength: {
+						value: 5,
+						message: 'Минимальная длина пароля 5 символов',
+					},
+				})}
+				type="password"
+			/>
+			{errors.password_confirmation && <span role="alert">{errors.password_confirmation.message}</span>}
 
                <CssButton type="submit">Зарегистрироваться</CssButton>
 
