@@ -8,12 +8,11 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	max-width: 360px;
 }
 
 .auth-form__subtitle {
 	color: rgb(180, 184, 193);
-}
-
-.auth-form__form {
-	min-width: 360px;
+	cursor: pointer;
+	margin-top: 5px;
 }

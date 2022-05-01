@@ -5,8 +5,9 @@ import './AuthPage.css';
 export const AuthPage = () => {
 	return (
 		<div className="auth-page">
-			<SignInForm />
-			<SignUpForm />
+			можно использовать как модалку или можно удалить к чертям ;)
+			{/* <SignInForm /> */}
+			{/* <SignUpForm /> */}
 		</div>
 	);
 };

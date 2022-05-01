@@ -11,6 +11,8 @@
 }
 
 .auth-form__subtitle {
+	cursor: pointer;
+	margin-top: 5px;
 	color: rgb(180, 184, 193);
 }
 

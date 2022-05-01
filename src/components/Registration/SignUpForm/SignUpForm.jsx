@@ -1,15 +1,18 @@
 import Typography from '@mui/material/Typography/Typography';
 import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import { useForm, Controller, useFormState } from 'react-hook-form';
 import { emailValidation, passwordValidation, loginValidation, passwordConfirmValidation } from '../validation';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignUpForm.css';
 
 export const SignUpForm = () => {
 	const { handleSubmit, control, reset } = useForm();
 	const { errors } = useFormState({ control });
+	const navigate = useNavigate();
 
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [error, setIsError] = useState({ flg: false, message: '' });
@@ -120,7 +123,7 @@ export const SignUpForm = () => {
 			</form>
 
 			<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">
-				Войти в систему (тут нужно сделать роутинг на SignInForm)
+				Зарегистрированы? <Link onClick={() => navigate('/login')}>Войти в систему </Link>
 			</Typography>
 
 			{isSuccess && (
