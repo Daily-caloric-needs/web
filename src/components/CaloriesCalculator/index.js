@@ -1,4 +1,6 @@
 import { React, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { normNutrients, waterNormOFDay } from '../../store/CaloriesCalcilator/actions';
 import {
    FormControl,
    FormLabel,
@@ -9,9 +11,16 @@ import {
    TextField,
    Button,
    Typography,
+   DialogTitle,
+   DialogContent,
 } from '@mui/material';
+import { selectNormNutrients, selectNormWater } from '../../store/CaloriesCalcilator/selectors';
 
 export const CaloriesCalculator = () => {
+
+   const caloriesNorm = useSelector(selectNormNutrients())
+   const normWater = useSelector(selectNormWater())
+   const dispatch = useDispatch();
 
    const defaultValues = {
       hight: 0,
@@ -19,7 +28,8 @@ export const CaloriesCalculator = () => {
       age: 0,
       gender: "",
       work: "",
-      calorieNorm: 0
+      calorieNorm: 0,
+      waterNorm: 0
    };
 
    const [formValues, setFormValues] = useState(defaultValues);
@@ -47,6 +57,7 @@ export const CaloriesCalculator = () => {
          age: 0,
          gender: "",
          work: "",
+         waterNorm: 0
       })
    }
 
@@ -63,7 +74,6 @@ export const CaloriesCalculator = () => {
       debugger
       if (formValues.gender === "male") {
          formValues.calorieNorm = ((13.75 * formValues.weight) + (5 * formValues.hight) - (6.76 * formValues.age) + 66)
-
          console.log(formValues.calorieNorm)
       } else {
          formValues.calorieNorm = ((9.56 * formValues.weight) + (1.85 * formValues.hight) - (4.68 * formValues.age) + 655)
@@ -73,7 +83,6 @@ export const CaloriesCalculator = () => {
    }
 
    const calcolaFisicForm = (norm) => {
-      debugger
       if (formValues.work === "weakly") {
          formValues.calorieNorm = parseInt(norm * 1.2)
       } else if (formValues.work === "base") {
@@ -87,6 +96,14 @@ export const CaloriesCalculator = () => {
       }
       console.log(formValues.calorieNorm);
       clearSubmit();
+      waterNormOfDay();
+      dispatch(waterNormOFDay(formValues.waterNorm))
+      dispatch(normNutrients(formValues.calorieNorm))
+   }
+
+   const waterNormOfDay = () => {
+      formValues.waterNorm = (parseInt(formValues.weight) + parseInt(formValues.hight)) * 10
+      console.log(formValues.waterNorm)
    }
 
    return (<>
@@ -193,7 +210,9 @@ export const CaloriesCalculator = () => {
                   <Button disabled={formValues === defaultValues} variant='contained' type='submit' size='medium'>Расчитать норму</Button>
          </Grid>
       </form>
-      <Typography>Твоя суточная норма калорий: {formValues.calorieNorm} </Typography>
+      <Typography>Твоя суточная норма калорий: {caloriesNorm} </Typography>
+      <Typography>Твоя суточная норма воды: {normWater} </Typography>
+
    </>
    )
 }

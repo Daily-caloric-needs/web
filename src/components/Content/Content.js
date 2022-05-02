@@ -16,11 +16,14 @@ import { selectAllDishes } from '../../store/Meals/selectors';
 import { amountNutrientsFromToday } from '../../store/AmountNutrients/actions';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Typography } from '@mui/material';
+import { selectNormNutrients } from '../../store/CaloriesCalcilator/selectors';
 
 export const Content = () => {
 	const allDishes = useSelector(selectAllDishes());
 	const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
 	const amountNutrientsNormalForToday = useSelector(selectAmountNutrientsNormalFromToday());
+	const caloriesNorm = useSelector(selectNormNutrients())
+
 
 	const dispatch = useDispatch();
 	const [meals, setMeals] = useState(MEALS);
@@ -146,7 +149,7 @@ export const Content = () => {
 				</div>
 				<div className="content__right">
 					<Typography align="center">
-						<span className='content__calories-text'>Потреблено {amountNutrientsToday.calories} калорий из {amountNutrientsNormalForToday} </span>
+						<span className='content__calories-text'>Потреблено {amountNutrientsToday.calories} калорий из {caloriesNorm} </span>
 					</Typography>
 					<Doughnut data={dataset} />
 					<Water />
