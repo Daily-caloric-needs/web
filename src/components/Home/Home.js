@@ -1,5 +1,5 @@
 import { Avatar } from '../Avatar/Avatar';
-import { CaloriesCalculator } from '../CaloriesCalculator';
+import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import { Notification } from '../Notification/Notification';
 import { Search } from '../Search/Search';
 import { Sidebar } from '../Sidebar/Sidebar';
@@ -19,9 +19,9 @@ export const Home = () => {
             <div className="content__left">
             </div>
          </div>
-         <div className="calculatore">
+         {/* <div className="calculatore">
             <CaloriesCalculator />
-         </div>
+         </div> */}
       </div>
    );
 };

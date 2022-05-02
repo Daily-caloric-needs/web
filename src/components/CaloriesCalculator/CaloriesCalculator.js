@@ -11,10 +11,13 @@ import {
    TextField,
    Button,
    Typography,
-   DialogTitle,
-   DialogContent,
+   Avatar,
 } from '@mui/material';
 import { selectNormNutrients, selectNormWater } from '../../store/CaloriesCalcilator/selectors';
+import { Sidebar } from '../Sidebar/Sidebar';
+import { Search } from '../Search/Search';
+import { Notification } from '../Notification/Notification';
+
 
 export const CaloriesCalculator = () => {
 
@@ -107,6 +110,18 @@ export const CaloriesCalculator = () => {
    }
 
    return (<>
+   <div className="content">
+         <h1>Узнай свою норму</h1>
+         <div className="content__header">
+            <Sidebar />
+            <Search />
+            <Notification />
+            <Avatar />
+         </div>
+         <div className="content__main">
+            <div className="content__left">
+            </div>
+         </div>
       <form onSubmit={calcolaNorm}>
          <Grid container 
          alignItems="center" 
@@ -212,7 +227,7 @@ export const CaloriesCalculator = () => {
       </form>
       <Typography>Твоя суточная норма калорий: {caloriesNorm} </Typography>
       <Typography>Твоя суточная норма воды: {normWater} </Typography>
-
+      </div>
    </>
    )
 }
