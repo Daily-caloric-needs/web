@@ -39,12 +39,12 @@ export const SignUpForm = () => {
 	return (
 		<div className="auth-form__form">
 			<Typography variant="h4" component="div">
-				Зарегистрироваться
+				Регистрация
 			</Typography>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<Controller
 					control={control}
-					name="login"
+					name="name"
 					rules={loginValidation}
 					render={({ field }) => (
 						<TextField
