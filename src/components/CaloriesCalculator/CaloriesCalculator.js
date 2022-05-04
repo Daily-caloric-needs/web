@@ -28,17 +28,22 @@ export const CaloriesCalculator = () => {
       hight: 0,
       weight: 0,
       age: 0,
-      gender: "",
-      work: "",
+      gender: "female",
+      work: "weakly",
       calorieNorm: 0,
       waterNorm: 0
    };
 
    const [formValues, setFormValues] = useState(defaultValues);
-   const [formValuesError, setFormValuesError] = useState(false);
 
+   const [hightError, setHightError] = useState(false);
+   const [weightError, setWeightError] = useState(false);
+   const [ageError, setAgeError] = useState(false);
 
    const handleInputChange = (e) => {
+      setHightError(false)
+      setWeightError(false)
+      setAgeError(false)
       if (e.target.value < 1) {
          setFormValues({
             hight: 1,
@@ -59,8 +64,8 @@ export const CaloriesCalculator = () => {
          hight: 0,
          weight: 0,
          age: 0,
-         gender: "",
-         work: "",
+         gender: "female",
+         work: "weakly",
          waterNorm: 0
       })
    }
@@ -76,16 +81,14 @@ export const CaloriesCalculator = () => {
 
    const calcolaNorm = (e) => {
       e.preventDefault()
-      setFormValuesError(false)
-      debugger
-      if (formValues.weight === defaultValues.weight) {
-         setFormValuesError(true)
+      if (formValues.hight === 0) {
+         setHightError(true)
       }
-      if (formValues.hight === defaultValues.hight) {
-         setFormValuesError(true)
+      else if (formValues.weight === 0) {
+         setWeightError(true)
       }
-      if (formValues.age === defaultValues.age) {
-         setFormValuesError(true)
+      else if (formValues.age === 0) {
+         setAgeError(true)
       } else {
          if (formValues.gender === "male") {
             formValues.calorieNorm = ((13.75 * formValues.weight) + (5 * formValues.hight) - (6.76 * formValues.age) + 66)
@@ -96,7 +99,6 @@ export const CaloriesCalculator = () => {
          }
          calcolaFisicForm(parseInt(formValues.calorieNorm))
       }
-
    }
 
    const calcolaFisicForm = (norm) => {
@@ -151,7 +153,8 @@ export const CaloriesCalculator = () => {
                      onChange={handleInputChange}
                      variant="outlined"
                      required
-                     error={formValuesError}
+                     error={hightError}
+                     helperText="Заполните поле"
                   />
                   <TextField
                      id="weight-input"
@@ -162,7 +165,8 @@ export const CaloriesCalculator = () => {
                      onChange={handleInputChange}
                      variant="outlined"
                      required
-                     error={formValuesError}
+                     error={weightError}
+                     helperText="Заполните поле"
                   />
                   <TextField
                      id="age-input"
@@ -173,7 +177,8 @@ export const CaloriesCalculator = () => {
                      onChange={handleInputChange}
                      variant="outlined"
                      required
-                     error={formValuesError}
+                     error={ageError}
+                     helperText="Заполните поле"
                   />
                </Grid>
                <Grid item>
