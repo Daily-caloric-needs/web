@@ -1,6 +1,5 @@
 import { Avatar } from '../Avatar/Avatar';
 import { Notification } from '../Notification/Notification';
-import { Search } from '../Search/Search';
 import { Sidebar } from '../Sidebar/Sidebar';
 
 export const NotFound = () => {
@@ -9,7 +8,6 @@ export const NotFound = () => {
       <div className="content">
          <div className="content__header">
             <Sidebar />
-            <Search />
             <Notification />
             <Avatar />
          </div>

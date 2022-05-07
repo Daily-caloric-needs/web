@@ -11,7 +11,7 @@ export const theme = createTheme({
     },
     text: {
       primary: '#000',
-      secondary: '#fff',
+      secondary: '#2ecc71',
     },
   },
 });
