@@ -1,0 +1,19 @@
+export const ADD_USER_DATA = 'USER::ADD_USER_DATA';
+export const DELETE_USER_DATA = 'USER::DELETE_USER_DATA';
+export const CHANGE_USER_DATA = 'USER::CHANGE_USER_DATA';
+
+export const addUserData = (data) => ({
+  type: ADD_USER_DATA,
+  payload: data,
+});
+
+export const deleteUserData = (data) => ({
+  type: DELETE_USER_DATA,
+  payload: data
+});
+
+// заготовка
+export const changeUserData = (data) => ({
+  type: CHANGE_USER_DATA, 
+  payload: data
+});

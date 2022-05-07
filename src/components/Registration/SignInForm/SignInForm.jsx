@@ -8,22 +8,23 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignInForm.css';
+import { useDispatch } from 'react-redux';
+import { addUserData } from '../../../store/UserData/actions';
 
 export const SignInForm = () => {
-	const { handleSubmit, control, reset, } = useForm();
+	const { handleSubmit, control } = useForm();
 	const { errors } = useFormState({ control });
 	const navigate = useNavigate();
-
-	const [isSuccess, setIsSuccess] = useState(false);
+	const dispatch = useDispatch();
 	const [error, setIsError] = useState();
 
 	const onSubmit = async (formData) => {
 		try {
 			const { data } = await axios.post('http://213.226.114.162/api/login', { ...formData });
-			console.log(data);
 			if (data) {
-				setIsSuccess(true);
-				reset();
+				localStorage.setItem('userData', JSON.stringify(data));
+				dispatch(addUserData(data));
+				navigate('/profile');
 			} else {
 				setIsError('Что-то пошло не так');
 			}
@@ -66,6 +67,7 @@ export const SignInForm = () => {
 					render={({ field }) => (
 						<TextField
 							label="Пароль"
+							type="password"
 							size="small"
 							margin="normal"
 							className="auth-form__input"

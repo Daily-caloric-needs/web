@@ -7,11 +7,13 @@ import recipe2 from "../../img/recipe_2.png";
 import recipe3 from "../../img/recipe_3.png";
 import "./style.scss";
 import { Sidebar } from "../Sidebar/Sidebar";
-import main_photo from "../../img/2.jpg";
 import { Slider } from "../Slider/Slider";
+import { useSelector } from "react-redux";
+import { selectUserData } from "../../store/UserData/selectors";
 
 export const Home = () => {
   const navigate = useNavigate();
+  const userData = useSelector(selectUserData());
 
   return (
     <div className="content__home">
@@ -27,7 +29,7 @@ export const Home = () => {
               Дневник питания - это проект для управления образом жизни. С нами
               вы начнёте питаться полезнее, осознаннее и здоровее
             </p>
-            <button onClick={() => navigate("/registration")} className="button__reg">Зарегистрироваться</button>
+            {!userData && <button onClick={() => navigate("/registration")} className="button__reg">Зарегистрироваться</button>}
           </div>
         </div>
         <div className="header__user">
@@ -44,7 +46,7 @@ export const Home = () => {
           <li>Как пить больше воды?</li>
           <li>Что сегодня приготовить?</li>
         </ul>
-        <button onClick={() => navigate("/registration")} className="button__reg">Регистрируйтесь</button>
+        {!userData && <button onClick={() => navigate("/registration")} className="button__reg">Регистрируйтесь</button>}
       </div>
       <Slider className="slider" />
       <div className="info">

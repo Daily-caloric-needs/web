@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { mealsReducer } from './Meals/reducer';
 import { amountNutrientsReducer } from './AmountNutrients/reducer';
+import { userDataReducer } from './UserData/reducer';
 import waterReducer from "../store/Water/reducer";
 
 // composeWithDevTools - devTools for Redux in Chrome
@@ -12,7 +13,8 @@ const store = createStore(
     dishes: dishesReduser,
     meals: mealsReducer,
     water: waterReducer,
-    amountNutrients: amountNutrientsReducer
+    amountNutrients: amountNutrientsReducer,
+    userData: userDataReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

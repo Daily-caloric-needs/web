@@ -8,23 +8,25 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUpForm.css';
+import { useDispatch } from 'react-redux';
+import { addUserData } from '../../../store/UserData/actions';
 
 export const SignUpForm = () => {
-	const { handleSubmit, control, reset } = useForm();
+	const dispatch = useDispatch();
+	const { handleSubmit, control } = useForm();
 	const { errors } = useFormState({ control });
 	const navigate = useNavigate();
-
-	const [isSuccess, setIsSuccess] = useState(false);
 	const [error, setIsError] = useState({ flg: false, message: '' });
 
 	const onSubmit = async (formData) => {
 		if (formData.password === formData.password_confirmation) {
 			try {
 				const { data } = await axios.post('http://213.226.114.162/api/register', { ...formData });
-				console.log(data);
 				if (data) {
-					setIsSuccess(true);
-					reset();
+					localStorage.removeItem('userData');
+					localStorage.setItem('userData', JSON.stringify(data));
+					dispatch(addUserData(data));
+					navigate('/profile');
 				} else {
 					setIsError({ flg: true, message: 'Что-то пошло не так' });
 				}
@@ -55,8 +57,8 @@ export const SignUpForm = () => {
 							fullWidth={true}
 							onChange={(e) => field.onChange(e)}
 							value={field.value}
-							error={!!errors.login?.message}
-							helperText={errors.login?.message}
+							error={!!errors.name?.message}
+							helperText={errors.name?.message}
 						/>
 					)}
 				/>
@@ -111,8 +113,8 @@ export const SignUpForm = () => {
 							fullWidth={true}
 							onChange={(e) => field.onChange(e)}
 							value={field.value}
-							error={!!errors.passwordConfirmValidation?.message}
-							helperText={errors.passwordConfirmValidation?.message}
+							error={!!errors.password_confirmation?.message}
+							helperText={errors.password_confirmation?.message}
 						/>
 					)}
 				/>
@@ -125,12 +127,6 @@ export const SignUpForm = () => {
 			<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">
 				Зарегистрированы? <Link onClick={() => navigate('/login')}>Войти в систему </Link>
 			</Typography>
-
-			{isSuccess && (
-				<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">
-					Регистрация прошла успешно
-				</Typography>
-			)}
 
 			<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">
 				{error.flg && <div>{error?.message}</div>}

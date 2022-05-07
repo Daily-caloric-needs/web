@@ -1,11 +1,5 @@
 export const loginValidation = {
 	required: 'Поле обязательно для заполнения',
-	validate: (value) => {
-		if (value.match(/[а-яА-Я]/)) {
-			return 'Логин не может содержать русские буквы';
-		}
-		return true;
-	},
 };
 
 export const passwordValidation = {
@@ -30,7 +24,7 @@ export const passwordConfirmValidation = {
 export const emailValidation = {
 	required: 'Поле обязательно для заполнения',
 	validate: (value) => {
-		if (value.search(/\S+@\S+\.\S+/)) {
+		if (!(/\S+@\S+\.\S+/.test(value))) {
 			return 'Email не соответствует формату: example@mail.lo';
 		}
 		return true;
