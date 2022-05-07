@@ -1,7 +1,6 @@
 import { Avatar } from "../Avatar/Avatar";
 import { Meal } from "../Meal/Meal";
 import { Notification } from "../Notification/Notification";
-import { Search } from "../Search/Search";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import "./style.scss";

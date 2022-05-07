@@ -1,4 +1,3 @@
-import { v4 as uuid4 } from 'uuid';
 import { useState } from 'react';
 import {
   Button,

@@ -2,8 +2,6 @@ import * as React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
@@ -84,7 +82,7 @@ export function Slider({ className }) {
 
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }} className={className}>
-      <Paper
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -95,8 +93,8 @@ export function Slider({ className }) {
           bgcolor: "background.default",
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
+        {/* <Typography>{images[activeStep].label}</Typography>
+      </Paper> */}
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}

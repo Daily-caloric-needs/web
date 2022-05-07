@@ -1,0 +1,18 @@
+.auth-form__form {
+	height: 100vh;
+	width: 50%;
+	background-color: gainsboro;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	max-width: 360px;
+}
+
+.auth-form__subtitle {
+	color: rgb(180, 184, 193);
+	cursor: pointer;
+	margin-top: 5px;
+}

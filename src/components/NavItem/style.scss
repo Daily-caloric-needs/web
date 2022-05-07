@@ -18,7 +18,7 @@
   &:hover,
   &-active {
     cursor: pointer;
-    background-color: $main-color-secondary;
+    background-color: $main-color-light;
 
     & > .navbar__name {
       visibility: visible;
