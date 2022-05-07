@@ -23,7 +23,6 @@ export const SignUpForm = () => {
 			try {
 				const { data } = await axios.post('http://213.226.114.162/api/register', { ...formData });
 				if (data) {
-					localStorage.removeItem('userData');
 					localStorage.setItem('userData', JSON.stringify(data));
 					dispatch(addUserData(data));
 					navigate('/profile');

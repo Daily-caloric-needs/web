@@ -14,8 +14,8 @@ export const Routers = () => {
 
 	useEffect(() => {
     const userDataStr = localStorage.getItem('userData');
-    const userDataObj = JSON.parse(userDataStr);
     if (userDataStr) {
+			const userDataObj = JSON.parse(userDataStr);
       dispatch(addUserData(userDataObj));
     }
   }, []);

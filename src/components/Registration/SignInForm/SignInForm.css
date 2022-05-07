@@ -1,5 +1,5 @@
 .auth-form__form {
-	height: 100vh;
+	max-height: 500px;
 	width: 50%;
 	background-color: gainsboro;
 	padding: 20px;
