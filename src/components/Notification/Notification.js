@@ -6,7 +6,7 @@ export const Notification = () => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate("/notification")} className="notification">
+    <div onClick={() => navigate("/calculator")} className="notification">
       <IoNotificationsOutline size={30} />
       <span className="notification__badge"></span>
     </div>

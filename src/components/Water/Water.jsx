@@ -11,12 +11,14 @@ import { drinkWater } from '../../store/Water/actions';
 import { generateChartData } from './utils';
 import { BsCupStraw, BsCup } from 'react-icons/bs';
 import { GiWaterBottle  } from "react-icons/gi";
+import { selectNormWater } from '../../store/CaloriesCalcilator/selectors';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Water = () => {
   const drunkWater = useSelector(selectWaterDrunk);
   const dailyVolume = useSelector(selectDailyVolume);
+  const normWater = useSelector(selectNormWater())
   const dispatch = useDispatch();
   const addWaterHandler = useCallback((value) => {
     dispatch(drinkWater(value));
@@ -39,7 +41,7 @@ export const Water = () => {
   return (
     <Box className="water">
       <Typography align="center">
-          <span className='water__text'>Выпито воды за день: <br /> {drunkWater}мл из {dailyVolume}мл</span>
+        <span className='water__text'>Выпито воды за день: <br /> {drunkWater}мл из {normWater}мл</span>
       </Typography>
       <Pie data={data} />
       <div className='water__buttons'>

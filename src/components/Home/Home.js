@@ -10,6 +10,7 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { Slider } from "../Slider/Slider";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../store/UserData/selectors";
+import { Logo } from "../Logo/Logo"
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -100,6 +101,39 @@ export const Home = () => {
           <img src={recipe2} alt="рецепт2" />
           <img src={recipe3} alt="рецепт3" />
         </div>
+      </div>
+      <hr />
+      <div className="footer">
+        <div className="footer__logo">
+          <Logo />
+          <h4>Начни питаться полезнее, осознаннее и здоровее!</h4>
+        </div>
+        <div className="footer__info">
+          <div className="footer__info-navigation">
+            <h4>Навигация</h4>
+            <p onClick={() => navigate("/")}>Главная</p>
+            <p onClick={() => navigate("/statistics")}>Дневник</p>
+            <p onClick={() => navigate("/recipes")}>Рецепты</p>
+            <p onClick={() => navigate("/profile")}>Личный кабинет</p>
+          </div>
+          <div className="footer__info-social">
+            <h4>Добавляйся</h4>
+            <a href="www.instagram.com">Instagram</a><br />
+            <a href="www.facebook.com">Facebook</a><br />
+            <a href="www.pinterest.com">Pinterest</a><br />
+            <a href="www.telegram.com">Telegram</a><br />
+          </div>
+          <div className="footer__info-support">
+            <h4>Поддержка</h4>
+            <p>Всегда будем рады помочь при необходимости</p>
+            <a href="mailto:dailycaloricneeds@gmail.com">dailycaloricneeds@gmail.com</a><br />
+            <a href="tel:+71234567890">+71234567890</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <hr />
+        <h4 className="footer__copy">@DAILYCALORICNEEDS 2022</h4>
       </div>
     </div>
   );

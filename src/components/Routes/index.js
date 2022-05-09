@@ -7,18 +7,19 @@ import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
 import { AuthPage } from '../Registration';
 import { addUserData } from "../../store/UserData/actions";
+import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import './style.scss';
 
 export const Routers = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-    const userDataStr = localStorage.getItem('userData');
-    if (userDataStr) {
+      const userDataStr = localStorage.getItem('userData');
+      if (userDataStr) {
 			const userDataObj = JSON.parse(userDataStr);
       dispatch(addUserData(userDataObj));
-    }
-  }, []);
+      }
+   }, []);
 
 	return (
 		<BrowserRouter className="router">
@@ -28,6 +29,7 @@ export const Routers = () => {
 				<Route exact path="/profile" element={<Profile />} />
 				<Route exact path="/login" element={<AuthPage id="login"/>} />
 				<Route exact path="/registration" element={<AuthPage id="registration"/>} />
+				<Route exact path="/calculator" element={<CaloriesCalculator />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>
