@@ -19,7 +19,7 @@ export const Footer = () => {
           <div className="footer__info-navigation">
             <h4>Навигация</h4>
             <p onClick={() => navigate("/")}>Главная</p>
-            <p onClick={() => navigate("/statistics")}>Дневник</p>
+            <p onClick={() => navigate("/diary")}>Дневник</p>
             <p onClick={() => navigate("/recipes")}>Рецепты</p>
             <p onClick={() => navigate("/profile")}>Личный кабинет</p>
           </div>
