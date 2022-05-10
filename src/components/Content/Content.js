@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import { Logo } from "../Logo/Logo"
 import { Avatar } from "../Avatar/Avatar";
 import { Meal } from "../Meal/Meal";
 import { Notification } from "../Notification/Notification";
@@ -16,12 +18,15 @@ import {
 } from "../../store/AmountNutrients/selectors";
 import { selectAllDishes } from "../../store/Meals/selectors";
 import { amountNutrientsFromToday } from "../../store/AmountNutrients/actions";
+import { selectNormNutrients } from '../../store/CaloriesCalcilator/selectors';
 import { Sidebar } from "../Sidebar/Sidebar";
 import { Typography } from "@mui/material";
 
 export const Content = () => {
+  const navigate = useNavigate();
   const allDishes = useSelector(selectAllDishes());
   const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
+  const caloriesNorm = useSelector(selectNormNutrients())
   const amountNutrientsNormalForToday = useSelector(
     selectAmountNutrientsNormalFromToday()
   );
@@ -136,6 +141,7 @@ export const Content = () => {
   };
 
   return (
+    <div className="contsiner">
     <div className="content">
       <div className="content__header">
         <Sidebar />
@@ -162,13 +168,46 @@ export const Content = () => {
         </div>
         <div className="content__right">
           <Typography align="center">
-            <span className="content__calories-text">
-              Потреблено {amountNutrientsToday.calories} калорий из{" "}
-              {amountNutrientsNormalForToday}{" "}
-            </span>
+            <span className='content__calories-text'>Потреблено {amountNutrientsToday.calories} калорий из {caloriesNorm} </span>
           </Typography>
           <Doughnut data={dataset} />
           <Water />
+        </div>
+      </div>
+      </div>
+      <div className="footer">
+        <hr />
+        <div className='footer__content'>
+          <div className="footer__logo">
+            <Logo />
+            <h4>Начни питаться полезнее, осознаннее и здоровее!</h4>
+          </div>
+          <div className="footer__info">
+            <div className="footer__info-navigation">
+              <h4>Навигация</h4>
+              <p onClick={() => navigate("/")}>Главная</p>
+              <p onClick={() => navigate("/statistics")}>Дневник</p>
+              <p onClick={() => navigate("/recipes")}>Рецепты</p>
+              <p onClick={() => navigate("/profile")}>Личный кабинет</p>
+            </div>
+            <div className="footer__info-social">
+              <h4>Добавляйся</h4>
+              <a href="www.instagram.com">Instagram</a><br />
+              <a href="www.facebook.com">Facebook</a><br />
+              <a href="www.pinterest.com">Pinterest</a><br />
+              <a href="www.telegram.com">Telegram</a><br />
+            </div>
+            <div className="footer__info-support">
+              <h4>Поддержка</h4>
+              <p>Всегда будем рады помочь при необходимости</p>
+              <a href="mailto:dailycaloricneeds@gmail.com">dailycaloricneeds@gmail.com</a><br />
+              <a href="tel:+71234567890">+71234567890</a>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h4 className="footer__copy">@DAILYCALORICNEEDS 2022</h4>
         </div>
       </div>
     </div>
