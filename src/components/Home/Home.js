@@ -17,6 +17,7 @@ export const Home = () => {
   const userData = useSelector(selectUserData());
 
   return (
+    <div className='container'>
     <div className="content__home">
       <div className="content__nav-button">
         <Notification />
@@ -102,8 +103,10 @@ export const Home = () => {
           <img src={recipe3} alt="рецепт3" />
         </div>
       </div>
-      <hr />
+    </div>
       <div className="footer">
+      <hr />
+        <div className='footer__content'>
         <div className="footer__logo">
           <Logo />
           <h4>Начни питаться полезнее, осознаннее и здоровее!</h4>
@@ -130,11 +133,12 @@ export const Home = () => {
             <a href="tel:+71234567890">+71234567890</a>
           </div>
         </div>
-      </div>
-      <div>
+        </div>
         <hr />
+      <div>
         <h4 className="footer__copy">@DAILYCALORICNEEDS 2022</h4>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };

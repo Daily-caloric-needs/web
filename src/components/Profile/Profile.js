@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import { Logo } from "../Logo/Logo"
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../store/UserData/selectors";
 import { AuthPage } from "../Registration";
@@ -7,15 +9,21 @@ import { Avatar } from "../Avatar/Avatar";
 import { Notification } from "../Notification/Notification";
 import { Sidebar } from "../Sidebar/Sidebar";
 import "./style.scss";
-import { selectAmountNutrientsFromToday, selectAmountNutrientsNormalFromToday } from "../../store/AmountNutrients/selectors";
-import { selectDailyVolume, selectWaterDrunk } from "../../store/Water/selectors";
+import { selectAmountNutrientsFromToday } from "../../store/AmountNutrients/selectors";
+import { selectNormNutrients } from '../../store/CaloriesCalcilator/selectors';
+import { selectWaterDrunk } from "../../store/Water/selectors";
+import { selectNormWater } from '../../store/CaloriesCalcilator/selectors';
+
 
 export const Profile = () => {
+  const navigate = useNavigate();
   const userData = useSelector(selectUserData());
-  const amountNutrientsNorm = useSelector(selectAmountNutrientsNormalFromToday());
-  const amountNutrientsFromToday = useSelector(selectAmountNutrientsFromToday());
-  const dailyVolumeWater = useSelector(selectDailyVolume);
+  const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
+
+  const caloriesNorm = useSelector(selectNormNutrients())
   const waterDrunk = useSelector(selectWaterDrunk);
+  const normWater = useSelector(selectNormWater())
+
 
   const [ userName, setUserName ] = useState({
     name: userData?.user.name,
@@ -111,6 +119,7 @@ export const Profile = () => {
   }
 
   return (
+    <div className='container'>
     <div className="content">
       <div className="content__header">
         <Sidebar />
@@ -198,20 +207,20 @@ export const Profile = () => {
         <div className="content__profile-right">
           <div className="content__box">
             <Typography variant="h6">Суточная норма эн.ценности:</Typography>
-            <p>{amountNutrientsNorm} ККал</p>
+              <p>{caloriesNorm} ККал</p>
             <Button variant="outlined" onClick={changeUserNormCalories}>Пересчитать</Button>
           </div>
 
           <div className="content__box">
             <Typography variant="h6">Суточная норма воды:</Typography>
-            <p>{dailyVolumeWater} мл</p>
+              <p>{normWater} мл</p>
             <Button variant="outlined" onClick={changeUserNormWater}>Пересчитать</Button>
           </div>
 
           <div className="content__box">
             <Typography variant="h6">Сегодня вы употребили:</Typography>
 
-            <p>{amountNutrientsFromToday.calories ? amountNutrientsFromToday.calories : 0} ККал</p>
+              <p>{amountNutrientsToday.calories ? amountNutrientsToday.calories : 0} ККал</p>
           </div>
 
           <div className="content__box">
@@ -221,5 +230,41 @@ export const Profile = () => {
         </div>
       </div>
     </div>
+      <div className="footer">
+      <hr />
+        <div className='footer__content'>
+        <div className="footer__logo">
+          <Logo />
+          <h4>Начни питаться полезнее, осознаннее и здоровее!</h4>
+        </div>
+        <div className="footer__info">
+          <div className="footer__info-navigation">
+            <h4>Навигация</h4>
+            <p onClick={() => navigate("/")}>Главная</p>
+            <p onClick={() => navigate("/statistics")}>Дневник</p>
+            <p onClick={() => navigate("/recipes")}>Рецепты</p>
+            <p onClick={() => navigate("/profile")}>Личный кабинет</p>
+          </div>
+          <div className="footer__info-social">
+            <h4>Добавляйся</h4>
+            <a href="www.instagram.com">Instagram</a><br />
+            <a href="www.facebook.com">Facebook</a><br />
+            <a href="www.pinterest.com">Pinterest</a><br />
+            <a href="www.telegram.com">Telegram</a><br />
+          </div>
+          <div className="footer__info-support">
+            <h4>Поддержка</h4>
+            <p>Всегда будем рады помочь при необходимости</p>
+            <a href="mailto:dailycaloricneeds@gmail.com">dailycaloricneeds@gmail.com</a><br />
+            <a href="tel:+71234567890">+71234567890</a>
+          </div>
+        </div>
+        </div>
+        <hr />
+      <div>
+        <h4 className="footer__copy">@DAILYCALORICNEEDS 2022</h4>
+      </div>
+      </div>
+      </div>
   );
 };

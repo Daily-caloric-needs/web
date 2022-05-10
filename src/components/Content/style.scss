@@ -1,6 +1,8 @@
 @import '../../variables.scss';
 
 .content {
+  min-height: calc(100vh - 160px);
+  max-width: 1440px;
   margin-left: 100px;
   flex: 1 1 auto;
   padding: 10px 40px 50px;
@@ -58,4 +60,67 @@
     font-size: 20px;
     font-weight: 600;
   }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    left: 140px;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    &__logo {
+        h4 {
+            width: 70%;
+            padding-top: 10px;
+        }
+    }
+
+    &__info {
+        display: flex;
+    }
+
+    button {
+        h4 {
+            padding-bottom: 10px;
+        }
+    }
+
+    &__info-navigation {
+        p {
+            cursor: pointer;
+        }
+
+        p:hover {
+            color: #2ecc71;
+        }
+    }
+
+    &__info-social {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        a:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__info-support {
+        p {
+            text-decoration: none;
+        }
+    }
+
+    &__copy {
+        align-self: center;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }
