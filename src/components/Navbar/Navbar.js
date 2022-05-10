@@ -14,7 +14,7 @@ export const navItems = [
   {
     name: "Дневник",
     icon: <IoPieChartOutline size={30} />,
-    link: "/statistics",
+    link: "/diary",
   }
 ];
 

@@ -1,8 +1,7 @@
 import { DRINK_WATER } from "./actions";
 
 const initialState = {
-  drunk: 0,
-  dailyVolume: 2000,
+  drunk: 0
 };
 
 export default function waterReducer(state = initialState, action) {

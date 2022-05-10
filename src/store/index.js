@@ -6,7 +6,7 @@ import { mealsReducer } from './Meals/reducer';
 import { amountNutrientsReducer } from './AmountNutrients/reducer';
 import { userDataReducer } from './UserData/reducer';
 import waterReducer from "../store/Water/reducer";
-import { normNutrientsReducer } from './CaloriesCalcilator/reducer';
+import { normNutrientsReducer } from './CaloriesCalculator/reducer';
 
 // composeWithDevTools - devTools for Redux in Chrome
 const store = createStore(

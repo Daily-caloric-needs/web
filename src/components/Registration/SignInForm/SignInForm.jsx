@@ -7,11 +7,11 @@ import { emailValidation, passwordValidation } from '../validation';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignInForm.css';
+import './SignInForm.scss';
 import { useDispatch } from 'react-redux';
 import { addUserData } from '../../../store/UserData/actions';
 
-export const SignInForm = () => {
+export const SignInForm = ({ closeModal }) => {
 	const { handleSubmit, control } = useForm();
 	const { errors } = useFormState({ control });
 	const navigate = useNavigate();
@@ -80,9 +80,8 @@ export const SignInForm = () => {
 					)}
 				/>
 
-				<Button type="submit" variant="contained" fullWidth={true} disableElevation={true} sx={{ marginTop: 2 }}>
-					Войти
-				</Button>
+				<Button type="submit" variant="contained" fullWidth={true} disableElevation={true} sx={{ marginTop: 2 }}>Войти</Button>
+				<Button variant="outlined" fullWidth={true} disableElevation={true} sx={{ marginTop: 1 }} onClick={closeModal}>Отмена</Button>
 			</form>
 
 			<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">

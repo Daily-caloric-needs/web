@@ -7,11 +7,11 @@ import { emailValidation, passwordValidation, loginValidation, passwordConfirmVa
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignUpForm.css';
+import '../SignInForm/SignInForm.scss';
 import { useDispatch } from 'react-redux';
 import { addUserData } from '../../../store/UserData/actions';
 
-export const SignUpForm = () => {
+export const SignUpForm = ({ closeModal }) => {
 	const dispatch = useDispatch();
 	const { handleSubmit, control } = useForm();
 	const { errors } = useFormState({ control });
@@ -118,9 +118,8 @@ export const SignUpForm = () => {
 					)}
 				/>
 
-				<Button type="submit" variant="contained" fullWidth={true} disableElevation={true} sx={{ marginTop: 2 }}>
-					Зарегистрироваться
-				</Button>
+				<Button type="submit" variant="contained" fullWidth={true} disableElevation={true} sx={{ marginTop: 2 }}>Зарегистрироваться</Button>
+				<Button variant="outlined" fullWidth={true} disableElevation={true} sx={{ marginTop: 1 }} onClick={closeModal}>Отмена</Button>
 			</form>
 
 			<Typography variant="subtitle1" component="div" gutterBottom={true} className="auth-form__subtitle">
