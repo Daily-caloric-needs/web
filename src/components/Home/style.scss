@@ -2,7 +2,8 @@
 
 .content__home {
     min-height: calc(100vh - 160px);
-    max-width: 1440px;
+    // max-width: 1440px;
+    align-items: center;
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -13,12 +14,13 @@
 
 .content__nav-button {
     display: flex;
-    justify-content: flex-end;
+    align-self: end;
     margin-bottom: 10px;
 }
 
 .header {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -42,6 +44,10 @@
         margin-top: 20px;
     }
 
+    &__left{
+        margin-right: 60px;
+    }
+
     &__text {
         padding: 30px 0 0 70px;
         text-align: center;
@@ -53,12 +59,36 @@
         padding: 20px 30px 0 0;
         display: flex;
         justify-content: flex-end;
-        height: 45vh;
+        max-height: 45vh;
         width: 50%;
         background-image: url("../../img/2.jpg");
         background-position: center;
         background-size: cover;
         border-radius: 10px;
+    }
+    @media screen and (max-width: 1024px) {
+        &__button{
+            font-size: 14px;
+        }
+        &__text{
+            font-size: 18px;
+        }
+        &__user{
+            max-height: 70vh;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        flex-direction: column;
+
+        &__left{
+        margin-right: 0;
+    }
+
+    &__text{
+            font-size: 14px;
+            padding: 0;
+        }
     }
 }
 
@@ -128,7 +158,6 @@
 .recipes {
     text-align: center;
     padding: 10px 0 10px 0;
-    margin-bottom: 40px;
 
     p {
         font-size: 18px;
@@ -141,6 +170,12 @@
         display: flex;
         gap: 30px;
         justify-content: center;
+    }
+
+    @media screen and (max-width: 1024px) {
+        &__items{
+            flex-wrap: wrap;
+        }
     }
 }
 

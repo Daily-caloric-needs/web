@@ -10,7 +10,6 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { Slider } from "../Slider/Slider";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../store/UserData/selectors";
-// import { Logo } from "../Logo/Logo"
 import { useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
