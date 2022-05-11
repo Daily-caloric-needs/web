@@ -1,5 +1,5 @@
 .auth-form__form {
-	max-height: 500px;
+	max-height: 700px;
 	width: 50%;
 	background-color: gainsboro;
 	padding: 20px;
@@ -9,6 +9,7 @@
 	align-items: center;
 	text-align: center;
 	max-width: 360px;
+	min-width: 360px;
 }
 
 .auth-form__subtitle {

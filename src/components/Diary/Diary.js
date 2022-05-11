@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { Logo } from "../Logo/Logo"
 import { Avatar } from "../Avatar/Avatar";
 import { Meal } from "../Meal/Meal";
 import { Notification } from "../Notification/Notification";
@@ -12,27 +10,23 @@ import { MEALS } from "../../constants";
 import { getDishes } from "../../store/Dishes/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Water } from "../Water/Water";
-import {
-  selectAmountNutrientsFromToday,
-  selectAmountNutrientsNormalFromToday,
-} from "../../store/AmountNutrients/selectors";
+import { selectAmountNutrientsFromToday } from "../../store/AmountNutrients/selectors";
 import { selectAllDishes } from "../../store/Meals/selectors";
 import { amountNutrientsFromToday } from "../../store/AmountNutrients/actions";
-import { selectNormNutrients } from '../../store/CaloriesCalcilator/selectors';
+import { selectNormNutrients } from '../../store/CaloriesCalculator/selectors';
 import { Sidebar } from "../Sidebar/Sidebar";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import { Modal } from '../Modal/Modal';
+import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
+import { Footer } from '../Footer/Footer';
 
-export const Content = () => {
-  const navigate = useNavigate();
+export const Diary = () => {
   const allDishes = useSelector(selectAllDishes());
   const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
-  const caloriesNorm = useSelector(selectNormNutrients())
-  const amountNutrientsNormalForToday = useSelector(
-    selectAmountNutrientsNormalFromToday()
-  );
-
+  const caloriesNorm = useSelector(selectNormNutrients());
   const dispatch = useDispatch();
   const [meals, setMeals] = useState(MEALS);
+  const [modal, setModal] = useState(false);
 
   const sumDay =
     amountNutrientsToday?.proteins +
@@ -42,6 +36,10 @@ export const Content = () => {
   let sumDayPercentProteins = 0;
   let sumDayPercentFat = 0;
   let sumDayPercentCarboydrates = 0;
+
+  const closeModal = () => {
+		setModal(false);
+	};
 
   if (amountNutrientsToday.carbohydrates > 0) {
     sumDayPercentProteins = `Белки: ${Math.round(
@@ -141,75 +139,50 @@ export const Content = () => {
   };
 
   return (
-    <div className="contsiner">
-    <div className="content">
-      <div className="content__header">
-        <Sidebar />
-        <Notification />
-        <Avatar />
-      </div>
-      <Date />
-      <div className="content__main">
-        <div className="content__left">
-          <div className="content__meals">
-            {meals?.map((meal) => (
-              <Meal key={meal.id} meal={meal} expand={expand} />
-            ))}
+    <>
+      {modal && (
+        <Modal showModal={modal} closeModal={closeModal}>
+          <CaloriesCalculator setModal={setModal}/>
+        </Modal>
+      )}
+      <div className="container">
+        <div className="content">
+          <div className="content__header">
+            <Sidebar />
+            <Notification />
+            <Avatar />
           </div>
-          <div className="content__nutrients-days">
-            <h2>Потреблено:</h2>
-            <div>Калорий за день: {amountNutrientsToday.calories}</div>
-            <div>Белков за день: {amountNutrientsToday.proteins} г.</div>
-            <div>Жиров за день: {amountNutrientsToday.fat} г.</div>
-            <div>
-              Углеводов за день: {amountNutrientsToday.carbohydrates} г.
+          <Date />
+          <div className="content__main">
+            <div className="content__left">
+              <div className="content__meals">
+                {meals?.map((meal) => (
+                  <Meal key={meal.id} meal={meal} expand={expand} />
+                ))}
+              </div>
+              <div className="content__nutrients-days">
+                <h2>Потреблено:</h2>
+                <div>Калорий за день: {amountNutrientsToday.calories}</div>
+                <div>Белков за день: {amountNutrientsToday.proteins} г.</div>
+                <div>Жиров за день: {amountNutrientsToday.fat} г.</div>
+                <div>
+                  Углеводов за день: {amountNutrientsToday.carbohydrates} г.
+                </div>
+              </div>
+            </div>
+            <div className="content__right">
+              <Typography align="center">
+                <span className='content__calories-text'>Потреблено: {amountNutrientsToday.calories} из 
+                  {caloriesNorm > 0 ? <> {caloriesNorm} ККал</> : <Button variant='outlined' size='small' sx={{ marginLeft: 1 }}onClick={() => setModal(true)}>Узнать норму</Button>}
+                </span>
+              </Typography>
+              {caloriesNorm > 0 && <Doughnut data={dataset} />}
+              <Water setModal={setModal}/>
             </div>
           </div>
-        </div>
-        <div className="content__right">
-          <Typography align="center">
-            <span className='content__calories-text'>Потреблено {amountNutrientsToday.calories} калорий из {caloriesNorm} </span>
-          </Typography>
-          <Doughnut data={dataset} />
-          <Water />
-        </div>
-      </div>
-      </div>
-      <div className="footer">
-        <hr />
-        <div className='footer__content'>
-          <div className="footer__logo">
-            <Logo />
-            <h4>Начни питаться полезнее, осознаннее и здоровее!</h4>
           </div>
-          <div className="footer__info">
-            <div className="footer__info-navigation">
-              <h4>Навигация</h4>
-              <p onClick={() => navigate("/")}>Главная</p>
-              <p onClick={() => navigate("/statistics")}>Дневник</p>
-              <p onClick={() => navigate("/recipes")}>Рецепты</p>
-              <p onClick={() => navigate("/profile")}>Личный кабинет</p>
-            </div>
-            <div className="footer__info-social">
-              <h4>Добавляйся</h4>
-              <a href="www.instagram.com">Instagram</a><br />
-              <a href="www.facebook.com">Facebook</a><br />
-              <a href="www.pinterest.com">Pinterest</a><br />
-              <a href="www.telegram.com">Telegram</a><br />
-            </div>
-            <div className="footer__info-support">
-              <h4>Поддержка</h4>
-              <p>Всегда будем рады помочь при необходимости</p>
-              <a href="mailto:dailycaloricneeds@gmail.com">dailycaloricneeds@gmail.com</a><br />
-              <a href="tel:+71234567890">+71234567890</a>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div>
-          <h4 className="footer__copy">@DAILYCALORICNEEDS 2022</h4>
-        </div>
+          <Footer/>
       </div>
-    </div>
+    </>
   );
 };

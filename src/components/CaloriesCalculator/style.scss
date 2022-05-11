@@ -1,0 +1,16 @@
+.calculator {
+  padding: 30px 50px;
+
+  &__header {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__line {
+    margin: 15px 0 10px;
+  }
+
+  &__report {
+    text-align: center;
+  }
+}

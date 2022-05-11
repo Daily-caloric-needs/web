@@ -3,9 +3,15 @@
 .water {
   margin-top: 40px;
   &__text {
+    display: block;
     color: $main-color;
     font-size: 20px;
     font-weight: 600;
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
   }
 
   &__buttons{

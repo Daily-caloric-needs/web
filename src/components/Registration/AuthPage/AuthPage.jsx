@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Modal } from '../../Modal/Modal';
 import { SignInForm } from '../SignInForm/SignInForm'
 import { SignUpForm } from '../SignUpForm/SignUpForm'
-import './AuthPage.css';
 
 export const AuthPage = ({ id }) => {
 	const [modal, setModal] = useState(true);
@@ -18,12 +17,12 @@ export const AuthPage = ({ id }) => {
 		<div className="auth-page">
 			{modal && id === "login" && (
 				<Modal showModal={modal} closeModal={closeModal}>
-					<SignInForm />
+					<SignInForm closeModal={closeModal}/>
 				</Modal>
 			)}
 			{modal && id === "registration" && (
 				<Modal showModal={modal} closeModal={closeModal}>
-					<SignUpForm />
+					<SignUpForm closeModal={closeModal} />
 				</Modal>
 			)}
 		</div>
