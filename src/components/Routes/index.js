@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Content } from '../Content/Content';
+import { Diary } from '../Diary/Diary';
 import { Home } from '../Home/Home';
 import { NotFound } from '../NotFound/NotFound';
 import { Profile } from '../Profile/Profile';
@@ -24,7 +24,7 @@ export const Routers = () => {
 		<BrowserRouter className="router">
 			<Routes>
 				<Route exact path="/" element={<Home />} />
-				<Route exact path="/diary" element={<Content />} />
+				<Route exact path="/diary" element={<Diary />} />
 				<Route exact path="/profile" element={<Profile />} />
 				<Route exact path="/login" element={<AuthPage id="login"/>} />
 				<Route exact path="/registration" element={<AuthPage id="registration"/>} />

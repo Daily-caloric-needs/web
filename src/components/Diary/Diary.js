@@ -20,7 +20,7 @@ import { Modal } from '../Modal/Modal';
 import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import { Footer } from '../Footer/Footer';
 
-export const Content = () => {
+export const Diary = () => {
   const allDishes = useSelector(selectAllDishes());
   const amountNutrientsToday = useSelector(selectAmountNutrientsFromToday());
   const caloriesNorm = useSelector(selectNormNutrients());
