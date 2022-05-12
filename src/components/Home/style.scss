@@ -10,6 +10,10 @@
     flex-direction: column;
     margin-left: 100px;
     padding: 10px 40px 50px;
+
+    @media screen and (max-width: 425px){
+        padding: 10px 40px 0;
+    }
 }
 
 .content__nav-button {
@@ -89,6 +93,10 @@
             font-size: 14px;
             padding: 0;
         }
+
+    &__user{
+        display: none;
+    }
     }
 }
 
@@ -121,6 +129,11 @@
 
     button {
         align-self: center;
+    }
+
+    @media screen and (max-width: 425px){
+        margin-top: 20px;
+        padding: 1rem 2rem;
     }
 }
 
@@ -170,11 +183,22 @@
         display: flex;
         gap: 30px;
         justify-content: center;
+
+        img{
+            width: 80%
+        }
     }
 
     @media screen and (max-width: 1024px) {
         &__items{
             flex-wrap: wrap;
+        }
+    }
+
+    @media screen and (max-width: 425px){
+        // margin-left: 100px;
+        p{
+            font-size: 16px
         }
     }
 }

@@ -50,8 +50,8 @@ export const Home = () => {
               </div>
             </div>
             <div className="header__user">
-              <Sidebar />
             </div>
+              <Sidebar />
           </div>
 
           {!userData &&
