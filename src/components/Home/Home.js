@@ -35,10 +35,17 @@ export const Home = () => {
       <div className='container'>
         <div className="content__home">
           <div className="content__nav-button">
+            <div className="content__nav-button-burger">
+            <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"></link>
+            <span className="lnr lnr-menu"></span>
+            </div>
+            <div className="content__nav-button-icons">
             <Notification />
             <Avatar />
+            </div>
           </div>
           <div className="header">
+
             <div className="header__left">
               <div className="header__text">
                 <p>
