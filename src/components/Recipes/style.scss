@@ -1,0 +1,113 @@
+@import '../../variables.scss';
+
+.content {
+    min-height: calc(100vh - 160px);
+    max-width: 1440px;
+    margin-left: 100px;
+    flex: 1 1 auto;
+    padding: 10px 40px 50px;
+  
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &__menu {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 30px;
+    }
+
+    &__button {
+      background-color: $main-color-light;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 18px;
+      padding: 15px;
+      margin-top: 50px;
+      text-align: end;
+    }
+
+    &__category {
+      margin: 25px 0 15px 0;
+      display: flex;
+      gap: 15px;
+      
+      button {
+        background-color: $main-color-secondary;
+        border: none;
+        border-radius: 25px;
+        color: white;
+        padding: 8px;
+        font-size: 16px;
+        
+      }
+    }
+
+    .recipes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &__item {
+        border: 2px solid $main-color-secondary;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        padding: 5px;
+        max-height: 215px;
+
+        &__info {
+         
+        li {
+          color: $main-color-light;
+          font-size: 16px;
+          font-weight: 500;
+          text-align: start;
+          list-style: none;
+          margin-left: 15px;
+        }
+      }
+
+      &__calories {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        p {
+          color: $main-color-light;
+          font-size: 24px;
+          font-weight: 700;
+        }
+
+        span {
+          border: 2px solid $main-color;
+          border-radius: 5px;
+          padding: 5px;
+        }
+
+        button {
+          border-radius: 10px;
+          background-color: $main-color;
+          border: none;
+          color: white;
+          padding: 10px;
+          font-size: 16px;
+        }
+
+      } 
+
+        &__photo{
+          width: 250px;
+          height: 200px;
+          background-image: url('../../img/mannaya-kasha.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 5px;
+        }
+      }
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../variables.scss';
+
+.search {
+  position: relative;
+
+  &__input {
+    width: 220px;
+    margin: 0 40px;
+    padding: 12px 20px;
+    border: 1px solid $main-color;
+    background-color: transparent;
+    padding-right: 40px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: $font-color-main;
+    outline: none;
+    transition: 0.3s ease-in-out;
+
+    &::placeholder {
+      color: $font-color-main;
+    }
+  }
+
+  & > svg {
+    cursor: pointer;
+    position: absolute;
+    color: $font-color-main;
+    margin: 8px 0 0 -80px;
+  }
+}
