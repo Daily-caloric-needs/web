@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import { Footer } from '../Footer/Footer';
+import { MenuBurger } from '../MenuBurger/MenuBurger';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -36,8 +37,7 @@ export const Home = () => {
         <div className="content__home">
           <div className="content__nav-button">
             <div className="content__nav-button-burger">
-            <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"></link>
-            <span className="lnr lnr-menu"></span>
+            <MenuBurger />
             </div>
             <div className="content__nav-button-icons">
             <Notification />

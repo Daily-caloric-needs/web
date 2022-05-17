@@ -29,10 +29,6 @@
 .content__nav-button-burger{
     display: none;
 
-    .lnr-menu{
-        font-size: 40px;
-    }
-
     @media screen and (max-width: 425px){
         display: block;
         margin-right: 130px;

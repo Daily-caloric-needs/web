@@ -13,6 +13,30 @@
     justify-content: flex-end;
   }
 
+  .content__nav-button {
+    display: flex;
+    align-self: end;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 425px){
+        justify-content: space-between;
+    }
+}
+
+.content__nav-button-burger{
+    display: none;
+
+    @media screen and (max-width: 425px){
+        display: block;
+        margin-right: 130px;
+    }
+}
+
+.content__nav-button-icons{
+    display: flex;
+    align-self: end;
+}
+
   &__title {
     flex: 1 1 auto;
     text-align: center;
