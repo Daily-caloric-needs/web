@@ -15,8 +15,10 @@ export const Recipes = () => {
             <Notification />
             <Avatar />
           </div>
-          <Search />
-          <button className='content__button'>Добавить свой рецепт</button>
+          <div className='content__menu'>
+            <button className='content__button'>Добавить свой рецепт</button>
+            <Search />
+          </div>
           <div className='content__category'>
             <button>Все рецепты</button>
             <button>Популярные</button>

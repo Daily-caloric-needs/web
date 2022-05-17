@@ -13,6 +13,12 @@
       justify-content: flex-end;
     }
 
+    &__menu {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 30px;
+    }
+
     &__button {
       background-color: $main-color-light;
       border: none;
@@ -52,7 +58,7 @@
         justify-content: space-between;
         border-radius: 10px;
         padding: 5px;
-        max-height: 200px;
+        max-height: 215px;
 
         &__info {
          
@@ -99,7 +105,8 @@
           height: 200px;
           background-image: url('../../img/mannaya-kasha.jpg');
           background-repeat: no-repeat;
-          background-size: contain;
+          background-size: cover;
+          border-radius: 5px;
         }
       }
     }
