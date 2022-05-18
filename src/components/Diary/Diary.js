@@ -43,22 +43,22 @@ export const Diary = () => {
 	};
 
   if (amountNutrientsToday.carbohydrates > 0) {
-    sumDayPercentProteins = `Белки: ${Math.round(
+    sumDayPercentProteins = Math.round(
       (amountNutrientsToday.proteins * 100) / sumDay
-    )}%`;
-    sumDayPercentFat = `Жиры: ${Math.round(
+    );
+    sumDayPercentFat = Math.round(
       (amountNutrientsToday.fat * 100) / sumDay
-    )}%`;
-    sumDayPercentCarboydrates = `Углеводы: ${Math.round(
+    );
+    sumDayPercentCarboydrates = Math.round(
       (amountNutrientsToday.carbohydrates * 100) / sumDay
-    )}%`;
+    );
   }
 
   const dataset = {
     labels: [
-      sumDayPercentProteins,
-      sumDayPercentFat,
-      sumDayPercentCarboydrates,
+      `Белки ${sumDayPercentProteins}%`,
+      `Жиры ${sumDayPercentFat}%`,
+      `Углеводы ${sumDayPercentCarboydrates}%`,
     ],
     datasets: [
       {

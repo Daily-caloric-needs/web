@@ -177,6 +177,10 @@
     border-radius: 20px;
     box-shadow: 5px 0px 15px $main-color-light;
 
+    &__img{
+        text-align: center;
+    }
+
     &__info {
         display: flex;
         flex-direction: column;
