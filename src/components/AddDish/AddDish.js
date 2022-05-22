@@ -188,19 +188,18 @@ export const AddDish = ({ dishes, add, close, title }) => {
           value={value}
           onChange={changeName}
           filterOptions={(options, params) => {
+            if (params.inputValue.length < 2) {
+              return [];
+            }
             const filtered = filter(options, params);
 
-            if (params.inputValue !== "") {
-              return [
-                {
-                  inputValue: params.inputValue,
-                  name: `Добавить "${params.inputValue}"`,
-                },
-                ...filtered,
-              ];
-            }
-
-            return filtered;
+            return [
+              {
+                inputValue: params.inputValue,
+                name: `Добавить "${params.inputValue}"`,
+              },
+              ...filtered,
+            ];
           }}
           options={dishesVariants}
           selectOnFocus
