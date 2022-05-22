@@ -191,10 +191,13 @@ export const AddDish = ({ dishes, add, close, title }) => {
             const filtered = filter(options, params);
 
             if (params.inputValue !== "") {
-              filtered.push({
-                inputValue: params.inputValue,
-                name: `Добавить "${params.inputValue}"`,
-              });
+              return [
+                {
+                  inputValue: params.inputValue,
+                  name: `Добавить "${params.inputValue}"`,
+                },
+                ...filtered,
+              ];
             }
 
             return filtered;
