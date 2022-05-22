@@ -4,8 +4,10 @@ import { Notification } from "../Notification/Notification";
 import { Avatar } from "../Avatar/Avatar";
 import { Search } from '../Search/Search';
 import { Footer } from '../Footer/Footer';
+import { RecipeItem } from '../RecipeItem/RecipeItem';
 
 export const Recipes = () => {
+
     return (
         <>
         <div className='container'>
@@ -28,28 +30,8 @@ export const Recipes = () => {
             <button>Выпечка</button>
             <button>Напитки</button>
             <button>Десерты</button>
-          </div>
-          <div className='recipes'>
-          <section className='recipes__item'>
-            <div className='recipes__item__info'>
-                <h2>Манная каша</h2>
-            <ul>
-              <li>Молоко - <span>300мл</span></li>
-              <li>Вода - <span>100мл</span></li>
-              <li>Крупа манная - <span>50г</span></li>
-              <li>Сахар - <span>5г</span></li>
-              <li>Соль - <span>1г</span></li>
-              <li>Масло сливочное - <span>10г</span></li>
-            </ul>
-            </div>
-            <div className='recipes__item__calories'>
-              <p>63Ккал</p>
-              <span>Второе блюдо</span>
-              <button>Посмотреть рецепт</button>
-            </div>
-            <div className='recipes__item__photo'></div>
-          </section>
-          </div>
+          </div>    
+          <RecipeItem />
           </div>
           <Footer />
           </div>
