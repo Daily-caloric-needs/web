@@ -1,0 +1,37 @@
+.navbar__item {
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar__item > .navbar__name {
+  margin-top: 5px;
+  font-weight: 600;
+  visibility: hidden;
+  font-size: 11px;
+}
+
+.navbar__item:hover, .navbar__item-active {
+  cursor: pointer;
+  background-color: #27ae60;
+}
+
+.navbar__item:hover > .navbar__name, .navbar__item-active > .navbar__name {
+  visibility: visible;
+}
+
+.navbar__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=style.css.map */
