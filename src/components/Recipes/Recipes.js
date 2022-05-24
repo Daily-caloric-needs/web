@@ -4,7 +4,7 @@ import { Notification } from '../Notification/Notification';
 import { Avatar } from '../Avatar/Avatar';
 import { Search } from '../Search/Search';
 import { Footer } from '../Footer/Footer';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { AddRecipe } from '../AddRecipe/AddRecipe';
 import { Modal } from '../Modal/Modal';
@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserData } from '../../store/UserData/selectors';
 import { addRecipeToServer } from '../../store/Recipes/actions';
 import { RecipeList } from '../RecipeList/RecipeList';
+import { getDishesVariants } from '../../store/Dishes/selectors';
+import { getDishes } from '../../store/Dishes/actions';
 
 const CssButton = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.main}`,
@@ -28,15 +30,25 @@ export const Recipes = () => {
   const user = useSelector(selectUserData());
   const dispatch = useDispatch();
 
+  const dishesVariants = useSelector(getDishesVariants);
+
+  useEffect(() => {
+    if (!dishesVariants.length) {
+      dispatch(getDishes());
+    }
+  }, [dispatch, dishesVariants]);
+
   const close = useCallback(() => {
     setIsOpen(false);
   }, []);
 
-  const addRecipe = useCallback((recipe) => {
-    console.log(recipe);
-    dispatch(addRecipeToServer({ recipe, token: user.token }));
-    console.log('Add recipe');
-  }, []);
+  const addRecipe = useCallback(
+    (recipe) => {
+      dispatch(addRecipeToServer({ recipe, token: user.token }));
+      setIsOpen(false);
+    },
+    [dispatch, user]
+  );
 
   return (
     <>

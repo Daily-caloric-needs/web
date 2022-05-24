@@ -1,18 +1,26 @@
-import './style.scss';
-import { IoLogOutOutline, IoLogInOutline } from 'react-icons/io5';
+import "./style.scss";
+import { IoLogOutOutline, IoLogInOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUserData } from "../../store/UserData/selectors";
-import { useNavigate } from 'react-router-dom';
-import { deleteUserData } from '../../store/UserData/actions';
+import { selectToken, selectUserData } from "../../store/UserData/selectors";
+import { useNavigate } from "react-router-dom";
+import { deleteUserData } from "../../store/UserData/actions";
+import axios from "axios";
+import { API } from "../../constants";
 export const Logout = () => {
   const userData = useSelector(selectUserData());
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = useSelector(selectToken());
 
   const logout = () => {
     // отправка токена на сервеp
-    localStorage.removeItem('userData');
-    dispatch(deleteUserData(null));
+    axios.post(`${API}/logout`, 0, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    localStorage.removeItem("userData");
+    dispatch(deleteUserData());
     navigate("/");
   };
 

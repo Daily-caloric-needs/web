@@ -28,7 +28,7 @@ export const getRecipesFailure = (error) => ({
 
 export const getRecipes = () => async (dispatch) => {
   try {
-    const urlFetch = API + 'recipes';
+    const urlFetch = API + '/recipes';
 
     const response = await fetch(urlFetch);
 
@@ -46,7 +46,7 @@ export const addRecipeToServer =
   ({ recipe, token }) =>
   async (dispatch) => {
     try {
-      const urlFetch = API + 'recipes';
+      const urlFetch = API + '/recipes';
 
       const response = await fetch(urlFetch, {
         method: 'POST',
