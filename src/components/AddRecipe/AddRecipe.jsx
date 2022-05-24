@@ -14,14 +14,16 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { Modal } from '../Modal/Modal';
 import { AddDish } from '../AddDish/AddDish';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { selectUserData } from '../../store/UserData/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDishesVariants } from '../../store/Dishes/selectors';
+import { getDishes } from '../../store/Dishes/actions';
 
 const CssTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputLabel-root': {
@@ -179,7 +181,7 @@ export const AddRecipe = ({ close, addRecipe }) => {
     };
 
     addRecipe(recipe);
-  });
+  }, [category, userData, addRecipe, title, description, productsList]);
 
   return (
     <>

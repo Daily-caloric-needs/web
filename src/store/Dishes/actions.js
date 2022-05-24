@@ -24,7 +24,7 @@ export const getDishes = () => async (dispatch) => {
   dispatch(getDishesLoading());
 
   try {
-    const urlFetch = API + 'products';
+    const urlFetch = API + '/products';
 
     const response = await fetch(urlFetch);
 
