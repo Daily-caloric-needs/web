@@ -1,0 +1,17 @@
+.calculator {
+  padding: 30px 50px;
+}
+
+.calculator__header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.calculator__line {
+  margin: 15px 0 10px;
+}
+
+.calculator__report {
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
