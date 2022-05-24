@@ -39,7 +39,7 @@ export const RecipeList = () => {
                 <h2>{ recipe.recipe.name }</h2>
             <ul>
                 {recipe.productList.map((product) => (
-                    <li key={product.product[0].id}>{product.product[0].name} - { Math.round(product.product[0].calories * product.modifier) }Ккал</li>
+                    <li key={product.product[0].id}>{product.product[0].name} - { product.modifier*100 }г</li>
                 ))}
             </ul>
             </div>
