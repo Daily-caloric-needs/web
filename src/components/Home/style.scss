@@ -2,23 +2,47 @@
 
 .content__home {
     min-height: calc(100vh - 160px);
-    max-width: 1440px;
+    align-items: center;
     margin: 0 auto;
     padding: 0;
     display: flex;
     flex-direction: column;
     margin-left: 100px;
     padding: 10px 40px 50px;
+
+    @media screen and (max-width: 425px){
+        padding: 10px 40px 0;
+        margin-left: 0;
+    }
 }
 
 .content__nav-button {
     display: flex;
-    justify-content: flex-end;
+    align-self: end;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 425px){
+        justify-content: space-between;
+    }
+}
+
+.content__nav-button-burger{
+    display: none;
+
+    @media screen and (max-width: 425px){
+        display: block;
+        margin-right: 130px;
+    }
+}
+
+.content__nav-button-icons{
+    display: flex;
+    align-self: end;
 }
 
 .header {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -42,6 +66,10 @@
         margin-top: 20px;
     }
 
+    &__left{
+        margin-right: 60px;
+    }
+
     &__text {
         padding: 30px 0 0 70px;
         text-align: center;
@@ -53,12 +81,40 @@
         padding: 20px 30px 0 0;
         display: flex;
         justify-content: flex-end;
-        height: 45vh;
+        max-height: 45vh;
         width: 50%;
         background-image: url("../../img/2.jpg");
         background-position: center;
         background-size: cover;
         border-radius: 10px;
+    }
+    @media screen and (max-width: 1024px) {
+        &__button{
+            font-size: 14px;
+        }
+        &__text{
+            font-size: 18px;
+        }
+        &__user{
+            max-height: 70vh;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        flex-direction: column;
+
+        &__left{
+        margin-right: 0;
+    }
+
+    &__text{
+            font-size: 14px;
+            padding: 0;
+        }
+
+    &__user{
+        display: none;
+    }
     }
 }
 
@@ -92,6 +148,16 @@
     button {
         align-self: center;
     }
+
+    @media screen and (max-width: 425px){
+        margin-top: 20px;
+        padding: 1rem 2rem;
+        font-size: 14px;
+
+        .button__reg{
+            font-size: 16px;
+        }
+    }
 }
 
 .cards {
@@ -111,6 +177,10 @@
     border-radius: 20px;
     box-shadow: 5px 0px 15px $main-color-light;
 
+    &__img{
+        text-align: center;
+    }
+
     &__info {
         display: flex;
         flex-direction: column;
@@ -123,12 +193,47 @@
             font-size: 18px;
         }
     }
+
+    @media screen and (max-width: 768px) {
+        gap: 30px;
+        margin-top: 30px;
+
+        &__img{
+            align-self: center;
+            text-align: center;
+        }
+
+        img{
+            width: 85%;
+        }
+
+        &__info{
+            gap: 20px;
+
+            p{
+                font-size: 16px;
+                padding-right: 15px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        padding: 20px;
+        margin-top: 20px;
+
+        &__img{
+            display: none;
+        }
+
+        .header__button{
+            margin-top: 10px;
+        }
+    }
 }
 
 .recipes {
     text-align: center;
     padding: 10px 0 10px 0;
-    margin-bottom: 40px;
 
     p {
         font-size: 18px;
@@ -141,6 +246,26 @@
         display: flex;
         gap: 30px;
         justify-content: center;
+
+        img{
+            width: 80%
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        &__items{
+            flex-wrap: wrap;
+
+            img{
+                width: 60%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 425px){
+        p{
+            font-size: 16px
+        }
     }
 }
 

@@ -1,0 +1,40 @@
+.menu {
+   flex-flow: column nowrap;
+   background-color:#34cd75;
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100hv;
+   width: 150px;
+   padding-top: 3.5rem;
+   transition: transform 0.3s ease-in-out;
+   z-index: 1;
+   border-radius: 0 20px 20px 0;
+   color: #fff;
+
+   li {
+      padding: 14px 8px;
+      color: white;
+   }
+
+}
+
+.burger{
+   width: 2rem;
+   height: 2rem;
+   position: fixed;
+   top: 15px;
+   left: 20px;
+   display: flex;
+   justify-content: space-around;
+   flex-flow: column nowrap;
+   z-index: 100;
+
+   div{
+      width: 2rem;
+      height: 0.25rem;
+      border-radius: 10px;
+      transform-origin: 1px;
+      transition: all 0.3s linear;
+   }
+}

@@ -1,5 +1,45 @@
+.container {
+  width: 100%;
+}
+
 .content {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 205px);
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-self: end;
+    margin: 20px 20px 20px 0;
+  }
+
+  .content__nav-button {
+    display: flex;
+    align-self: end;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 425px){
+        justify-content: space-between;
+    }
+}
+
+.content__nav-button-burger{
+    display: none;
+
+    @media screen and (max-width: 425px){
+        display: block;
+        margin-right: 130px;
+    }
+}
+
+.content__nav-button-icons{
+    display: flex;
+    align-self: end;
+}
+
   &__profile {
     margin-top: 10px;
     display: flex;
@@ -24,6 +64,44 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-left: 100px;
+
+    &__profile {
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    margin-left: 0;
+
+    h1{
+      font-size: 18px;
+    }
+
+    &__profile{
+      font-size: 0.75rem;
+      margin: 10px;
+
+    &-left {
+      min-width: 100%;
+    }
+
+    &-right {
+      min-width: 100%;
+    }
+  }
+  .css-2ulfj5-MuiTypography-root{
+    font-size: 0.8rem;
+  }
+  .css-q99p8q-MuiButtonBase-root-MuiButton-root{
+    line-height: 1.5;
+    font-size: 0.5rem;
+  }
   }
 }
 

@@ -13,4 +13,19 @@
   &__report {
     text-align: center;
   }
+
+  .css-13va2sj-MuiButtonBase-root-MuiButton-root{
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 425px){
+    padding: 30px 30px;
+    &__header{
+      font-size: 16px;
+    }
+
+    .css-13va2sj-MuiButtonBase-root-MuiButton-root{
+      font-size: 12px;
+    }
+  }
 }

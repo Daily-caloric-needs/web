@@ -1,9 +1,9 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .content {
   min-height: calc(100vh - 160px);
-  max-width: 1440px;
-  margin-left: 100px;
+  // max-width: 1440px;
+  // margin-left: 100px;
   flex: 1 1 auto;
   padding: 10px 40px 50px;
 
@@ -11,6 +11,30 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  .content__nav-button {
+    display: flex;
+    align-self: end;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 425px) {
+      justify-content: space-between;
+    }
+  }
+
+  .content__nav-button-burger {
+    display: none;
+
+    @media screen and (max-width: 425px) {
+      display: block;
+      margin-right: 130px;
+    }
+  }
+
+  .content__nav-button-icons {
+    display: flex;
+    align-self: end;
   }
 
   &__title {
@@ -25,6 +49,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
+    margin-left: 100px;
   }
 
   &__left {
@@ -34,30 +59,109 @@
   }
 
   &__meals {
+    width: 887px;
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  &__nutrients-days{
+  &__nutrients-days {
     font-size: 20px;
 
     :nth-child(3) {
-      color: rgb(255, 99, 132)
+      color: rgb(255, 99, 132);
     }
-    
+
     :nth-child(4) {
-      color: rgb(255, 205, 86)
+      color: rgb(255, 205, 86);
     }
-    
+
     :nth-child(5) {
-      color: rgb(54, 162, 235)
+      color: rgb(54, 162, 235);
     }
   }
 
-  &__calories-text{
+  &__calories-text {
     color: $main-color;
     font-size: 20px;
     font-weight: 600;
+  }
+
+  @media screen and (max-width: 1400px) {
+    &__left {
+      align-items: center;
+    }
+
+    &__meals {
+      width: 880px;
+      margin-left: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    &__main {
+      width: 100%;
+      margin-left: 20px;
+    }
+
+    &__left {
+      width: 100%;
+    }
+
+    &__meals {
+      width: 660px;
+      margin-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .dish {
+      // padding: 5px;
+      flex-direction: column;
+      text-align: center;
+
+      &__info {
+        justify-content: center;
+      }
+    }
+    &__meals {
+      max-width: 440px;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    &__meals {
+      max-width: 330px;
+    }
+
+    .meal__header{
+      font-size: 18px;
+    }
+
+    .dish {
+      padding: 5px;
+      &__name {
+        h6 {
+          font-size: 14px;
+        }
+      }
+
+      &__energyvalue {
+        h6 {
+          font-size: 12px;
+        }
+        span {
+          font-size: 10px;
+        }
+      }
+
+      .css-11l2f5r-MuiInputBase-root-MuiOutlinedInput-root {
+        font-size: 12px;
+      }
+
+      &__nutrients {
+        font-size: 14px;
+      }
+    }
   }
 }

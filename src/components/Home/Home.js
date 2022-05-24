@@ -10,11 +10,11 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { Slider } from "../Slider/Slider";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../store/UserData/selectors";
-// import { Logo } from "../Logo/Logo"
 import { useState } from 'react';
 import { Modal } from '../Modal/Modal';
 import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import { Footer } from '../Footer/Footer';
+import { MenuBurger } from '../MenuBurger/MenuBurger';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -36,10 +36,16 @@ export const Home = () => {
       <div className='container'>
         <div className="content__home">
           <div className="content__nav-button">
+            <div className="content__nav-button-burger">
+            <MenuBurger />
+            </div>
+            <div className="content__nav-button-icons">
             <Notification />
             <Avatar />
+            </div>
           </div>
           <div className="header">
+
             <div className="header__left">
               <div className="header__text">
                 <p>
@@ -51,8 +57,8 @@ export const Home = () => {
               </div>
             </div>
             <div className="header__user">
-              <Sidebar />
             </div>
+              <Sidebar />
           </div>
 
           {!userData &&

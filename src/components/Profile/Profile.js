@@ -13,6 +13,7 @@ import { selectWaterDrunk } from "../../store/Water/selectors";
 import { Modal } from '../Modal/Modal';
 import { CaloriesCalculator } from '../CaloriesCalculator/CaloriesCalculator';
 import { Footer } from '../Footer/Footer';
+import { MenuBurger } from "../MenuBurger/MenuBurger";
 
 export const Profile = () => {
   const userData = useSelector(selectUserData());
@@ -131,8 +132,15 @@ export const Profile = () => {
         <div className="content">
           <div className="content__header">
             <Sidebar />
-            <Notification />
-            <Avatar />
+            <div className="content__nav-button">
+              <div className="content__nav-button-burger">
+                <MenuBurger />
+              </div>
+              <div className="content__nav-button-icons">
+                <Notification />
+                <Avatar />
+              </div>
+            </div>
           </div>
           
           <h1>Ваш профиль</h1>
