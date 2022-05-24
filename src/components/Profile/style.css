@@ -1,0 +1,52 @@
+.content {
+  min-height: calc(100vh - 160px);
+}
+
+.content__profile {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 20px;
+}
+
+.content__profile-left {
+  min-width: 460px;
+}
+
+.content__profile-right {
+  min-width: 570px;
+}
+
+.content__box {
+  border: 1px solid #ebebeb;
+  border-radius: 4px;
+  margin: 3px 0;
+  padding: 4px 6px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.password-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 7px;
+}
+/*# sourceMappingURL=style.css.map */

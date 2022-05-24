@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Button,
   TextField,
@@ -9,34 +9,34 @@ import {
   Autocomplete,
   DialogContentText,
   Typography,
-} from '@mui/material';
-import { CssDialog } from '../Modal/Modal';
-import styled from '@emotion/styled';
-import { getDishesVariants } from '../../store/Dishes/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { DishCounter } from '../DishCounter/DishCounter';
-import './style.scss';
-import { addDishToServer } from '../../store/Dishes/actions';
+} from "@mui/material";
+import { CssDialog } from "../Modal/Modal";
+import styled from "@emotion/styled";
+import { getDishesVariants } from "../../store/Dishes/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { DishCounter } from "../DishCounter/DishCounter";
+import "./style.scss";
+import { addDishToServer } from "../../store/Dishes/actions";
 
 const CssTextField = styled(TextField)(({ theme }) => ({
-  '& .MuiInputLabel-root': {
+  "& .MuiInputLabel-root": {
     color: theme.palette.primary.main,
   },
-  '& label.Mui-focused': {
+  "& label.Mui-focused": {
     color: theme.palette.primary.main,
   },
-  '& .MuiInput-underline:after': {
+  "& .MuiInput-underline:after": {
     borderBottomColor: theme.palette.primary.main,
   },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
       color: theme.palette.text.primary,
       borderColor: theme.palette.primary.main,
     },
-    '&:hover fieldset': {
+    "&:hover fieldset": {
       borderColor: theme.palette.primary.main,
     },
-    '&.Mui-focused fieldset': {
+    "&.Mui-focused fieldset": {
       borderColor: theme.palette.primary.main,
     },
   },
@@ -46,23 +46,23 @@ const CssAutocomplete = styled(Autocomplete)(({ theme }) => ({
   marginTop: 20,
   marginBottom: 10,
 
-  '& .MuiInputLabel-root': {
+  "& .MuiInputLabel-root": {
     color: theme.palette.primary.main,
   },
-  '& label.Mui-focused': {
+  "& label.Mui-focused": {
     color: theme.palette.primary.main,
   },
-  '& .MuiOutlinedInput-root': {
-    '& input': {
+  "& .MuiOutlinedInput-root": {
+    "& input": {
       color: theme.palette.text.black,
     },
-    '& fieldset': {
+    "& fieldset": {
       borderColor: theme.palette.primary.main,
     },
-    '&:hover fieldset': {
+    "&:hover fieldset": {
       borderColor: theme.palette.primary.main,
     },
-    '&.Mui-focused fieldset': {
+    "&.Mui-focused fieldset": {
       borderColor: theme.palette.primary.main,
     },
   },
@@ -71,21 +71,21 @@ const CssAutocomplete = styled(Autocomplete)(({ theme }) => ({
 const CssButton = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.main}`,
   color: theme.palette.primary.main,
-  '&:hover': {
+  "&:hover": {
     boxShadow: `0 0 10px 1px ${theme.palette.primary.main}`,
   },
 }));
 
 const CssButtonCancel = styled(CssButton)({
-  '&:hover': {
-    backgroundColor: 'transparent',
+  "&:hover": {
+    backgroundColor: "transparent",
   },
 });
 
 const CssButtonAdd = styled(CssButton)(({ theme }) => ({
-  '&:hover': {
+  "&:hover": {
     backgroundColor: theme.palette.primary.main,
-    color: '#fff',
+    color: "#fff",
   },
 }));
 
@@ -99,7 +99,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
   const [value, setValue] = useState(null);
   const [open, toggleOpen] = useState(false);
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [calories, setCalories] = useState(0);
   const [fat, setFat] = useState(0);
   const [carbohydrates, setCarbohydrates] = useState(0);
@@ -129,7 +129,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
   };
 
   const handleClose = () => {
-    setName('');
+    setName("");
     setCalories(0);
     setCarbohydrates(0);
     setFat(0);
@@ -147,7 +147,7 @@ export const AddDish = ({ dishes, add, close, title }) => {
   };
 
   const changeName = (event, newValue) => {
-    if (typeof newValue === 'string') {
+    if (typeof newValue === "string") {
       setTimeout(() => {
         toggleOpen(true);
         setName(newValue);
@@ -166,10 +166,10 @@ export const AddDish = ({ dishes, add, close, title }) => {
 
     const dish = Object.assign({}, value);
     dish.count = count;
-    dish.calories = Math.round(dish.calories/100 * count);
-    dish.fat = Math.round(dish.fat/100 * count);
-    dish.proteins = Math.round(dish.proteins/100 * count);
-    dish.carbohydrates = Math.round(dish.carbohydrates/100 * count);
+    dish.calories = Math.round((dish.calories / 100) * count);
+    dish.fat = Math.round((dish.fat / 100) * count);
+    dish.proteins = Math.round((dish.proteins / 100) * count);
+    dish.carbohydrates = Math.round((dish.carbohydrates / 100) * count);
 
     add(dish);
   };
@@ -188,30 +188,26 @@ export const AddDish = ({ dishes, add, close, title }) => {
           value={value}
           onChange={changeName}
           filterOptions={(options, params) => {
+            if (params.inputValue.length < 2) {
+              return [];
+            }
             const filtered = filter(options, params);
 
-            if (params.inputValue !== '') {
-              filtered.push({
+            return [
+              {
                 inputValue: params.inputValue,
                 name: `Добавить "${params.inputValue}"`,
-              });
-            }
-
-            return filtered;
+              },
+              ...filtered,
+            ];
           }}
-          options={dishesVariants.filter((dish) => {
-            let check = true;
-            dishes?.forEach((element) => {
-              if (element.id === dish.id) check = false;
-            });
-            return check;
-          })}
+          options={dishesVariants}
           selectOnFocus
           autoHighlight
           clearOnBlur
           handleHomeEndKeys
           getOptionLabel={(option) => {
-            if (typeof option === 'string') {
+            if (typeof option === "string") {
               return option;
             }
             if (option.inputValue) {

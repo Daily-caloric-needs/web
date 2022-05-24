@@ -1,0 +1,20 @@
+.counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.counter__gram {
+  color: #000;
+}
+
+.counter__decrement, .counter__increment {
+  font-size: 50%;
+}
+/*# sourceMappingURL=style.css.map */

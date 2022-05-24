@@ -44,4 +44,4 @@ export const MEALS = [
   },
 ];
 
-export const API = 'http://213.226.114.162/api/';
+export const API = 'http://213.226.114.162/api';

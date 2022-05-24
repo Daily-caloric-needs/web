@@ -1,0 +1,113 @@
+.meal__header {
+  width: 100%;
+  margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dishes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dishes__list, .dishes__empty {
+  margin: 10px;
+}
+
+.dishes__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  gap: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.dishes__item {
+  border: 1px solid #2ecc71;
+  border-radius: 10px;
+  width: 300px;
+  padding: 10px;
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dishes__item span {
+  font-weight: bold;
+}
+
+.dishes__item-btn {
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.dishes__item-btn__dicr {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.dishes__nutrients {
+  font-size: 18px;
+}
+
+.dishes__nutrients :nth-child(2) {
+  color: #ff6384;
+}
+
+.dishes__nutrients :nth-child(3) {
+  color: #ffcd56;
+}
+
+.dishes__nutrients :nth-child(4) {
+  color: #36a2eb;
+}
+
+.dishes__add {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.dishes__add > svg {
+  color: #fff;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=style.css.map */

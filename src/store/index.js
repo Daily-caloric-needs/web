@@ -5,8 +5,9 @@ import thunk from 'redux-thunk';
 import { mealsReducer } from './Meals/reducer';
 import { amountNutrientsReducer } from './AmountNutrients/reducer';
 import { userDataReducer } from './UserData/reducer';
-import waterReducer from "../store/Water/reducer";
+import waterReducer from '../store/Water/reducer';
 import { normNutrientsReducer } from './CaloriesCalculator/reducer';
+import { recipesReducer } from './Recipes/reducer';
 
 // composeWithDevTools - devTools for Redux in Chrome
 const store = createStore(
@@ -16,7 +17,8 @@ const store = createStore(
     water: waterReducer,
     amountNutrients: amountNutrientsReducer,
     normNutrients: normNutrientsReducer,
-    userData: userDataReducer
+    userData: userDataReducer,
+    recipes: recipesReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk))
 );

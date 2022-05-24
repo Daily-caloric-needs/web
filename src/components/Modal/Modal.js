@@ -22,9 +22,9 @@ export const CssDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const Modal = ({ showModal, closeModal, children }) => {
+export const Modal = ({ showModal, closeModal, children, fullWidth }) => {
   return (
-    <CssDialog open={showModal} onClose={closeModal}>
+    <CssDialog open={showModal} onClose={closeModal} fullWidth={fullWidth}>
       {children}
     </CssDialog>
   );

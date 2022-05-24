@@ -1,0 +1,78 @@
+@import '../../variables.scss';
+
+.recipesList{
+  list-style-type: none;
+}
+.recipes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid $main-color-secondary;
+    border-radius: 10px;
+      padding: 5px;
+
+    &__item {
+      
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      max-height: 215px;
+
+      &__info {
+        h2 {
+          text-align: left;
+        }
+       
+      li {
+        color: $main-color-light;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: start;
+        list-style: none;
+        margin-left: 15px;
+      }
+    }
+
+    &__calories {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      p {
+        color: $main-color-light;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      span {
+        border: 2px solid $main-color;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      button {
+        border-radius: 10px;
+        background-color: $main-color;
+        border: none;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+    } 
+
+      &__photo{
+        width: 250px;
+        height: 200px;
+        background-image: url('../../img/recipe_default.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 5px;
+      }
+    }
+    .MuiSvgIcon-root {
+        fill: $main-color-secondary;
+        width: 30px;
+        height: 30px;
+      }
+}

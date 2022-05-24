@@ -1,0 +1,42 @@
+.search {
+  position: relative;
+}
+
+.search__input {
+  width: 220px;
+  margin: 0 40px;
+  padding: 12px 20px;
+  border: 1px solid #2ecc71;
+  background-color: transparent;
+  padding-right: 40px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #2ecc71;
+  outline: none;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.search__input::-webkit-input-placeholder {
+  color: #2ecc71;
+}
+
+.search__input:-ms-input-placeholder {
+  color: #2ecc71;
+}
+
+.search__input::-ms-input-placeholder {
+  color: #2ecc71;
+}
+
+.search__input::placeholder {
+  color: #2ecc71;
+}
+
+.search > svg {
+  cursor: pointer;
+  position: absolute;
+  color: #2ecc71;
+  margin: 8px 0 0 -80px;
+}
+/*# sourceMappingURL=style.css.map */
