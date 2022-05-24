@@ -4,7 +4,6 @@ import { Notification } from '../Notification/Notification';
 import { Avatar } from '../Avatar/Avatar';
 import { Search } from '../Search/Search';
 import { Footer } from '../Footer/Footer';
-import { RecipeItem } from '../RecipeItem/RecipeItem';
 import { useCallback, useState } from 'react';
 import { Button } from '@mui/material';
 import { AddRecipe } from '../AddRecipe/AddRecipe';
@@ -13,6 +12,7 @@ import styled from '@emotion/styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserData } from '../../store/UserData/selectors';
 import { addRecipeToServer } from '../../store/Recipes/actions';
+import { RecipeList } from '../RecipeList/RecipeList';
 
 const CssButton = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.main}`,
@@ -63,7 +63,7 @@ export const Recipes = () => {
             <button>Напитки</button>
             <button>Десерты</button>
           </div>
-          <RecipeItem />
+          <RecipeList />
         </div>
         <Footer />
       </div>

@@ -1,5 +1,8 @@
 @import '../../variables.scss';
 
+.recipesList{
+  list-style-type: none;
+}
 .recipes {
     display: flex;
     flex-direction: column;
@@ -13,10 +16,12 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      
       max-height: 215px;
 
       &__info {
+        h2 {
+          text-align: left;
+        }
        
       li {
         color: $main-color-light;
@@ -59,7 +64,7 @@
       &__photo{
         width: 250px;
         height: 200px;
-        background-image: url('../../img/mannaya-kasha.jpg');
+        background-image: url('../../img/recipe_default.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 5px;
