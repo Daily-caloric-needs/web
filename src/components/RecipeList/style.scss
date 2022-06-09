@@ -3,6 +3,10 @@
 .recipesList{
   list-style-type: none;
 }
+.css-o4b71y-MuiAccordionSummary-content{
+  width: 100%;
+}
+
 .recipes {
     display: flex;
     flex-direction: column;
@@ -16,13 +20,15 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      max-height: 215px;
+      // max-height: 215px;
 
       &__info {
+        width: 50%;
         h2 {
           text-align: left;
+          padding-bottom: 10px;
         }
-       
+      
       li {
         color: $main-color-light;
         font-size: 16px;
@@ -37,6 +43,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin: 0 15px;
 
       p {
         color: $main-color-light;
@@ -69,10 +76,45 @@
         background-size: cover;
         border-radius: 5px;
       }
+      @media screen and (max-width: 1024px){
+        &__info{
+          h2{
+            font-size: 20px;
+          }
+
+          li{
+            font-size: 14px;
+          }
+        }
+      }
     }
     .MuiSvgIcon-root {
         fill: $main-color-secondary;
         width: 30px;
         height: 30px;
+      }
+      @media screen and (max-width: 768px){
+        &__item__info{
+          width: 100%;
+          text-align-last: center;
+        }
+
+        &__item__calories{
+          margin: 20px 0;
+        }
+      }
+
+      @media screen and (max-width: 458px){
+        &__info{
+          li{
+            font-size: 12px;
+          }
+        }
+
+        &__calories{
+          p{
+            font-size: 18px;
+          }
+        }
       }
 }

@@ -51,7 +51,7 @@ export const Recipes = () => {
   );
 
   return (
-    <>
+    <div>
       <div className="container">
         <div className="content">
           <div className="content__header">
@@ -84,6 +84,6 @@ export const Recipes = () => {
           <AddRecipe close={close} addRecipe={addRecipe} />
         </Modal>
       )}
-    </>
+    </div>
   );
 };
