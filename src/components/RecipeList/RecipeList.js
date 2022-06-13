@@ -15,7 +15,6 @@ export const RecipeList = () => {
     const dispatch = useDispatch();
     const recipesList = useSelector(selectRecipes);
 
-    const [recipes, setRecipes] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
 
     const requestRecipes = async () => {
@@ -24,20 +23,17 @@ export const RecipeList = () => {
 
     useEffect(() => {
         requestRecipes();
-        console.log(recipesList);
-        setRecipes(recipesList);
     }, []);
 
     const getFiltreCategory = () => {
-        if (!selectedCategory) {
-            return recipes;
+            if (!selectedCategory || selectedCategory === "Все рецепты" || selectedCategory === "Популярные") {
+            return recipesList;
         }
         debugger
-        console.log(recipes, selectedCategory)
-        return recipes.filter((recipe) => recipe.recipe.categories === selectedCategory);
+        return recipesList.filter((recipe) => recipe.recipe.categories === selectedCategory);
     }
 
-    const filtredCategory = useMemo(getFiltreCategory, [selectedCategory, recipes]);
+    const filtredCategory = useMemo(getFiltreCategory, [selectedCategory, recipesList]);
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value)
@@ -59,16 +55,42 @@ export const RecipeList = () => {
                         <MenuItem value="Десерты">Десерты</MenuItem>
                     </Select>
                 </FormControl>
-
-                {/* {selectedCategory &&
-                    <div className="category__list">
-                        {filtredCategory.map((element, index) => {
-                            return <ItemCategory {...element} key={index} />
-                        })}
-                    </div>} */}
             </div>
             <ul className="recipesUL">
-                {recipesList.map((recipe) => (
+                {selectedCategory ? filtredCategory.map((recipe) => (
+                    <li key={recipe.id} className="recipesList">
+                        <Accordion className='recipes'>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography className='recipes__item'>
+                                    <div className='recipes__item__info'>
+                                        <h2>{recipe.recipe.name}</h2>
+                                        <ul>
+                                            {recipe.productList.map((product) => (
+                                                <li key={product.product[0].id}>{product.product[0].name} - {product.modifier * 100}г</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className='recipes__item__calories'>
+                                        <p>{recipe.productList.reduce(function (sum, product) {
+                                            return sum = Math.round(sum + (+product.product[0].calories * product.modifier))
+                                        }, 0)} Ккал</p>
+                                        <span>{recipe.recipe.categories}</span>
+                                    </div>
+                                    <div className='recipes__item__photo'></div>
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    {recipe.recipe.description}
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    </li>
+                )) : recipesList.map((recipe) => (
                     <li key={recipe.id} className="recipesList">
                         <Accordion className='recipes'>
                             <AccordionSummary
