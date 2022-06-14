@@ -26,10 +26,9 @@ export const RecipeList = () => {
     }, []);
 
     const getFiltreCategory = () => {
-            if (!selectedCategory || selectedCategory === "Все рецепты" || selectedCategory === "Популярные") {
+        if (!selectedCategory || selectedCategory === "Все рецепты" || selectedCategory === "Популярные") {
             return recipesList;
         }
-        debugger
         return recipesList.filter((recipe) => recipe.recipe.categories === selectedCategory);
     }
 
@@ -41,7 +40,7 @@ export const RecipeList = () => {
 
     return (
         <>
-            <div className="container__category">
+            <div className="container__category animate__animated animate__pulse">
                 <FormControl fullWidth>
                     <InputLabel >Категория</InputLabel>
                     <Select onChange={handleCategoryChange}>
@@ -56,76 +55,75 @@ export const RecipeList = () => {
                     </Select>
                 </FormControl>
             </div>
-            <ul className="recipesUL">
-                {selectedCategory ? filtredCategory.map((recipe) => (
-                    <li key={recipe.id} className="recipesList">
-                        <Accordion className='recipes'>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography className='recipes__item'>
-                                    <div className='recipes__item__info'>
-                                        <h2>{recipe.recipe.name}</h2>
-                                        <ul>
-                                            {recipe.productList.map((product) => (
-                                                <li key={product.product[0].id}>{product.product[0].name} - {product.modifier * 100}г</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className='recipes__item__calories'>
-                                        <p>{recipe.productList.reduce(function (sum, product) {
-                                            return sum = Math.round(sum + (+product.product[0].calories * product.modifier))
-                                        }, 0)} Ккал</p>
-                                        <span>{recipe.recipe.categories}</span>
-                                    </div>
-                                    <div className='recipes__item__photo'></div>
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    {recipe.recipe.description}
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                    </li>
-                )) : recipesList.map((recipe) => (
-                    <li key={recipe.id} className="recipesList">
-                        <Accordion className='recipes'>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography className='recipes__item'>
-                                    <div className='recipes__item__info'>
-                                        <h2>{recipe.recipe.name}</h2>
-                                        <ul>
-                                            {recipe.productList.map((product) => (
-                                                <li key={product.product[0].id}>{product.product[0].name} - {product.modifier * 100}г</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className='recipes__item__calories'>
-                                        <p>{recipe.productList.reduce(function (sum, product) {
-                                            return sum = Math.round(sum + (+product.product[0].calories * product.modifier))
-                                        }, 0)} Ккал</p>
-                                        <span>{recipe.recipe.categories}</span>
-                                    </div>
-                                    <div className='recipes__item__photo'></div>
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography>
-                                    {recipe.recipe.description}
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
-                    </li>
-                ))}
-            </ul>
-
+                <ul className="recipesUL">
+                    {selectedCategory ? filtredCategory.map((recipe) => (
+                        <li key={recipe.id} className="recipesList">
+                            <Accordion className='recipes'>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className='recipes__item'>
+                                        <div className='recipes__item__info'>
+                                            <h2>{recipe.recipe.name}</h2>
+                                            <ul>
+                                                {recipe.productList.map((product) => (
+                                                    <li key={product.product[0].id}>{product.product[0].name} - {product.modifier * 100}г</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className='recipes__item__calories'>
+                                            <p>{recipe.productList.reduce(function (sum, product) {
+                                                return sum = Math.round(sum + (+product.product[0].calories * product.modifier))
+                                            }, 0)} Ккал</p>
+                                            <span>{recipe.recipe.categories}</span>
+                                        </div>
+                                        <div className='recipes__item__photo'></div>
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        {recipe.recipe.description}
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        </li>
+                    )) : recipesList.map((recipe) => (
+                        <li key={recipe.id} className="recipesList">
+                            <Accordion className='recipes'>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className='recipes__item'>
+                                        <div className='recipes__item__info'>
+                                            <h2>{recipe.recipe.name}</h2>
+                                            <ul>
+                                                {recipe.productList.map((product) => (
+                                                    <li key={product.product[0].id}>{product.product[0].name} - {product.modifier * 100}г</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div className='recipes__item__calories'>
+                                            <p>{recipe.productList.reduce(function (sum, product) {
+                                                return sum = Math.round(sum + (+product.product[0].calories * product.modifier))
+                                            }, 0)} Ккал</p>
+                                            <span>{recipe.recipe.categories}</span>
+                                        </div>
+                                        <div className='recipes__item__photo'></div>
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography>
+                                        {recipe.recipe.description}
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        </li>
+                    ))}
+                </ul>
         </>
     )
 }
