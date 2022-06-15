@@ -25,7 +25,7 @@ export const RecipeList = () => {
     
     return (
         <>
-        <ul>
+        <ul className="recipesUL">
         {recipesList.map((recipe) => (
             <li key={recipe.id} className="recipesList">
             <Accordion className='recipes'>
