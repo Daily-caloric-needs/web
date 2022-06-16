@@ -43,7 +43,7 @@ export const RecipeList = () => {
             <div className="container__category animate__animated animate__pulse">
                 <FormControl fullWidth>
                     <InputLabel >Категория</InputLabel>
-                    <Select onChange={handleCategoryChange}>
+                    <Select onChange={handleCategoryChange} label='Категория'>
                         <MenuItem getOptionDisabled value="Все рецепты">Все рецепты</MenuItem>
                         <MenuItem value="Популярные">Популярные</MenuItem>
                         <MenuItem value="Первые блюда">Первые блюда</MenuItem>
