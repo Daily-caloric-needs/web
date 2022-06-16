@@ -65,16 +65,6 @@ export const Recipes = () => {
             </CssButton>
             <Search />
           </div>
-          {/* <div className="content__category">
-            <button>Все рецепты</button>
-            <button>Популярные</button>
-            <button>Первые блюда</button>
-            <button>Вторые блюда</button>
-            <button>Закуски</button>
-            <button>Выпечка</button>
-            <button>Напитки</button>
-            <button>Десерты</button>
-          </div> */}
           <RecipeList />
         </div>
         <Footer />
