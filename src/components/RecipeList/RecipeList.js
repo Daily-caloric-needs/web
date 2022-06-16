@@ -29,7 +29,6 @@ export const RecipeList = () => {
             if (!selectedCategory || selectedCategory === "Все рецепты" || selectedCategory === "Популярные") {
             return recipesList;
         }
-        debugger
         return recipesList.filter((recipe) => recipe.recipe.categories === selectedCategory);
     }
 
@@ -43,8 +42,8 @@ export const RecipeList = () => {
         <>
             <div className="container__category">
                 <FormControl fullWidth>
-                    <InputLabel >Категория</InputLabel>
-                    <Select onChange={handleCategoryChange}>
+                    <InputLabel>Категория</InputLabel>
+                    <Select onChange={handleCategoryChange} label='Категория'>
                         <MenuItem getOptionDisabled value="Все рецепты">Все рецепты</MenuItem>
                         <MenuItem value="Популярные">Популярные</MenuItem>
                         <MenuItem value="Первые блюда">Первые блюда</MenuItem>
