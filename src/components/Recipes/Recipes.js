@@ -5,7 +5,7 @@ import { Avatar } from '../Avatar/Avatar';
 import { Search } from '../Search/Search';
 import { Footer } from '../Footer/Footer';
 import { useCallback, useEffect, useState } from 'react';
-import { Button } from '@mui/material';
+import { Button  } from '@mui/material';
 import { AddRecipe } from '../AddRecipe/AddRecipe';
 import { Modal } from '../Modal/Modal';
 import styled from '@emotion/styled';
@@ -51,7 +51,7 @@ export const Recipes = () => {
   );
 
   return (
-    <div>
+    <>
       <div className="container">
         <div className="content">
           <div className="content__header">
@@ -65,16 +65,6 @@ export const Recipes = () => {
             </CssButton>
             <Search />
           </div>
-          <div className="content__category">
-            <button>Все рецепты</button>
-            <button>Популярные</button>
-            <button>Первые блюда</button>
-            <button>Вторые блюда</button>
-            <button>Закуски</button>
-            <button>Выпечка</button>
-            <button>Напитки</button>
-            <button>Десерты</button>
-          </div>
           <RecipeList />
         </div>
         <Footer />
@@ -84,6 +74,6 @@ export const Recipes = () => {
           <AddRecipe close={close} addRecipe={addRecipe} />
         </Modal>
       )}
-    </div>
+    </>
   );
 };
